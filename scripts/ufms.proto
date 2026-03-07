@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package UFMS;
+
+enum MsgType {
+  MSG_TYPE_ZERO = 0;
+  MSG_TYPE_BUS_WAY_POINT = 102;
+}
+
+message BusWayPoint {
+  string vehicle = 1;
+  string driver = 2;
+  float speed = 3;
+  int64 datetime = 4;
+  double x = 5;
+  double y = 6;
+  float z = 7;
+  float heading = 8;
+
+  bool ignition = 9;
+  bool aircon = 10;
+  bool door_up = 11;
+  bool door_down = 12;
+  bool sos = 13;
+  bool working = 14;
+
+  float analog1 = 15;
+  float analog2 = 16;
+}
+
+message BaseMessage {
+  MsgType msgType = 1;
+
+  oneof payload {
+    BusWayPoint bus_way_point = 2;
+  }
+}
