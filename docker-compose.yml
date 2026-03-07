@@ -93,6 +93,7 @@ services:
       - ./infrastructure/spark/logs/:/opt/spark/spark-events
       - ./notebooks:/opt/spark/notebooks
       - ./scripts:/opt/spark/scripts
+      - ./data:/opt/spark/apps/data
     depends_on:
       gravitino:
         condition: service_healthy
@@ -134,6 +135,7 @@ services:
       - ./pipelines:/opt/spark/apps/pipelines
       - ./infrastructure/spark/logs/:/opt/spark/spark-events
       - ./scripts:/opt/spark/scripts
+      - ./data:/opt/spark/apps/data
     depends_on:
       spark-master:
         condition: service_healthy
@@ -167,6 +169,7 @@ services:
       - ./pipelines:/opt/spark/apps/pipelines
       - ./infrastructure/spark/logs/:/opt/spark/spark-events
       - ./scripts:/opt/spark/scripts
+      - ./data:/opt/spark/apps/data
     depends_on:
       spark-master:
         condition: service_healthy
