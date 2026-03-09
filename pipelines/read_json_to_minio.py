@@ -5,9 +5,9 @@ from pyspark.sql.types import (
     FloatType, DoubleType, BooleanType
 )
 
-from pyspark.sql.functions import current_timestamp, from_unixtime, to_timestamp, to_date
+from pyspark.sql.functions import current_timestamp, from_unixtime, to_timestamp, to_date, col, from_json
 
-def write_json_to_iceberg(spark: SparkSession, json_path: str, table_name: str) -> None:
+def stream_kafka_to_iceberg(spark: SparkSession, table_name: str) -> None:
     # Define schema for the nested BusWayPoint based on ufms.proto
     bus_way_point_schema = StructType([
         StructField("vehicle", StringType(), True),
@@ -35,12 +35,24 @@ def write_json_to_iceberg(spark: SparkSession, json_path: str, table_name: str) 
     ])
     
     # Read the JSON file (it's an array of objects, so multiline=True)
-    df = spark.read.schema(root_schema).option("multiline", "true").json(json_path)
+    df_kafka = (
+        spark.readStream
+        .format("kafka")
+        .option("kafka.bootstrap.servers", "kafka:29092")
+        .option("subscribe", "bus_gps_json")
+        .option("startingOffsets", "latest")
+        .load()
+    )
     
+    df_json = df_kafka.selectExpr("CAST(value AS STRING) as json")
 
     # Flatten the struct so it maps well to a tabular Iceberg table
+    df = df_json.select(
+        from_json(col("json"), root_schema).alias("data")
+    ).select("data.*")    
+
     df_flattened = df.select("msgType", "msgBusWayPoint.*")
-    
+
     # Convert epoch datetime to Spark timestamp and extract Date for partitioning
     df_with_ts = (
         df_flattened
@@ -50,23 +62,28 @@ def write_json_to_iceberg(spark: SparkSession, json_path: str, table_name: str) 
     )
     
     # Write to Iceberg with partitioning using the native date field
-    (
+    query = (
         df_with_ts
-        .write.format("iceberg")
-        .mode("overwrite")
+        .writeStream
+        .format("parquet")
+        .outputMode("append")
+        .option("path", "s3a://iceberg/bus_way_points")
+        .option("checkpointLocation", "s3a://iceberg/checkpoints/bus_way_points")
         .partitionBy("date")
-        .saveAsTable(table_name)
+        .start()
     )
 
+    query.awaitTermination()
+
 if __name__ == "__main__":
-    spark = SparkSession.builder.appName("ReadJsonToMinIO").getOrCreate()
+    spark = (
+        SparkSession.builder
+        .appName("KafkaJsonToMinIO")
+        .getOrCreate()
+    )
+
     spark.sparkContext.setLogLevel("ERROR")
-    
-    # Get the project root based on current script location
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(script_dir)
-    json_path = os.path.join(project_root, "data", "HPCLAB", "sample.json")
-    
+
     table_name = "catalog_iceberg.bus_bronze.bus_way_points"
     
-    write_json_to_iceberg(spark, json_path, table_name)
+    stream_kafka_to_iceberg(spark, table_name)
