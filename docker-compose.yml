@@ -245,6 +245,24 @@ services:
   #   networks:
   #     - local-data-lakehouse
 
+  # In-Memory Data Structure Store: Redis
+  redis:
+    image: redis:7.2-bookworm
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - local-data-lakehouse
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 30s
+      retries: 50
+      start_period: 30s
+    restart: always
+
   # Message Queue: Apache Kafka (Single Node KRaft)
   kafka:
     image: apache/kafka:latest
@@ -327,6 +345,21 @@ services:
       timeout: 5s
       retries: 3
 
+  # Data Visualization and Exploration: Apache Superset
+  superset:
+    image: apache/superset:latest
+    container_name: superset
+    ports:
+      - "8089:8088"
+    environment:
+      - SUPERSET_SECRET_KEY=yoursecretkey_changeme
+    volumes:
+      - superset_data:/app/superset_home
+      - ./infrastructure/superset/init.sh:/app/init.sh
+    command: ["/bin/bash", "/app/init.sh"]
+    networks:
+      - local-data-lakehouse
+
 networks:
   local-data-lakehouse:
 
@@ -337,3 +370,5 @@ volumes:
   kafka_data:
   prometheus_data:
   grafana_data:
+  redis_data:
+  superset_data:
