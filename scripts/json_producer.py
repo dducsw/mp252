@@ -132,7 +132,7 @@ def main():
     producer = JsonProducer(
         bootstrap_servers="localhost:9092",
         topic_name="buswaypoint_json",
-        file_pattern="data/part2/part2/sub_raw_*.json"
+        file_pattern="data/HPCLAB/part2/part2/sub_raw_*.json"
     )
     producer.run()
 
