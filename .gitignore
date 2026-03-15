@@ -12,3 +12,5 @@ notebooks/.ipynb_checkpoints/
 notebooks/__pycache__/
 notebooks/metastore_db/
 notebooks/derby.log
+notebooks
+scripts
