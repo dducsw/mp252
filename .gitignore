@@ -13,4 +13,4 @@ notebooks/__pycache__/
 notebooks/metastore_db/
 notebooks/derby.log
 notebooks
-scripts
+producer_checkpoint.json

@@ -1,4 +1,4 @@
-﻿import json
+import json
 import os
 import glob
 import pandas as pd
@@ -18,7 +18,8 @@ class JsonProducer:
             bootstrap_servers=bootstrap_servers,
             value_serializer=lambda v: json.dumps(v).encode("utf-8"),
             linger_ms=10,
-            batch_size=16384
+            batch_size=16384,
+            api_version=(3, 6, 0)
         )
         self.last_file = None
         self.last_index = -1
@@ -130,7 +131,7 @@ class JsonProducer:
 
 def main():
     producer = JsonProducer(
-        bootstrap_servers="localhost:9092",
+        bootstrap_servers="127.0.0.1:9092",
         topic_name="buswaypoint_json",
         file_pattern="data/HPCLAB/part2/part2/sub_raw_*.json"
     )
