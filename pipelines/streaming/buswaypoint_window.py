@@ -19,6 +19,7 @@ KAFKA_BOOTSTRAP_SERVERS = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")
 KAFKA_TOPIC = os.getenv("KAFKA_TOPIC", "buswaypoint_json")
 REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
 REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
+KAFKA_GROUP_ID = os.getenv("KAFKA_GROUP_ID", "buswaypoint-spark-group")
 
 # --- Schema Definition ---
 bus_way_point_schema = StructType([
@@ -139,6 +140,7 @@ def main():
         .format("kafka") \
         .option("kafka.bootstrap.servers", KAFKA_BOOTSTRAP_SERVERS) \
         .option("subscribe", KAFKA_TOPIC) \
+        .option("kafka.group.id", KAFKA_GROUP_ID) \
         .option("startingOffsets", "latest") \
         .load()
 

@@ -7,7 +7,6 @@ import redis
 from kafka import KafkaConsumer
 from tqdm import tqdm
 
-# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
@@ -25,7 +24,6 @@ class KafkaToRedisConsumer:
         redis_host: str,
         redis_port: int,
         redis_stream_key: str,
-        group_id: str = "kafka-redis-streaming-group",
         batch_size: int = 100
     ):
         self.kafka_topic = kafka_topic
@@ -34,30 +32,27 @@ class KafkaToRedisConsumer:
         self.message_count = 0
         self.running = True
 
-        # Handle termination signals gracefully
         signal.signal(signal.SIGINT, self._handle_exit)
         signal.signal(signal.SIGTERM, self._handle_exit)
 
-        # Initialize Kafka consumer
+        # Pass topic directly to constructor (same pattern as working script).
+        # No group_id — avoids broker-managed offset overriding seek_to_beginning.
         try:
             self.kafka_consumer = KafkaConsumer(
                 kafka_topic,
                 bootstrap_servers=kafka_bootstrap_servers,
-                group_id=group_id,
-                auto_offset_reset='latest',  # Process only the latest events as default behavior
-                enable_auto_commit=False,  # Manual commit after batch processing
+                auto_offset_reset='earliest',
+                enable_auto_commit=False,
                 value_deserializer=lambda m: json.loads(m.decode('utf-8')),
-                session_timeout_ms=30000,
-                heartbeat_interval_ms=10000
+                api_version=(3, 6, 0),
             )
             logger.info(f"Connected to Kafka broker at {kafka_bootstrap_servers}")
         except Exception as e:
             logger.error(f"Failed to connect to Kafka: {e}")
             sys.exit(1)
 
-        # Initialize Redis connection (Single Node)
         try:
-            logger.info(f"Connecting to Redis Single Node at {redis_host}:{redis_port}")
+            logger.info(f"Connecting to Redis at {redis_host}:{redis_port}")
             self.redis_client = redis.Redis(
                 host=redis_host,
                 port=redis_port,
@@ -72,7 +67,6 @@ class KafkaToRedisConsumer:
             sys.exit(1)
 
     def _handle_exit(self, signum, frame):
-        """Signal handler to trigger graceful shutdown."""
         logger.info("\nTermination signal received. Shutting down gracefully...")
         self.running = False
 
@@ -80,7 +74,6 @@ class KafkaToRedisConsumer:
         """Flatten nested data for Redis compatibility."""
         msg_type = data.get("msgType", "Unknown")
         payload = data.get("msgBusWayPoint", {})
-        
         stream_data = {"msgType": str(msg_type)}
         for key, value in payload.items():
             if isinstance(value, (dict, list)):
@@ -98,79 +91,73 @@ class KafkaToRedisConsumer:
             vehicle_id = payload.get("vehicle", "Unknown")
             stream_data = self._flatten(data)
 
-            # 1. Update standard Redis Stream (Event Tracking)
-            # Maxlen set to 3.6M to hold ~1 hour of data at 1000 msg/s
+            # 1. Redis Stream — event log (~1 hour at 1000 msg/s)
             pipe.xadd(
-                self.redis_stream_key, 
-                stream_data, 
-                maxlen=3600000, 
+                self.redis_stream_key,
+                stream_data,
+                maxlen=3600000,
                 approximate=True
             )
 
-            # 2. Update Redis Hash for O(1) Quick Latest Lookup
+            # 2. Redis Hash — O(1) latest state per vehicle
             if vehicle_id != "Unknown":
                 hash_key = f"buswaypoint_latest:{vehicle_id}"
                 pipe.hset(hash_key, mapping=stream_data)
                 pipe.expire(hash_key, 7200)  # TTL 2 hours
 
-        pipe.execute()
-        self.message_count += len(messages)
+        try:
+            pipe.execute()
+            self.message_count += len(messages)
+        except Exception as e:
+            logger.error(f"Redis pipeline error: {e}")
 
     def run(self):
-        """Main execution loop to consume from Kafka and stream to Redis."""
-        logger.info("Starting high-throughput stream processing...")
-        logger.info(f"Subscribed Topic: {self.kafka_topic} | Redis Stream: {self.redis_stream_key}")
+        """Main execution loop."""
+        logger.info("Starting stream processing...")
+        logger.info(f"Topic: {self.kafka_topic} → Redis Stream: {self.redis_stream_key}")
 
         try:
-            with tqdm(desc="Streaming messages", unit=" msg") as pbar:
+            with tqdm(desc="Streaming", unit=" msg") as pbar:
                 while self.running:
-                    # Poll for a batch of messages
-                    message_pack = self.kafka_consumer.poll(timeout_ms=1000, max_records=self.batch_size)
-                    
+                    message_pack = self.kafka_consumer.poll(
+                        timeout_ms=1000,
+                        max_records=self.batch_size
+                    )
                     if not message_pack:
                         continue
 
                     for tp, messages in message_pack.items():
                         if not self.running:
                             break
-                        
                         self._process_batch(messages)
-                        
-                        # Use Kafka's native commit
-                        self.kafka_consumer.commit()
-                        
                         pbar.update(len(messages))
-                        pbar.set_postfix({'last_offset': messages[-1].offset})
+                        pbar.set_postfix({
+                            'partition': tp.partition,
+                            'offset': messages[-1].offset,
+                            'total': self.message_count
+                        })
 
         except Exception as e:
-            logger.error(f"Streaming error occurred: {e}")
+            logger.error(f"Streaming error: {e}")
         finally:
             try:
                 self.kafka_consumer.close()
                 self.redis_client.close()
-                logger.info("Connections closed securely.")
+                logger.info("Connections closed.")
             except Exception as e:
-                logger.warning(f"Error during cleanup: {e}")
-            
-            logger.info(f"Total messages successfully streamed: {self.message_count}")
+                logger.warning(f"Cleanup error: {e}")
+            logger.info(f"Total messages streamed: {self.message_count}")
 
 
 def main():
-    kafka_servers = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")
-    kafka_topic = os.getenv("KAFKA_TOPIC", "buswaypoint_json")
-    redis_host = os.getenv("REDIS_HOST", "localhost")
-    redis_port = int(os.getenv("REDIS_PORT", 6379))
-    redis_stream = os.getenv("REDIS_STREAM", "buswaypoint_stream")
-    
     consumer = KafkaToRedisConsumer(
-        kafka_bootstrap_servers=kafka_servers,
-        kafka_topic=kafka_topic,
-        redis_host=redis_host,
-        redis_port=redis_port,
-        redis_stream_key=redis_stream,
+        kafka_bootstrap_servers=os.getenv("KAFKA_BOOTSTRAP_SERVERS", "127.0.0.1:9092"),
+        kafka_topic=os.getenv("KAFKA_TOPIC", "buswaypoint_json"),
+        redis_host=os.getenv("REDIS_HOST", "localhost"),
+        redis_port=int(os.getenv("REDIS_PORT", 6379)),
+        redis_stream_key=os.getenv("REDIS_STREAM", "buswaypoint_stream"),
         batch_size=500
     )
-    
     consumer.run()
 
 
