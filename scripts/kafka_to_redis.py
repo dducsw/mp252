@@ -1,3 +1,4 @@
+import csv
 import json
 import os
 import signal
@@ -24,13 +25,15 @@ class KafkaToRedisConsumer:
         redis_host: str,
         redis_port: int,
         redis_stream_key: str,
-        batch_size: int = 100
+        batch_size: int = 100,
+        vehicle_mapping_csv: str = None
     ):
         self.kafka_topic = kafka_topic
         self.redis_stream_key = redis_stream_key
         self.batch_size = batch_size
         self.message_count = 0
         self.running = True
+        self.vehicle_routes = {}  # In-memory cache for O(1) enrichment
 
         signal.signal(signal.SIGINT, self._handle_exit)
         signal.signal(signal.SIGTERM, self._handle_exit)
@@ -66,6 +69,44 @@ class KafkaToRedisConsumer:
             logger.error(f"Failed to connect to Redis: {e}")
             sys.exit(1)
 
+        if vehicle_mapping_csv:
+            self._load_vehicle_routes(vehicle_mapping_csv)
+
+    def _load_vehicle_routes(self, csv_path: str):
+        """Loads vehicle-to-route mapping into Redis and in-memory cache."""
+        if not os.path.exists(csv_path):
+            logger.warning(f"Mapping CSV not found: {csv_path}")
+            return
+        
+        logger.info(f"Loading vehicle mapping from {csv_path}...")
+        count = 0
+        pipe = self.redis_client.pipeline(transaction=False)
+        try:
+            with open(csv_path, mode='r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    vehicle_id = row.get('vehicle')
+                    if vehicle_id:
+                        mapping = {
+                            "route_id": row.get('route_id', ''),
+                            "route_no": row.get('route_no', '')
+                        }
+                        # Populate in-memory cache
+                        self.vehicle_routes[vehicle_id] = mapping
+                        
+                        # Populate Redis
+                        pipe.hset(f"vehicle_route_map:{vehicle_id}", mapping=mapping)
+                        count += 1
+                        
+                        if count % 500 == 0:
+                            pipe.execute()
+                            pipe = self.redis_client.pipeline(transaction=False)
+            
+            pipe.execute()
+            logger.info(f"Successfully loaded {count} vehicle→route mappings.")
+        except Exception as e:
+            logger.error(f"Error loading vehicle routes: {e}")
+
     def _handle_exit(self, signum, frame):
         logger.info("\nTermination signal received. Shutting down gracefully...")
         self.running = False
@@ -91,7 +132,15 @@ class KafkaToRedisConsumer:
             vehicle_id = payload.get("vehicle", "Unknown")
             stream_data = self._flatten(data)
 
-            # 1. Redis Stream — event log (~1 hour at 1000 msg/s)
+            # 1. Enrichment: Lookup Route Mapping (In-memory)
+            route_mapping = self.vehicle_routes.get(vehicle_id)
+            if route_mapping:
+                stream_data.update(route_mapping)
+            else:
+                stream_data["route_id"] = "Unknown"
+                stream_data["route_no"] = "Unknown"
+
+            # 2. Redis Stream — event log (~1 hour at 1000 msg/s)
             pipe.xadd(
                 self.redis_stream_key,
                 stream_data,
@@ -99,7 +148,7 @@ class KafkaToRedisConsumer:
                 approximate=True
             )
 
-            # 2. Redis Hash — O(1) latest state per vehicle
+            # 3. Redis Hash — O(1) latest state per vehicle
             if vehicle_id != "Unknown":
                 hash_key = f"buswaypoint_latest:{vehicle_id}"
                 pipe.hset(hash_key, mapping=stream_data)
@@ -156,7 +205,11 @@ def main():
         redis_host=os.getenv("REDIS_HOST", "localhost"),
         redis_port=int(os.getenv("REDIS_PORT", 6379)),
         redis_stream_key=os.getenv("REDIS_STREAM", "buswaypoint_stream"),
-        batch_size=500
+        batch_size=500,
+        vehicle_mapping_csv=os.getenv(
+            "VEHICLE_MAPPING_CSV",
+            os.path.join(os.path.dirname(__file__), "..", "data", "HPCLAB", "vehicle_route_mapping.csv")
+        )
     )
     consumer.run()
 
