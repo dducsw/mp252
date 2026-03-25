@@ -4,6 +4,7 @@ import os
 import signal
 import sys
 import logging
+from datetime import datetime
 import redis
 from kafka import KafkaConsumer
 from tqdm import tqdm
@@ -112,12 +113,19 @@ class KafkaToRedisConsumer:
         self.running = False
 
     def _flatten(self, data: dict) -> dict:
-        """Flatten nested data for Redis compatibility."""
+        """Flatten nested data for Redis compatibility and parse datetime."""
         msg_type = data.get("msgType", "Unknown")
         payload = data.get("msgBusWayPoint", {})
         stream_data = {"msgType": str(msg_type)}
         for key, value in payload.items():
-            if isinstance(value, (dict, list)):
+            if key == "datetime":
+                try:
+                    # Convert unix timestamp to readable string
+                    ts = int(float(value)) if isinstance(value, (str, float, int)) else value
+                    stream_data[key] = datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+                except (ValueError, TypeError, OverflowError):
+                    stream_data[key] = str(value)
+            elif isinstance(value, (dict, list)):
                 stream_data[key] = json.dumps(value)
             else:
                 stream_data[key] = str(value)
@@ -153,6 +161,11 @@ class KafkaToRedisConsumer:
                 hash_key = f"buswaypoint_latest:{vehicle_id}"
                 pipe.hset(hash_key, mapping=stream_data)
                 pipe.expire(hash_key, 7200)  # TTL 2 hours
+
+                route_no = stream_data.get("route_no", "Unknown")
+                if route_no != "Unknown":
+                    pipe.sadd("routes_active", route_no)
+                    pipe.expire("routes_active", 7200)  # TTL 2 hours
 
         try:
             pipe.execute()

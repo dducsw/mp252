@@ -1,8 +1,5 @@
 .PHONY: init-kafka-topics list-kafka-topics read-kafka-topic help up-streaming up-lakehouse up-all down stop restart install
 
-install:
-	@echo "Installing Python dependencies..."
-	@$(PYTHON) -m pip install -r requirements.txt
 
 KAFKA_CONTAINER = kafka
 BOOTSTRAP_SERVER = localhost:9092

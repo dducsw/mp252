@@ -4,6 +4,7 @@ import glob
 import pandas as pd
 from kafka import KafkaProducer
 from tqdm import tqdm
+import time
 
 
 class JsonProducer:
@@ -11,9 +12,10 @@ class JsonProducer:
     
     CHECKPOINT_FILE = "producer_checkpoint.json"
 
-    def __init__(self, bootstrap_servers: str, topic_name: str, file_pattern: str):
+    def __init__(self, bootstrap_servers: str, topic_name: str, file_pattern: str, max_rate: float = None):
         self.topic_name = topic_name
         self.file_pattern = file_pattern
+        self.max_rate = max_rate
         self.producer = KafkaProducer(
             bootstrap_servers=bootstrap_servers,
             value_serializer=lambda v: json.dumps(v).encode("utf-8"),
@@ -23,6 +25,8 @@ class JsonProducer:
         )
         self.last_file = None
         self.last_index = -1
+        self.total_messages_sent = 0
+        self.start_time = time.time()
         self._load_checkpoint()
 
     def _load_checkpoint(self):
@@ -80,11 +84,33 @@ class JsonProducer:
         print(f"Total records: {len(records)}, Starting from offset: {start_row_idx}")
         
         current_idx = start_row_idx
+        interval = 1.0 / self.max_rate if self.max_rate and self.max_rate > 0 else 0
+        last_send_time = time.time()
+
         try:
-            for current_idx in tqdm(range(start_row_idx, len(records)), desc=f"Sending {os.path.basename(file_path)}"):
+            pbar = tqdm(range(start_row_idx, len(records)), desc=f"Sending {os.path.basename(file_path)}")
+            for current_idx in pbar:
+                # Rate limiting
+                if interval > 0:
+                    elapsed = time.time() - last_send_time
+                    wait_time = interval - elapsed
+                    if wait_time > 0:
+                        time.sleep(wait_time)
+                    last_send_time = time.time()
+
                 row = records[current_idx]
                 self.producer.send(self.topic_name, row)
+                self.total_messages_sent += 1
                 
+                # Update progress bar with metrics
+                if self.total_messages_sent % 100 == 0:
+                    elapsed_time = time.time() - self.start_time
+                    rate = self.total_messages_sent / elapsed_time if elapsed_time > 0 else 0
+                    pbar.set_postfix({
+                        "Total": self.total_messages_sent,
+                        "Rate": f"{rate:.2f} msg/s"
+                    })
+
                 # Periodic checkpoint for safety
                 if (current_idx - start_row_idx + 1) % 1000 == 0:
                     self.producer.flush()
@@ -133,7 +159,8 @@ def main():
     producer = JsonProducer(
         bootstrap_servers="127.0.0.1:9092",
         topic_name="buswaypoint_json",
-        file_pattern="data/HPCLAB/part2/part2/sub_raw_*.json"
+        file_pattern="data/HPCLAB/part2/part2/sub_raw_*.json",
+        max_rate=500  # Limited to 500 msg/s
     )
     producer.run()
 
