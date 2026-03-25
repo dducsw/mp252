@@ -1,4 +1,4 @@
-﻿import json
+import json
 import os
 import glob
 import pandas as pd
@@ -102,14 +102,13 @@ class JsonProducer:
                 self.producer.send(self.topic_name, row)
                 self.total_messages_sent += 1
                 
-                # Update progress bar with metrics
-                if self.total_messages_sent % 100 == 0:
-                    elapsed_time = time.time() - self.start_time
-                    rate = self.total_messages_sent / elapsed_time if elapsed_time > 0 else 0
-                    pbar.set_postfix({
-                        "Total": self.total_messages_sent,
-                        "Rate": f"{rate:.2f} msg/s"
-                    })
+                # Update progress bar with metrics (tqdm throttles refresh internally)
+                elapsed_time = time.time() - self.start_time
+                rate = self.total_messages_sent / elapsed_time if elapsed_time > 0 else 0
+                pbar.set_postfix({
+                    "Total": self.total_messages_sent,
+                    "Rate": f"{rate:.0f} msg/s"
+                })
 
                 # Periodic checkpoint for safety
                 if (current_idx - start_row_idx + 1) % 1000 == 0:

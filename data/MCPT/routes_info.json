@@ -1396,7 +1396,7 @@
         "RouteVarShortName": "Bến Thành",
         "Outbound": true,
         "Distance": 47568.0,
-        "RunningTime": 100,
+        "RunningTime": 110,
         "StartStop": "Bến xe Phú Chánh",
         "EndStop": "Bến xe buýt Sài Gòn"
       },
@@ -1406,7 +1406,7 @@
         "RouteVarShortName": "Bến xe Phú Chánh",
         "Outbound": false,
         "Distance": 47599.00000000001,
-        "RunningTime": 100,
+        "RunningTime": 110,
         "StartStop": "Bến xe buýt Sài Gòn",
         "EndStop": "Bến xe Phú Chánh"
       }
@@ -2648,7 +2648,7 @@
         "RouteVarShortName": "Becamex Tower",
         "Outbound": false,
         "Distance": 18106.00000000001,
-        "RunningTime": 0,
+        "RunningTime": 48,
         "StartStop": "Văn phòng Công ty xe buýt Becamex",
         "EndStop": "Tòa nhà Becamex Tower"
       }
@@ -2665,7 +2665,7 @@
         "RouteVarShortName": "Trường Ngô Thời Nhiệm",
         "Outbound": true,
         "Distance": 16590.0,
-        "RunningTime": 0,
+        "RunningTime": 46,
         "StartStop": "Tòa nhà Becamex Tower",
         "EndStop": "Trường Ngô Thời Nhiệm"
       },
@@ -2675,7 +2675,7 @@
         "RouteVarShortName": "Becamex Tower",
         "Outbound": false,
         "Distance": 16178.0,
-        "RunningTime": 0,
+        "RunningTime": 46,
         "StartStop": "Trường Ngô Thời Nhiệm",
         "EndStop": "Tòa nhà Becamex Tower"
       }
@@ -2756,7 +2756,7 @@
         "RouteVarShortName": "Becamex Tower",
         "Outbound": false,
         "Distance": 20793.0,
-        "RunningTime": 55,
+        "RunningTime": 50,
         "StartStop": "NHÀ Ở AN SINH XÃ HỘI ĐỊNH HÒA",
         "EndStop": "Tòa nhà Becamex Tower"
       }
@@ -2800,7 +2800,7 @@
         "RouteVarShortName": "Trường Ngô Thời Nhiệm",
         "Outbound": true,
         "Distance": 16990.0,
-        "RunningTime": 0,
+        "RunningTime": 40,
         "StartStop": "Tòa nhà Becamex Tower",
         "EndStop": "Trường Ngô Thời Nhiệm"
       },
@@ -2810,7 +2810,7 @@
         "RouteVarShortName": "Becamex Tower",
         "Outbound": false,
         "Distance": 17094.0,
-        "RunningTime": 0,
+        "RunningTime": 42,
         "StartStop": "Trường Ngô Thời Nhiệm",
         "EndStop": "Tòa nhà Becamex Tower"
       }
@@ -2854,7 +2854,7 @@
         "RouteVarShortName": "Nhà ở an sinh xã hội Định Hòa",
         "Outbound": true,
         "Distance": 7153.0,
-        "RunningTime": 0,
+        "RunningTime": 19,
         "StartStop": "Trạm trung chuyển Hikari",
         "EndStop": "NHÀ Ở AN SINH XÃ HỘI ĐỊNH HÒA"
       },
@@ -2864,7 +2864,7 @@
         "RouteVarShortName": "Hikari",
         "Outbound": false,
         "Distance": 7237.000000000002,
-        "RunningTime": 0,
+        "RunningTime": 19,
         "StartStop": "NHÀ Ở AN SINH XÃ HỘI ĐỊNH HÒA",
         "EndStop": "Trạm trung chuyển Hikari"
       }
@@ -2989,7 +2989,7 @@
         "RouteVarShortName": "Bến xe Miền Đông",
         "Outbound": true,
         "Distance": 23310.00000000001,
-        "RunningTime": 60,
+        "RunningTime": 55,
         "StartStop": "Bến xe Thủ Dầu Một",
         "EndStop": "Bến xe Miền Đông"
       },
@@ -2999,7 +2999,7 @@
         "RouteVarShortName": "Thủ Dầu Một",
         "Outbound": false,
         "Distance": 24636.0,
-        "RunningTime": 60,
+        "RunningTime": 55,
         "StartStop": "Bến xe Miền Đông",
         "EndStop": "Bến xe Thủ Dầu Một"
       }
