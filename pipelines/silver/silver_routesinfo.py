@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, when
+from pyspark.sql.functions import col, when, current_timestamp
 
 def create_spark_session():
     return (
@@ -19,6 +19,7 @@ def main():
         .select(
             col("RouteId").cast("int").alias("route_id"),
             col("RouteNo").cast("string").alias("route_no"),
+            col("RouteName").cast("string").alias("route_name"),
             col("RouteVarId").cast("int").alias("route_var_id"),
             col("RouteVarName").cast("string").alias("route_var_name"),
             col("Outbound").cast("boolean").alias("outbound"),
@@ -32,12 +33,14 @@ def main():
             when(col("outbound") == True, "Outbound")
             .otherwise("Inbound")
         )
+        .withColumn("updated_at", current_timestamp())
     )
 
     spark.sql("""
         CREATE TABLE IF NOT EXISTS catalog_iceberg.bus_silver.route_info (
             route_id INT,
             route_no STRING,
+            route_name STRING,
             route_var_id INT,
             route_var_name STRING,
             outbound BOOLEAN,
@@ -45,7 +48,8 @@ def main():
             distance_km DOUBLE,
             running_time INT,
             start_stop STRING,
-            end_stop STRING
+            end_stop STRING,
+            updated_at TIMESTAMP
         )
         USING iceberg
         PARTITIONED BY (route_id)

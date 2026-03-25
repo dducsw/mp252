@@ -25,7 +25,7 @@ def main():
         col("RouteVarName").cast("string"),
         col("Outbound").cast("boolean"),
 
-        # 🔥 path chuẩn cho deck.gl
+        # path chuẩn cho deck.gl
         expr("""
             transform(
                 sequence(0, size(lat)-1),

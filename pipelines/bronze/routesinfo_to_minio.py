@@ -21,12 +21,13 @@ def main():
     print("===== RAW SCHEMA =====")
     df.printSchema()
 
-    # 🔥 explode Vars
+    # explode Vars
     df_exploded = df.withColumn("var", explode("Vars"))
 
     df_clean = df_exploded.select(
         col("RouteId"),
         col("RouteNo"),
+        col("RouteName"),
         col("var.RouteVarId").alias("RouteVarId"),
         col("var.RouteVarName").alias("RouteVarName"),
         col("var.Outbound").alias("Outbound"),
@@ -44,6 +45,7 @@ def main():
     CREATE TABLE IF NOT EXISTS catalog_iceberg.bus_bronze.route_info (
         RouteId INT,
         RouteNo STRING,
+        RouteName STRING,
         RouteVarId INT,
         RouteVarName STRING,
         Outbound BOOLEAN,

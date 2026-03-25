@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col
+from pyspark.sql.functions import col, current_timestamp
 
 def create_spark_session():
     return (
@@ -27,7 +27,8 @@ def main():
         col("Street").cast("string").alias("street"),
         col("Lng").cast("double").alias("lng"),
         col("Lat").cast("double").alias("lat"),
-        col("Routes").cast("string").alias("routes")
+        col("Routes").cast("string").alias("routes"),
+        current_timestamp().alias("updated_at")
     )
 
     spark.sql("""
@@ -44,7 +45,8 @@ def main():
             street STRING,
             lng DOUBLE,
             lat DOUBLE,
-            routes STRING
+            routes STRING,
+            updated_at TIMESTAMP
         )
         USING iceberg
         PARTITIONED BY (route_id)
