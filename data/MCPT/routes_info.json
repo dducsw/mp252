@@ -1,0 +1,4591 @@
+[
+  {
+    "RouteId": 1,
+    "RouteNo": "01",
+    "RouteName": "Ga Ba Son - Bến xe buýt Chợ Lớn",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Điểm đầu cuối Nguyễn Siêu - Bến xe buýt Chợ Lớn",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": true,
+        "Distance": 8554.0,
+        "RunningTime": 40,
+        "StartStop": "Điểm đầu cuối Nguyễn Siêu",
+        "EndStop": "Bến xe buýt Chợ Lớn"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Bến xe buýt Chợ Lớn - Điểm đầu cuối Nguyễn Siêu",
+        "RouteVarShortName": "Ga Ba Son",
+        "Outbound": false,
+        "Distance": 10745.0,
+        "RunningTime": 40,
+        "StartStop": "Bến xe buýt Chợ Lớn",
+        "EndStop": "Điểm đầu cuối Nguyễn Siêu"
+      }
+    ]
+  },
+  {
+    "RouteId": 3,
+    "RouteNo": "03",
+    "RouteName": "Bến Thành - Thạnh Xuân",
+    "Vars": [
+      {
+        "RouteVarId": 5,
+        "RouteVarName": "Lượt đi: Bến Thành - Thạnh Lộc",
+        "RouteVarShortName": "Thạnh Xuân",
+        "Outbound": true,
+        "Distance": 21506.0,
+        "RunningTime": 65,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Thạnh Xuân"
+      },
+      {
+        "RouteVarId": 6,
+        "RouteVarName": "Lượt về: Thạnh Lộc - Bến Thành",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": false,
+        "Distance": 21761.000000000007,
+        "RunningTime": 65,
+        "StartStop": "Thạnh Xuân",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 4,
+    "RouteNo": "04",
+    "RouteName": "Bến Thành - Cộng Hòa - Bến xe An Sương",
+    "Vars": [
+      {
+        "RouteVarId": 7,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bến xe An Sương",
+        "RouteVarShortName": "Bến xe An Sương",
+        "Outbound": true,
+        "Distance": 17091.999999999996,
+        "RunningTime": 70,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe An Sương"
+      },
+      {
+        "RouteVarId": 8,
+        "RouteVarName": "Lượt về: Bến xe An Sương - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": false,
+        "Distance": 15945.0,
+        "RunningTime": 70,
+        "StartStop": "Bến xe An Sương",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 5,
+    "RouteNo": "05",
+    "RouteName": "Bến xe buýt Chợ Lớn - Bến xe Biên Hòa",
+    "Vars": [
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn - Bến xe Biên Hòa",
+        "RouteVarShortName": "Bến xe Biên Hòa",
+        "Outbound": true,
+        "Distance": 34970.000000000015,
+        "RunningTime": 100,
+        "StartStop": "Bến xe buýt Chợ Lớn",
+        "EndStop": "Bến xe Biên Hòa"
+      },
+      {
+        "RouteVarId": 3,
+        "RouteVarName": "Lượt về: Bến xe Biên Hòa - Bến xe buýt Chợ Lớn",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 34267.0,
+        "RunningTime": 100,
+        "StartStop": "Bến xe Biên Hòa",
+        "EndStop": "Bến xe buýt Chợ Lớn"
+      }
+    ]
+  },
+  {
+    "RouteId": 6,
+    "RouteNo": "06",
+    "RouteName": "Bến xe buýt Chợ Lớn - Đại học Nông Lâm",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn - Đại học Nông Lâm",
+        "RouteVarShortName": "Đại học Nông Lâm",
+        "Outbound": true,
+        "Distance": 27337.0,
+        "RunningTime": 70,
+        "StartStop": "Bến xe buýt Chợ Lớn",
+        "EndStop": "BẾN XE BUÝT ĐẠI HỌC NÔNG LÂM"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Đại học Nông Lâm - Bến xe buýt Chợ Lớn",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 26816.999999999996,
+        "RunningTime": 70,
+        "StartStop": "BẾN XE BUÝT ĐẠI HỌC NÔNG LÂM",
+        "EndStop": "Bến xe buýt Chợ Lớn"
+      }
+    ]
+  },
+  {
+    "RouteId": 7,
+    "RouteNo": "07",
+    "RouteName": "Bến xe buýt Chợ Lớn - Gò Vấp",
+    "Vars": [
+      {
+        "RouteVarId": 13,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn - Bãi hậu cần số 1",
+        "RouteVarShortName": "Gò Vấp",
+        "Outbound": true,
+        "Distance": 16044.0,
+        "RunningTime": 65,
+        "StartStop": "Bến xe buýt Chợ Lớn",
+        "EndStop": "Bãi hậu cần số 1"
+      },
+      {
+        "RouteVarId": 14,
+        "RouteVarName": "Lượt về: Bãi hậu cần số 1 - Bến xe buýt Chợ Lớn",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 15636.999999999996,
+        "RunningTime": 65,
+        "StartStop": "Bãi hậu cần số 1",
+        "EndStop": "Bến xe buýt Chợ Lớn"
+      }
+    ]
+  },
+  {
+    "RouteId": 8,
+    "RouteNo": "08",
+    "RouteName": "Bến xe buýt Quận 8 - Đại học Quốc gia",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Quận 8 - Bến xe buýt ĐH Quốc gia TPHCM (mới)",
+        "RouteVarShortName": "Đại học Quốc gia",
+        "Outbound": true,
+        "Distance": 33744.00000000001,
+        "RunningTime": 105,
+        "StartStop": "Bến xe buýt Quận 8",
+        "EndStop": "Bến xe buýt Khu A - Đại học Quốc gia TP.HCM"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt ĐH Quốc gia TPHCM (mới) - Bến xe buýt Quận 8",
+        "RouteVarShortName": "Bến xe buýt Quận 8",
+        "Outbound": false,
+        "Distance": 33355.99999999998,
+        "RunningTime": 105,
+        "StartStop": "Bến xe buýt Khu A - Đại học Quốc gia TP.HCM",
+        "EndStop": "Bến xe buýt Quận 8"
+      }
+    ]
+  },
+  {
+    "RouteId": 9,
+    "RouteNo": "09",
+    "RouteName": "Bến xe buýt Chợ Lớn - Bình Chánh - Hưng Long",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Chợ Lớn (Bến A) - Hưng Long",
+        "RouteVarShortName": "Hưng Long",
+        "Outbound": true,
+        "Distance": 25595.0,
+        "RunningTime": 70,
+        "StartStop": "Bến xe buýt Chợ Lớn",
+        "EndStop": "Hưng Long"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Hưng Long - Bến xe Chợ Lớn (Bến A)",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 25704.000000000004,
+        "RunningTime": 70,
+        "StartStop": "Hưng Long",
+        "EndStop": "Bến xe buýt Chợ Lớn"
+      }
+    ]
+  },
+  {
+    "RouteId": 10,
+    "RouteNo": "10",
+    "RouteName": "Đại học Quốc Gia - Bến xe Miền Tây",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt ĐH Quốc gia TPHCM (mới) - Bến xe Miền Tây",
+        "RouteVarShortName": "Bến xe Miền Tây",
+        "Outbound": true,
+        "Distance": 32906.0,
+        "RunningTime": 80,
+        "StartStop": "Bến xe buýt Khu A - Đại học Quốc gia TP.HCM",
+        "EndStop": "Bến xe Miền Tây"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Miền Tây - Bến xe buýt ĐH Quốc gia TPHCM (mới)",
+        "RouteVarShortName": "Đại học Quốc Gia",
+        "Outbound": false,
+        "Distance": 33063.0,
+        "RunningTime": 80,
+        "StartStop": "Bến xe Miền Tây",
+        "EndStop": "Bến xe buýt Khu A - Đại học Quốc gia TP.HCM"
+      }
+    ]
+  },
+  {
+    "RouteId": 11,
+    "RouteNo": "100",
+    "RouteName": "Bến xe Củ Chi - Cầu Tân Thái",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Củ Chi - Điểm đầu cuối cầu Tân Thái",
+        "RouteVarShortName": "Cầu Tân Thái",
+        "Outbound": true,
+        "Distance": 16161.999999999998,
+        "RunningTime": 35,
+        "StartStop": "Bến xe Củ Chi",
+        "EndStop": "Điểm đầu cuối cầu Tân Thái (điều chỉnh)"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Điểm đầu cuối cầu Tân Thái - Bến xe Củ Chi",
+        "RouteVarShortName": "Bến xe Củ Chi",
+        "Outbound": false,
+        "Distance": 17043.000000000004,
+        "RunningTime": 35,
+        "StartStop": "Điểm đầu cuối cầu Tân Thái (điều chỉnh)",
+        "EndStop": "Bến xe Củ Chi"
+      }
+    ]
+  },
+  {
+    "RouteId": 12,
+    "RouteNo": "101",
+    "RouteName": "Bến xe buýt Chợ Lớn - Chợ Tân Nhựt",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn (Bến B) - Chợ Tân Nhựt",
+        "RouteVarShortName": "Chợ Tân Nhựt",
+        "Outbound": true,
+        "Distance": 20705.0,
+        "RunningTime": 55,
+        "StartStop": "Bến xe buýt Chợ Lớn - B",
+        "EndStop": "Tân Nhựt"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Chợ Tân Nhựt - Bến xe buýt Chợ Lớn (Bến B)",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 20878.000000000007,
+        "RunningTime": 55,
+        "StartStop": "Tân Nhựt",
+        "EndStop": "Bến xe buýt Chợ Lớn - B"
+      }
+    ]
+  },
+  {
+    "RouteId": 13,
+    "RouteNo": "102",
+    "RouteName": "Bến xe buýt Sài Gòn - Nguyễn Văn Linh - Bến xe Miền Tây",
+    "Vars": [
+      {
+        "RouteVarId": 25,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bến xe Miền Tây",
+        "RouteVarShortName": "Bến xe Miền Tây",
+        "Outbound": true,
+        "Distance": 33002.99999999999,
+        "RunningTime": 80,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe Miền Tây"
+      },
+      {
+        "RouteVarId": 26,
+        "RouteVarName": "Lượt về: Bến xe Miền Tây -  Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến xe buýt Sài Gòn",
+        "Outbound": false,
+        "Distance": 33443.00000000001,
+        "RunningTime": 80,
+        "StartStop": "Bến xe Miền Tây",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 14,
+    "RouteNo": "103",
+    "RouteName": "Bến xe buýt Chợ Lớn - Bến xe Ngã tư Ga",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn (Bến A) - Bến xe Ngã tư Ga",
+        "RouteVarShortName": "Bến xe Ngã tư Ga",
+        "Outbound": true,
+        "Distance": 26659.0,
+        "RunningTime": 85,
+        "StartStop": "Bến xe buýt Chợ Lớn - A",
+        "EndStop": "Bến xe Ngã tư Ga"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Ngã tư Ga - Bến xe buýt Chợ Lớn (Bến A)",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 23581.00000000001,
+        "RunningTime": 85,
+        "StartStop": "Bến xe Ngã tư Ga",
+        "EndStop": "Bến xe buýt Chợ Lớn - A"
+      }
+    ]
+  },
+  {
+    "RouteId": 15,
+    "RouteNo": "104",
+    "RouteName": "Bến xe An Sương - Bến xe buýt Văn Thánh",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe An Sương - Bến xe Văn Thánh",
+        "RouteVarShortName": "Bến xe buýt Văn Thánh",
+        "Outbound": true,
+        "Distance": 17387.999999999993,
+        "RunningTime": 45,
+        "StartStop": "Bến xe An Sương",
+        "EndStop": "Bến xe Văn Thánh"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Văn Thánh - Bến xe An Sương",
+        "RouteVarShortName": "Bến xe An Sương",
+        "Outbound": false,
+        "Distance": 16331.0,
+        "RunningTime": 45,
+        "StartStop": "Bến xe Văn Thánh",
+        "EndStop": "Bến xe An Sương"
+      }
+    ]
+  },
+  {
+    "RouteId": 16,
+    "RouteNo": "107",
+    "RouteName": "Bến xe Củ Chi - Bố Heo",
+    "Vars": [
+      {
+        "RouteVarId": 31,
+        "RouteVarName": "Lượt đi: Bến xe Củ Chi - Bố Heo",
+        "RouteVarShortName": "Bố Heo",
+        "Outbound": true,
+        "Distance": 16248.000000000002,
+        "RunningTime": 30,
+        "StartStop": "Bến xe Củ Chi",
+        "EndStop": "Bố Heo"
+      },
+      {
+        "RouteVarId": 32,
+        "RouteVarName": "Lượt về: Bố Heo - Bến xe Củ Chi",
+        "RouteVarShortName": "Bến xe Củ Chi",
+        "Outbound": false,
+        "Distance": 17127.0,
+        "RunningTime": 30,
+        "StartStop": "Bố Heo",
+        "EndStop": "Bến xe Củ Chi"
+      }
+    ]
+  },
+  {
+    "RouteId": 199,
+    "RouteNo": "109",
+    "RouteName": "Bến xe buýt Sài Gòn - Sân bay Tân Sơn Nhất",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Sân bay Tân Sơn Nhất (Nhà ga T3)",
+        "RouteVarShortName": "Sân bay Tân Sơn Nhất",
+        "Outbound": true,
+        "Distance": 9536.000000000004,
+        "RunningTime": 45,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Nhà ga T3"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Sân bay Tân Sơn Nhất (Nhà ga T3) - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến xe buýt Sài Gòn",
+        "Outbound": false,
+        "Distance": 10877.0,
+        "RunningTime": 45,
+        "StartStop": "Nhà ga T3",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 18,
+    "RouteNo": "110",
+    "RouteName": "Hiệp Phước - Phước Lộc",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Cầu Kênh Lộ - Bến Đò Ấp 3",
+        "RouteVarShortName": "Phước Lộc",
+        "Outbound": true,
+        "Distance": 27732.0,
+        "RunningTime": 65,
+        "StartStop": "Cầu Kênh Lộ",
+        "EndStop": "Bến Đò Ấp 3"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến Đò Ấp 3 - Bến xe buýt Cầu Kênh Lộ",
+        "RouteVarShortName": "Hiệp Phước",
+        "Outbound": false,
+        "Distance": 27394.00000000002,
+        "RunningTime": 65,
+        "StartStop": "Bến Đò Ấp 3",
+        "EndStop": "Cầu Kênh Lộ"
+      }
+    ]
+  },
+  {
+    "RouteId": 20,
+    "RouteNo": "122",
+    "RouteName": "Bến xe An Sương - Tân Quy",
+    "Vars": [
+      {
+        "RouteVarId": 39,
+        "RouteVarName": "Lượt đi: Bến xe An Sương - Bến xe buýt Tân Quy",
+        "RouteVarShortName": "Tân Quy",
+        "Outbound": true,
+        "Distance": 20707.0,
+        "RunningTime": 50,
+        "StartStop": "Bến xe An Sương",
+        "EndStop": "Bến xe buýt Tân Quy"
+      },
+      {
+        "RouteVarId": 40,
+        "RouteVarName": "Lượt về: Bến xe buýt Tân Quy - Bến xe An Sương",
+        "RouteVarShortName": "Bến xe An Sương",
+        "Outbound": false,
+        "Distance": 18396.999999999993,
+        "RunningTime": 50,
+        "StartStop": "Bến xe buýt Tân Quy",
+        "EndStop": "Bến xe An Sương"
+      }
+    ]
+  },
+  {
+    "RouteId": 23,
+    "RouteNo": "126",
+    "RouteName": "Bến xe Củ Chi - Bình Mỹ",
+    "Vars": [
+      {
+        "RouteVarId": 45,
+        "RouteVarName": "Lượt đi: Bến xe Củ Chi - Bình Mỹ",
+        "RouteVarShortName": "Bình Mỹ",
+        "Outbound": true,
+        "Distance": 20311.999999999996,
+        "RunningTime": 40,
+        "StartStop": "Bến xe Củ Chi",
+        "EndStop": "Bến xe Bình Mỹ"
+      },
+      {
+        "RouteVarId": 46,
+        "RouteVarName": "Lượt về: Bình Mỹ - Bến xe Củ Chi",
+        "RouteVarShortName": "Bến xe Củ Chi",
+        "Outbound": false,
+        "Distance": 19567.000000000015,
+        "RunningTime": 40,
+        "StartStop": "Bến xe Bình Mỹ",
+        "EndStop": "Bến xe Củ Chi"
+      }
+    ]
+  },
+  {
+    "RouteId": 178,
+    "RouteNo": "127",
+    "RouteName": "An Thới Đông - Ngã ba Bà Xán",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: An Thới Đông - Bà Xán",
+        "RouteVarShortName": "Ngã ba Bà Xán",
+        "Outbound": true,
+        "Distance": 18118.0,
+        "RunningTime": 40,
+        "StartStop": "Ủy ban nhân dân xã An Thới Đông",
+        "EndStop": "Ngã ba Bà Xán"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bà Xán - An Thới Đông",
+        "RouteVarShortName": "An Thới Đông",
+        "Outbound": false,
+        "Distance": 18144.99999999999,
+        "RunningTime": 40,
+        "StartStop": "Ngã ba Bà Xán",
+        "EndStop": "Ủy ban nhân dân xã An Thới Đông"
+      }
+    ]
+  },
+  {
+    "RouteId": 179,
+    "RouteNo": "128",
+    "RouteName": "Tân Điền - An Nghĩa",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Tân Điền - An Nghĩa",
+        "RouteVarShortName": "An Nghĩa",
+        "Outbound": true,
+        "Distance": 24412.0,
+        "RunningTime": 50,
+        "StartStop": "Tân Điền",
+        "EndStop": "An Nghĩa"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: An Nghĩa - Tân Điền",
+        "RouteVarShortName": "Tân Điền",
+        "Outbound": false,
+        "Distance": 24365.0,
+        "RunningTime": 50,
+        "StartStop": "An Nghĩa",
+        "EndStop": "Tân Điền"
+      }
+    ]
+  },
+  {
+    "RouteId": 24,
+    "RouteNo": "13",
+    "RouteName": "Bến xe buýt Sài Gòn - Bến xe Củ Chi",
+    "Vars": [
+      {
+        "RouteVarId": 47,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bến xe Củ Chi",
+        "RouteVarShortName": "Bến xe Củ Chi",
+        "Outbound": true,
+        "Distance": 37399.0,
+        "RunningTime": 80,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe Củ Chi"
+      },
+      {
+        "RouteVarId": 48,
+        "RouteVarName": "Lượt về: Bến xe Củ Chi - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến xe buýt Sài Gòn",
+        "Outbound": false,
+        "Distance": 36177.0,
+        "RunningTime": 80,
+        "StartStop": "Bến xe Củ Chi",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 25,
+    "RouteNo": "139",
+    "RouteName": "Bến xe Miền Tây - Khu Tái Định Cư Phú Mỹ",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Miền Tây - Khu Tái Định Cư Phú Mỹ",
+        "RouteVarShortName": "Khu Tái Định Cư Phú Mỹ",
+        "Outbound": true,
+        "Distance": 22407.000000000004,
+        "RunningTime": 70,
+        "StartStop": "Bến xe Miền Tây",
+        "EndStop": "Phú Xuân"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Khu Tái Định Cư Phú Mỹ - Bến xe Miền Tây",
+        "RouteVarShortName": "Bến xe Miền Tây",
+        "Outbound": false,
+        "Distance": 23883.0,
+        "RunningTime": 70,
+        "StartStop": "Phú Xuân",
+        "EndStop": "Bến xe Miền Tây"
+      }
+    ]
+  },
+  {
+    "RouteId": 26,
+    "RouteNo": "14",
+    "RouteName": "Bến xe Miền Đông - Bến xe Miền Tây",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Miền Đông - Bến xe Miền Tây",
+        "RouteVarShortName": "Bến xe Miền Tây",
+        "Outbound": true,
+        "Distance": 17448.0,
+        "RunningTime": 60,
+        "StartStop": "Bến xe Miền Đông",
+        "EndStop": "Bến xe Miền Tây"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Miền Tây - Bến xe Miền Đông",
+        "RouteVarShortName": "Bến xe Miền Đông",
+        "Outbound": false,
+        "Distance": 16551.0,
+        "RunningTime": 60,
+        "StartStop": "Bến xe Miền Tây",
+        "EndStop": "Bến xe Miền Đông"
+      }
+    ]
+  },
+  {
+    "RouteId": 27,
+    "RouteNo": "140",
+    "RouteName": "Bến xe buýt Sài Gòn - Phạm Thế Hiển - Khu dân cư Phú Lợi",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Trường Đại học Văn Hiến",
+        "RouteVarShortName": "Khu dân cư Phú Lợi",
+        "Outbound": true,
+        "Distance": 20208.0,
+        "RunningTime": 70,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Trường Đại học Văn Hiến (huyện Bình Chánh)"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Trường Đại học Văn Hiến - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến xe buýt Sài Gòn",
+        "Outbound": false,
+        "Distance": 24259.999999999996,
+        "RunningTime": 70,
+        "StartStop": "Trường Đại học Văn Hiến (huyện Bình Chánh)",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 28,
+    "RouteNo": "141",
+    "RouteName": "Khu du lịch BCR - Long Trường - Khu chế xuất Linh Trung II",
+    "Vars": [
+      {
+        "RouteVarId": 55,
+        "RouteVarName": "Lượt đi: Khu du lịch The BCR - Khu chế xuất Linh Trung",
+        "RouteVarShortName": "Khu chế xuất Linh Trung II",
+        "Outbound": true,
+        "Distance": 21528.000000000007,
+        "RunningTime": 65,
+        "StartStop": "Khu du lịch BCR",
+        "EndStop": "Khu chế xuất Linh Trung 2"
+      },
+      {
+        "RouteVarId": 56,
+        "RouteVarName": "Lượt về: Khu chế xuất Linh Trung - Khu du lịch The BCR",
+        "RouteVarShortName": "Khu du lịch BCR",
+        "Outbound": false,
+        "Distance": 21593.0,
+        "RunningTime": 65,
+        "StartStop": "Khu chế xuất Linh Trung 2",
+        "EndStop": "Khu du lịch BCR"
+      }
+    ]
+  },
+  {
+    "RouteId": 30,
+    "RouteNo": "145",
+    "RouteName": "Bến xe buýt Chợ Lớn - Chợ Hiệp Thành",
+    "Vars": [
+      {
+        "RouteVarId": 59,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn (Bến B) - Bến xe buýt Hiệp Thành",
+        "RouteVarShortName": "Chợ Hiệp Thành",
+        "Outbound": true,
+        "Distance": 23285.0,
+        "RunningTime": 70,
+        "StartStop": "Bến xe buýt Chợ Lớn - B",
+        "EndStop": "Bến xe buýt Hiệp Thành"
+      },
+      {
+        "RouteVarId": 60,
+        "RouteVarName": "Lượt về: Bến xe buýt Hiệp Thành - Bến xe buýt Chợ Lớn (Bến B)",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 23465.0,
+        "RunningTime": 70,
+        "StartStop": "Bến xe buýt Hiệp Thành",
+        "EndStop": "Bến xe buýt Chợ Lớn - B"
+      }
+    ]
+  },
+  {
+    "RouteId": 31,
+    "RouteNo": "146",
+    "RouteName": "Bến xe Miền Đông - Chợ Hiệp Thành",
+    "Vars": [
+      {
+        "RouteVarId": 63,
+        "RouteVarName": "Lượt đi: Bến xe Miền Đông - Bến xe buýt Hiệp Thành",
+        "RouteVarShortName": "Chợ Hiệp Thành",
+        "Outbound": true,
+        "Distance": 19648.000000000007,
+        "RunningTime": 65,
+        "StartStop": "Bến xe Miền Đông",
+        "EndStop": "Bến xe buýt Hiệp Thành"
+      },
+      {
+        "RouteVarId": 64,
+        "RouteVarName": "Lượt về: Bến xe buýt Hiệp Thành - Bến xe Miền Đông",
+        "RouteVarShortName": "Bến xe Miền Đông",
+        "Outbound": false,
+        "Distance": 20318.999999999996,
+        "RunningTime": 65,
+        "StartStop": "Bến xe buýt Hiệp Thành",
+        "EndStop": "Bến xe Miền Đông"
+      }
+    ]
+  },
+  {
+    "RouteId": 32,
+    "RouteNo": "148",
+    "RouteName": "Bến xe Miền Tây - Gò Vấp",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Miền Tây - Bến hậu cần số 1",
+        "RouteVarShortName": "Gò Vấp",
+        "Outbound": true,
+        "Distance": 15991.0,
+        "RunningTime": 65,
+        "StartStop": "Bến xe Miền Tây",
+        "EndStop": "Bãi hậu cần số 1"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bãi hậu cần số 1 - Bến xe Miền Tây",
+        "RouteVarShortName": "Bến xe Miền Tây",
+        "Outbound": false,
+        "Distance": 17999.999999999993,
+        "RunningTime": 65,
+        "StartStop": "Bãi hậu cần số 1",
+        "EndStop": "Bến xe Miền Tây"
+      }
+    ]
+  },
+  {
+    "RouteId": 34,
+    "RouteNo": "15",
+    "RouteName": "Chợ Phú Định - Đầm Sen",
+    "Vars": [
+      {
+        "RouteVarId": 67,
+        "RouteVarName": "Lượt đi: Chợ Phú Định - Bến xe buýt Đầm Sen",
+        "RouteVarShortName": "Đầm Sen",
+        "Outbound": true,
+        "Distance": 17263.000000000007,
+        "RunningTime": 50,
+        "StartStop": "Chợ Phú Định",
+        "EndStop": "Bến xe buýt Đầm Sen"
+      },
+      {
+        "RouteVarId": 68,
+        "RouteVarName": "Lượt về: Bến xe buýt Đầm Sen - Bến Phú Định",
+        "RouteVarShortName": "Chợ Phú Định",
+        "Outbound": false,
+        "Distance": 17961.999999999996,
+        "RunningTime": 50,
+        "StartStop": "Bến xe buýt Đầm Sen",
+        "EndStop": "Chợ Phú Định"
+      }
+    ]
+  },
+  {
+    "RouteId": 35,
+    "RouteNo": "150",
+    "RouteName": "Bến xe buýt Chợ Lớn - Bến xe Miền Đông mới",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn - Bến xe Miền Đông mới",
+        "RouteVarShortName": "Bến xe Miền Đông mới",
+        "Outbound": true,
+        "Distance": 27355.000000000015,
+        "RunningTime": 80,
+        "StartStop": "Bến xe buýt Chợ Lớn",
+        "EndStop": "Bến xe Miền Đông mới"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Miền Đông mới - Bến xe buýt Chợ Lớn",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 28006.000000000004,
+        "RunningTime": 80,
+        "StartStop": "Bến xe Miền Đông mới",
+        "EndStop": "Bến xe buýt Chợ Lớn"
+      }
+    ]
+  },
+  {
+    "RouteId": 36,
+    "RouteNo": "151",
+    "RouteName": "Bến xe Miền Tây - Bến xe An Sương",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Miền Tây - Bến xe An Sương",
+        "RouteVarShortName": "Bến xe An Sương",
+        "Outbound": true,
+        "Distance": 18181.0,
+        "RunningTime": 50,
+        "StartStop": "Bến xe Miền Tây",
+        "EndStop": "Bến xe An Sương"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe An Sương - Bến xe Miền Tây",
+        "RouteVarShortName": "Bến xe Miền Tây",
+        "Outbound": false,
+        "Distance": 16969.0,
+        "RunningTime": 50,
+        "StartStop": "Bến xe An Sương",
+        "EndStop": "Bến xe Miền Tây"
+      }
+    ]
+  },
+  {
+    "RouteId": 37,
+    "RouteNo": "152",
+    "RouteName": "Khu dân cư Trung Sơn - Bến Thành - Sân bay Tân Sơn Nhất",
+    "Vars": [
+      {
+        "RouteVarId": 73,
+        "RouteVarName": "Lượt đi: Khu dân cư Trung Sơn - Sân bay Tân Sơn Nhất",
+        "RouteVarShortName": "Sân bay Tân Sơn Nhất",
+        "Outbound": true,
+        "Distance": 14360.000000000004,
+        "RunningTime": 55,
+        "StartStop": "Khu dân cư Trung Sơn",
+        "EndStop": "Sân bay Tân Sơn Nhất"
+      },
+      {
+        "RouteVarId": 74,
+        "RouteVarName": "Lượt về: Sân bay Tân Sơn Nhất - Khu dân cư Trung Sơn",
+        "RouteVarShortName": "Khu dân cư Trung Sơn",
+        "Outbound": false,
+        "Distance": 13812.000000000002,
+        "RunningTime": 55,
+        "StartStop": "Sân bay Tân Sơn Nhất",
+        "EndStop": "Khu dân cư Trung Sơn"
+      }
+    ]
+  },
+  {
+    "RouteId": 375,
+    "RouteNo": "153",
+    "RouteName": "Bến tàu thủy Bình An - Đường Liên Phường",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến tàu thủy Bình An – Đường Liên Phường",
+        "RouteVarShortName": "Đường Liên Phường",
+        "Outbound": true,
+        "Distance": 16602.000000000007,
+        "RunningTime": 55,
+        "StartStop": "Ga tàu thuỷ Bình An",
+        "EndStop": "Liên Phường"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Đường Liên Phường - Bến tàu thủy Bình An",
+        "RouteVarShortName": "Bến tàu thủy Bình An",
+        "Outbound": false,
+        "Distance": 18654.99999999999,
+        "RunningTime": 55,
+        "StartStop": "Liên Phường",
+        "EndStop": "Ga tàu thuỷ Bình An"
+      }
+    ]
+  },
+  {
+    "RouteId": 356,
+    "RouteNo": "154",
+    "RouteName": "Trường Đại học Quản lý và Công nghệ -  Masteri An Phú",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Trường Đại học Quản lý và Công nghệ TP. HCM - Bến xe buýt dạ cầu Sài Gòn",
+        "RouteVarShortName": "Masteri An Phú",
+        "Outbound": true,
+        "Distance": 18104.999999999996,
+        "RunningTime": 55,
+        "StartStop": "Trường Đại học Quản lý và Công nghệ TP. HCM",
+        "EndStop": "Bến xe buýt dạ cầu Sài Gòn"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt dạ cầu Sài Gòn - Trường Đại học Quản lý và Công nghệ TP. HCM",
+        "RouteVarShortName": "Trường Đại học Quản lý và Công nghệ",
+        "Outbound": false,
+        "Distance": 15945.0,
+        "RunningTime": 55,
+        "StartStop": "Bến xe buýt dạ cầu Sài Gòn",
+        "EndStop": "Trường Đại học Quản lý và Công nghệ TP. HCM"
+      }
+    ]
+  },
+  {
+    "RouteId": 345,
+    "RouteNo": "155",
+    "RouteName": "Ga Bến Thành (Cổng 1) - Bến Vân Đồn - Ga Nhà hát Thành phố",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi",
+        "RouteVarShortName": "Ga Nhà hát Thành phố",
+        "Outbound": true,
+        "Distance": 6535.0,
+        "RunningTime": 35,
+        "StartStop": "Ga Bến Thành",
+        "EndStop": "Ga Bến Thành"
+      }
+    ]
+  },
+  {
+    "RouteId": 347,
+    "RouteNo": "156D",
+    "RouteName": "Ga Bến Thành - Ga Hòa Hưng - Bệnh viện Mắt TP.HCM",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến Thành - Ga Hòa Hưng - Bệnh viện Mắt",
+        "RouteVarShortName": "Bệnh viện Mắt TP.HCM",
+        "Outbound": true,
+        "Distance": 8344.0,
+        "RunningTime": 30,
+        "StartStop": "Ga Bến Thành",
+        "EndStop": "Ga Bến Thành"
+      }
+    ]
+  },
+  {
+    "RouteId": 349,
+    "RouteNo": "156V",
+    "RouteName": "Ga Bến Thành - Đại học Sài Gòn Cơ sở 3 - Ga Hòa Hưng",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt về",
+        "RouteVarShortName": "Ga Hòa Hưng",
+        "Outbound": true,
+        "Distance": 7764.000000000002,
+        "RunningTime": 30,
+        "StartStop": "Ga Bến Thành",
+        "EndStop": "Ga Bến Thành"
+      }
+    ]
+  },
+  {
+    "RouteId": 373,
+    "RouteNo": "157",
+    "RouteName": "Bến xe buýt Văn Thánh -  Khu dân cư Thạnh Mỹ Lợi",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Văn Thánh - Chung cư Đức Khải",
+        "RouteVarShortName": "Khu dân cư Thạnh Mỹ Lợi",
+        "Outbound": true,
+        "Distance": 16922.0,
+        "RunningTime": 55,
+        "StartStop": "Bến xe Văn Thánh",
+        "EndStop": "Khu dân cư Thạnh Mỹ Lợi"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Chung cư Đức Khải - Bến xe buýt Văn Thánh",
+        "RouteVarShortName": "Bến xe buýt Văn Thánh",
+        "Outbound": false,
+        "Distance": 14804.0,
+        "RunningTime": 55,
+        "StartStop": "Khu dân cư Thạnh Mỹ Lợi",
+        "EndStop": "Bến xe Văn Thánh"
+      }
+    ]
+  },
+  {
+    "RouteId": 372,
+    "RouteNo": "158",
+    "RouteName": "Bến xe buýt Văn Thánh - Cư xá Thanh Đa",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi",
+        "RouteVarShortName": "Cư xá Thanh Đa",
+        "Outbound": true,
+        "Distance": 10387.000000000002,
+        "RunningTime": 25,
+        "StartStop": "Bến xe Văn Thánh",
+        "EndStop": "Bến xe Văn Thánh"
+      }
+    ]
+  },
+  {
+    "RouteId": 344,
+    "RouteNo": "159",
+    "RouteName": "Ga Văn Thánh - Điện Biên Phủ - Ga Tân Cảng",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Chung cư Ngô Tất Tố - Ngã tư Hàng Xanh ",
+        "RouteVarShortName": "Ga Tân Cảng",
+        "Outbound": true,
+        "Distance": 8549.0,
+        "RunningTime": 20,
+        "StartStop": "Bến xe buýt Ga Metro Văn Thánh",
+        "EndStop": "Bến xe buýt Ga Metro Văn Thánh"
+      }
+    ]
+  },
+  {
+    "RouteId": 38,
+    "RouteNo": "16",
+    "RouteName": "Bến xe buýt Chợ Lớn - Bến xe buýt Tân Phú",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn (Bến A) - Bến xe buýt Tân Phú",
+        "RouteVarShortName": "Bến xe buýt Tân Phú",
+        "Outbound": true,
+        "Distance": 17025.000000000004,
+        "RunningTime": 55,
+        "StartStop": "Bến xe buýt Chợ Lớn - A",
+        "EndStop": "Bến xe buýt Tân Phú"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt Tân Phú - Bến xe buýt Chợ Lớn (Bến A)",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 17830.0,
+        "RunningTime": 55,
+        "StartStop": "Bến xe buýt Tân Phú",
+        "EndStop": "Bến xe buýt Chợ Lớn - A"
+      }
+    ]
+  },
+  {
+    "RouteId": 365,
+    "RouteNo": "160",
+    "RouteName": "Ga Văn Thánh - Vinhomes Central Park ",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Ga Văn Thánh - Vinhomes Central Park",
+        "RouteVarShortName": "Vinhomes Central Park ",
+        "Outbound": true,
+        "Distance": 5857.0,
+        "RunningTime": 15,
+        "StartStop": "Bến xe buýt Ga Metro Văn Thánh",
+        "EndStop": "Bến xe buýt Ga Metro Văn Thánh"
+      }
+    ]
+  },
+  {
+    "RouteId": 364,
+    "RouteNo": "161",
+    "RouteName": "Bến xe buýt Văn Thánh – Bến xe Ngã tư Ga",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Văn Thánh - Bến xe Ngã tư Ga",
+        "RouteVarShortName": "Lượt đi: Bến xe Văn Thánh - Bến xe Ngã tư Ga",
+        "Outbound": true,
+        "Distance": 16524.0,
+        "RunningTime": 50,
+        "StartStop": "Bến xe Văn Thánh",
+        "EndStop": "Bến xe Ngã tư Ga"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Ngã tư Ga - Bến xe Văn Thánh",
+        "RouteVarShortName": "Lượt về: Bến xe Ngã tư Ga - Bến xe Văn Thánh",
+        "Outbound": false,
+        "Distance": 15861.000000000002,
+        "RunningTime": 50,
+        "StartStop": "Bến xe Ngã tư Ga",
+        "EndStop": "Bến xe Văn Thánh"
+      }
+    ]
+  },
+  {
+    "RouteId": 362,
+    "RouteNo": "162",
+    "RouteName": "Ga Thủ Đức - Chung cư Man Thiện - Ga Bình Thái",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Ga Thủ Đức - Bến xe buýt Ga Bình Thái",
+        "RouteVarShortName": "Ga Bình Thái",
+        "Outbound": true,
+        "Distance": 10874.999999999998,
+        "RunningTime": 30,
+        "StartStop": "Ga Thủ Đức",
+        "EndStop": "BẾN XE BUÝT GA BÌNH THÁI"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt Ga Bình Thái - Ga Thủ Đức",
+        "RouteVarShortName": "Ga Thủ Đức",
+        "Outbound": false,
+        "Distance": 10885.0,
+        "RunningTime": 30,
+        "StartStop": "BẾN XE BUÝT GA BÌNH THÁI",
+        "EndStop": "Ga Thủ Đức"
+      }
+    ]
+  },
+  {
+    "RouteId": 393,
+    "RouteNo": "163D",
+    "RouteName": "Ga Bình Thái - Trường Trung học cơ sở Phước Bình - Cao đẳng Công Thương",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi",
+        "RouteVarShortName": "Cao đẳng Công Thương",
+        "Outbound": true,
+        "Distance": 8342.000000000002,
+        "RunningTime": 25,
+        "StartStop": "BẾN XE BUÝT GA BÌNH THÁI",
+        "EndStop": "BẾN XE BUÝT GA BÌNH THÁI"
+      }
+    ]
+  },
+  {
+    "RouteId": 394,
+    "RouteNo": "163V",
+    "RouteName": "Ga Bình Thái - Cao đẳng Công Thương - Trường Trung học cơ sở Phước Bình",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt về",
+        "RouteVarShortName": "Trường Trung học cơ sở Phước Bình",
+        "Outbound": true,
+        "Distance": 8436.999999999996,
+        "RunningTime": 25,
+        "StartStop": "BẾN XE BUÝT GA BÌNH THÁI",
+        "EndStop": "BẾN XE BUÝT GA BÌNH THÁI"
+      }
+    ]
+  },
+  {
+    "RouteId": 395,
+    "RouteNo": "164D",
+    "RouteName": "Đại học Nông Lâm - Ga Metro Khu Công nghệ cao - Chung cư Topaz",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi",
+        "RouteVarShortName": "Chung cư Topaz",
+        "Outbound": true,
+        "Distance": 10221.000000000002,
+        "RunningTime": 35,
+        "StartStop": "BẾN XE BUÝT ĐẠI HỌC NÔNG LÂM",
+        "EndStop": "BẾN XE BUÝT ĐẠI HỌC NÔNG LÂM"
+      }
+    ]
+  },
+  {
+    "RouteId": 396,
+    "RouteNo": "164V",
+    "RouteName": "Đại học Nông Lâm - Chung cư Topaz - Ga Metro Khu Công nghệ cao",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt về",
+        "RouteVarShortName": "Ga Metro Khu Công nghệ cao",
+        "Outbound": true,
+        "Distance": 10331.999999999998,
+        "RunningTime": 35,
+        "StartStop": "BẾN XE BUÝT ĐẠI HỌC NÔNG LÂM",
+        "EndStop": "BẾN XE BUÝT ĐẠI HỌC NÔNG LÂM"
+      }
+    ]
+  },
+  {
+    "RouteId": 359,
+    "RouteNo": "165",
+    "RouteName": "Đại học Nông Lâm - Khu Công nghệ cao",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi",
+        "RouteVarShortName": "Khu Công nghệ cao",
+        "Outbound": true,
+        "Distance": 16528.0,
+        "RunningTime": 60,
+        "StartStop": "BẾN XE BUÝT ĐẠI HỌC NÔNG LÂM",
+        "EndStop": "BẾN XE BUÝT ĐẠI HỌC NÔNG LÂM"
+      }
+    ]
+  },
+  {
+    "RouteId": 376,
+    "RouteNo": "166",
+    "RouteName": "Đại học Quốc Gia - Suối Tiên",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Đại học Quốc Gia - Suối Tiên",
+        "RouteVarShortName": "Suối Tiên",
+        "Outbound": true,
+        "Distance": 6961.0,
+        "RunningTime": 20,
+        "StartStop": "Ga Đại học Quốc gia",
+        "EndStop": "Ga Đại học Quốc gia"
+      }
+    ]
+  },
+  {
+    "RouteId": 350,
+    "RouteNo": "167D",
+    "RouteName": "Đại học Hutech - Ga Khu công nghệ cao - Đại học Kinh tế Luật - Khu Chế xuất Linh Trung 1",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi",
+        "RouteVarShortName": "Khu Chế xuất Linh Trung 1",
+        "Outbound": true,
+        "Distance": 18029.999999999996,
+        "RunningTime": 55,
+        "StartStop": "Trường Đại học Công nghệ TP.HCM cơ sở Khu Công nghệ cao",
+        "EndStop": "Trường Đại học Công nghệ TP.HCM cơ sở Khu Công nghệ cao"
+      }
+    ]
+  },
+  {
+    "RouteId": 353,
+    "RouteNo": "167V",
+    "RouteName": "Đại học Hutech - Đại học Kinh tế Luật - Khu chế xuất linh trung 1 - Ga Khu công nghệ cao",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt về",
+        "RouteVarShortName": "Ga Khu công nghệ cao",
+        "Outbound": true,
+        "Distance": 19501.000000000007,
+        "RunningTime": 55,
+        "StartStop": "Trường Đại học Công nghệ TP.HCM cơ sở Khu Công nghệ cao",
+        "EndStop": "Trường Đại học Công nghệ TP.HCM cơ sở Khu Công nghệ cao"
+      }
+    ]
+  },
+  {
+    "RouteId": 355,
+    "RouteNo": "168D",
+    "RouteName": "Đại học Ngân Hàng - Ga Thủ Đức - Nhà Thiếu nhi Thành phố Thủ Đức",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Trường Đại học Ngân hàng cơ sở Thủ Đức - Trường Đại học Ngân hàng cơ sở Thủ Đức",
+        "RouteVarShortName": "Nhà Thiếu nhi Thành phố Thủ Đức",
+        "Outbound": true,
+        "Distance": 6398.0,
+        "RunningTime": 25,
+        "StartStop": "Trường Đại học Ngân hàng cơ sở Thủ Đức",
+        "EndStop": "Trường Đại học Ngân hàng cơ sở Thủ Đức"
+      }
+    ]
+  },
+  {
+    "RouteId": 367,
+    "RouteNo": "168V",
+    "RouteName": "Đại học Ngân hàng - Nhà Thiếu nhi Thành phố Thủ Đức - Ga Thủ Đức",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt về:  Đại học Sư phạm kỹ thuật Thành phố - Nhà Thiếu nhi Thành phố Thủ Đức - Ga Metro Bình Thái",
+        "RouteVarShortName": "Ga Thủ Đức",
+        "Outbound": true,
+        "Distance": 6385.0,
+        "RunningTime": 25,
+        "StartStop": "Trường Đại học Ngân hàng cơ sở Thủ Đức",
+        "EndStop": "Trường Đại học Ngân hàng cơ sở Thủ Đức"
+      }
+    ]
+  },
+  {
+    "RouteId": 368,
+    "RouteNo": "169D",
+    "RouteName": "Ga Metro Bình Thái - Vincom Thủ Đức - Cảng Phúc Long",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi",
+        "RouteVarShortName": "Cảng Phúc Long",
+        "Outbound": true,
+        "Distance": 7938.999999999998,
+        "RunningTime": 25,
+        "StartStop": "Ga Bình Thái",
+        "EndStop": "Ga Bình Thái"
+      }
+    ]
+  },
+  {
+    "RouteId": 369,
+    "RouteNo": "169V",
+    "RouteName": "Ga Metro Bình Thái - Cảng Phúc Long - Vincom Thủ Đức",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt về",
+        "RouteVarShortName": "Vincom Thủ Đức",
+        "Outbound": true,
+        "Distance": 7890.0,
+        "RunningTime": 25,
+        "StartStop": "Ga Bình Thái",
+        "EndStop": "Ga Bình Thái"
+      }
+    ]
+  },
+  {
+    "RouteId": 426,
+    "RouteNo": "170",
+    "RouteName": "Bến xe buýt khu A - Bến xe buýt khu B",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt ĐH Quốc gia TPHCM (Khu A) - Bến Xe Buýt ÐH Quốc Gia (Khu B)",
+        "RouteVarShortName": "Bến xe buýt khu B",
+        "Outbound": true,
+        "Distance": 14515.0,
+        "RunningTime": 45,
+        "StartStop": "Bến xe buýt Khu A - Đại học Quốc gia TP.HCM",
+        "EndStop": "Bến xe buýt Khu B - Đại học Quốc gia TP.HCM"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt ÐH Quốc Gia (Khu B) - Bến xe buýt ĐH Quốc gia TPHCM (Khu A)",
+        "RouteVarShortName": "Bến xe buýt khu A",
+        "Outbound": false,
+        "Distance": 17038.0,
+        "RunningTime": 45,
+        "StartStop": "Bến xe buýt Khu B - Đại học Quốc gia TP.HCM",
+        "EndStop": "Bến xe buýt Khu A - Đại học Quốc gia TP.HCM"
+      }
+    ]
+  },
+  {
+    "RouteId": 405,
+    "RouteNo": "171",
+    "RouteName": "Bến xe Phú Chánh - Trung tâm hành chính Bình Dương - Bến Thành",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Bến xe Phú Chánh - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": true,
+        "Distance": 47568.0,
+        "RunningTime": 110,
+        "StartStop": "Bến xe Phú Chánh",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Bến xe buýt Sài Gòn - Bến xe Phú Chánh",
+        "RouteVarShortName": "Bến xe Phú Chánh",
+        "Outbound": false,
+        "Distance": 47599.00000000001,
+        "RunningTime": 110,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe Phú Chánh"
+      }
+    ]
+  },
+  {
+    "RouteId": 404,
+    "RouteNo": "172",
+    "RouteName": "Bến xe Vũng Tàu - Trung tâm hành chính Bà Rịa Vũng Tàu -  Bến Thành",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Bến xe Vũng Tàu - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": true,
+        "Distance": 101429.00000000001,
+        "RunningTime": 170,
+        "StartStop": "BẾN XE VŨNG TÀU",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Bến xe buýt Sài Gòn - Bến xe Vũng Tàu",
+        "RouteVarShortName": "Bến xe Vũng Tàu",
+        "Outbound": false,
+        "Distance": 102394.00000000004,
+        "RunningTime": 170,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "BẾN XE VŨNG TÀU"
+      }
+    ]
+  },
+  {
+    "RouteId": 421,
+    "RouteNo": "173",
+    "RouteName": "Trung tâm Côn Đảo - Cỏ Ống",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Chợ Côn Đảo - Cảng Hàng không Côn Đảo",
+        "RouteVarShortName": "Cỏ Ống",
+        "Outbound": true,
+        "Distance": 17232.0,
+        "RunningTime": 30,
+        "StartStop": "Chợ Côn Đảo",
+        "EndStop": "Cảng Hàng không Côn Đảo"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Cảng Hàng không Côn Đảo - Chợ Côn Đảo",
+        "RouteVarShortName": "Trung tâm Côn Đảo",
+        "Outbound": false,
+        "Distance": 17119.0,
+        "RunningTime": 30,
+        "StartStop": "Cảng Hàng không Côn Đảo",
+        "EndStop": "Chợ Côn Đảo"
+      }
+    ]
+  },
+  {
+    "RouteId": 40,
+    "RouteNo": "18",
+    "RouteName": "Bến Thành - Chợ Hiệp Thành",
+    "Vars": [
+      {
+        "RouteVarId": 79,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bến xe buýt Hiệp Thành",
+        "RouteVarShortName": "Chợ Hiệp Thành",
+        "Outbound": true,
+        "Distance": 23593.00000000001,
+        "RunningTime": 75,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe buýt Hiệp Thành"
+      },
+      {
+        "RouteVarId": 80,
+        "RouteVarName": "Lượt về: Bến xe buýt Hiệp Thành - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": false,
+        "Distance": 23499.0,
+        "RunningTime": 75,
+        "StartStop": "Bến xe buýt Hiệp Thành",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 41,
+    "RouteNo": "19",
+    "RouteName": "Bến Thành - Khu chế xuất Linh Trung - Đại học Quốc gia",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bến xe buýt ĐH Quốc gia TPHCM (mới)",
+        "RouteVarShortName": "Đại học Quốc gia",
+        "Outbound": true,
+        "Distance": 28738.0,
+        "RunningTime": 80,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe buýt Khu A - Đại học Quốc gia TP.HCM"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt ĐH Quốc gia TPHCM (mới) - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": false,
+        "Distance": 28274.00000000001,
+        "RunningTime": 80,
+        "StartStop": "Bến xe buýt Khu A - Đại học Quốc gia TP.HCM",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 42,
+    "RouteNo": "20",
+    "RouteName": "Bến Thành - Nhà Bè",
+    "Vars": [
+      {
+        "RouteVarId": 83,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bình Khánh",
+        "RouteVarShortName": "Nhà Bè",
+        "Outbound": true,
+        "Distance": 16855.000000000004,
+        "RunningTime": 50,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe buýt Bình Khánh"
+      },
+      {
+        "RouteVarId": 84,
+        "RouteVarName": "Lượt về: Bình Khánh - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": false,
+        "Distance": 17364.0,
+        "RunningTime": 50,
+        "StartStop": "Bến xe buýt Bình Khánh",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 43,
+    "RouteNo": "22",
+    "RouteName": "Bến xe buýt Quận 8 - Bến xe buýt Lê Minh Xuân",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Quận 8 - Bến xe buýt Lê Minh Xuân",
+        "RouteVarShortName": "Bến xe buýt Lê Minh Xuân",
+        "Outbound": true,
+        "Distance": 25248.999999999985,
+        "RunningTime": 75,
+        "StartStop": "Bến xe buýt Quận 8",
+        "EndStop": "Bến xe buýt Lê Minh Xuân"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt Lê Minh Xuân - Bến xe buýt Quận 8",
+        "RouteVarShortName": "Bến xe buýt Quận 8",
+        "Outbound": false,
+        "Distance": 27044.000000000004,
+        "RunningTime": 75,
+        "StartStop": "Bến xe buýt Lê Minh Xuân",
+        "EndStop": "Bến xe buýt Quận 8"
+      }
+    ]
+  },
+  {
+    "RouteId": 44,
+    "RouteNo": "23",
+    "RouteName": "Bến xe buýt Chợ Lớn - Ngã ba Giồng - Cầu Lớn",
+    "Vars": [
+      {
+        "RouteVarId": 87,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn (Bến B) -  Bến xe buýt Cầu Lớn",
+        "RouteVarShortName": "Cầu Lớn",
+        "Outbound": true,
+        "Distance": 23150.0,
+        "RunningTime": 75,
+        "StartStop": "Bến xe buýt Chợ Lớn - B",
+        "EndStop": "Bến xe buýt Cầu Lớn"
+      },
+      {
+        "RouteVarId": 88,
+        "RouteVarName": "Lượt về: Bến xe buýt Cầu Lớn - Bến xe buýt Chợ Lớn (Bến B)",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 22942.000000000004,
+        "RunningTime": 75,
+        "StartStop": "Bến xe buýt Cầu Lớn",
+        "EndStop": "Bến xe buýt Chợ Lớn - B"
+      }
+    ]
+  },
+  {
+    "RouteId": 45,
+    "RouteNo": "24",
+    "RouteName": "Bến xe Miền Đông - Hóc Môn",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Miền Đông - Bến xe buýt Hóc Môn",
+        "RouteVarShortName": "Hóc Môn",
+        "Outbound": true,
+        "Distance": 29051.0,
+        "RunningTime": 75,
+        "StartStop": "Bến xe Miền Đông",
+        "EndStop": "Bến xe buýt Hóc Môn"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt Hóc Môn - Bến xe Miền Đông",
+        "RouteVarShortName": "Bến xe Miền Đông",
+        "Outbound": false,
+        "Distance": 26201.99999999999,
+        "RunningTime": 75,
+        "StartStop": "Bến xe buýt Hóc Môn",
+        "EndStop": "Bến xe Miền Đông"
+      }
+    ]
+  },
+  {
+    "RouteId": 46,
+    "RouteNo": "25",
+    "RouteName": "Bến Xe buýt Quận 8 - Khu dân cư Vĩnh Lộc A",
+    "Vars": [
+      {
+        "RouteVarId": 91,
+        "RouteVarName": "Lượt đi: Bến xe Quận 8 - KDC Vĩnh Lộc A",
+        "RouteVarShortName": "Khu dân cư Vĩnh Lộc A",
+        "Outbound": true,
+        "Distance": 22916.000000000007,
+        "RunningTime": 60,
+        "StartStop": "Bến xe buýt Quận 8",
+        "EndStop": "KDC VĨNH LỘC A"
+      },
+      {
+        "RouteVarId": 92,
+        "RouteVarName": "Lượt về: KDC Vĩnh Lộc A - Bến xe Quận 8",
+        "RouteVarShortName": "Bến Xe buýt Quận 8",
+        "Outbound": false,
+        "Distance": 22636.999999999996,
+        "RunningTime": 60,
+        "StartStop": "KDC VĨNH LỘC A",
+        "EndStop": "Bến xe buýt Quận 8"
+      }
+    ]
+  },
+  {
+    "RouteId": 48,
+    "RouteNo": "27",
+    "RouteName": "Bến xe buýt Sài Gòn - Âu Cơ - Bến xe An Sương",
+    "Vars": [
+      {
+        "RouteVarId": 95,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bến xe An Sương",
+        "RouteVarShortName": "Bến xe An Sương",
+        "Outbound": true,
+        "Distance": 16282.0,
+        "RunningTime": 65,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe An Sương"
+      },
+      {
+        "RouteVarId": 96,
+        "RouteVarName": "Lượt về: Bến xe An Sương - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến xe buýt Sài Gòn",
+        "Outbound": false,
+        "Distance": 15286.0,
+        "RunningTime": 65,
+        "StartStop": "Bến xe An Sương",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 49,
+    "RouteNo": "28",
+    "RouteName": "Bến xe buýt Sài Gòn - Chợ Xuân Thới Thượng",
+    "Vars": [
+      {
+        "RouteVarId": 99,
+        "RouteVarName": "Lượt về: Chợ Xuân Thới Thượng - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến xe buýt Sài Gòn",
+        "Outbound": false,
+        "Distance": 25706.0,
+        "RunningTime": 80,
+        "StartStop": "Xuân Thới Thượng",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      },
+      {
+        "RouteVarId": 100,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Chợ Xuân Thới Thượng",
+        "RouteVarShortName": "Chợ Xuân Thới Thượng",
+        "Outbound": true,
+        "Distance": 26521.999999999993,
+        "RunningTime": 80,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Xuân Thới Thượng"
+      }
+    ]
+  },
+  {
+    "RouteId": 50,
+    "RouteNo": "29",
+    "RouteName": "Phà Cát Lái - Chợ nông sản Thủ Đức",
+    "Vars": [
+      {
+        "RouteVarId": 99,
+        "RouteVarName": "Lượt đi: Bến Phà Cát Lái - Chợ Nông Sản Thủ Đức",
+        "RouteVarShortName": "Chợ nông sản Thủ Đức",
+        "Outbound": true,
+        "Distance": 20369.000000000004,
+        "RunningTime": 70,
+        "StartStop": "Đường A1 (Phà Cát Lái)",
+        "EndStop": "Chợ nông sản Thủ Đức"
+      },
+      {
+        "RouteVarId": 100,
+        "RouteVarName": "Lượt về: Chợ Nông Sản Thủ Đức - Bến Phà Cát Lái",
+        "RouteVarShortName": "Phà Cát Lái",
+        "Outbound": false,
+        "Distance": 23336.0,
+        "RunningTime": 70,
+        "StartStop": "Chợ nông sản Thủ Đức",
+        "EndStop": "Đường A1 (Phà Cát Lái)"
+      }
+    ]
+  },
+  {
+    "RouteId": 51,
+    "RouteNo": "30",
+    "RouteName": "Chợ Tân Hương - Bến xe buýt Văn Thánh",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Cư xá Nhiêu Lộc - Bến xe Văn Thánh",
+        "RouteVarShortName": "Bến xe buýt Văn Thánh",
+        "Outbound": true,
+        "Distance": 18396.999999999996,
+        "RunningTime": 50,
+        "StartStop": "Cư xá Nhiêu Lộc",
+        "EndStop": "Bến xe Văn Thánh"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Văn Thánh - Cư xá Nhiêu Lộc",
+        "RouteVarShortName": "Chợ Tân Hương",
+        "Outbound": false,
+        "Distance": 19932.0,
+        "RunningTime": 50,
+        "StartStop": "Bến xe Văn Thánh",
+        "EndStop": "Cư xá Nhiêu Lộc"
+      }
+    ]
+  },
+  {
+    "RouteId": 52,
+    "RouteNo": "31",
+    "RouteName": "Đại Học Tôn Đức Thắng - Bến Thành - Đại học Văn Lang",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Đại học Tôn Đức Thắng - Đại học Văn Lang",
+        "RouteVarShortName": "Đại học Văn Lang",
+        "Outbound": true,
+        "Distance": 22682.0,
+        "RunningTime": 80,
+        "StartStop": "Đại học Tôn Đức Thắng",
+        "EndStop": "Công viên Đặng Thùy Trâm"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Đại học Văn Lang - Đại học Tôn Đức Thắng",
+        "RouteVarShortName": "Đại Học Tôn Đức Thắng",
+        "Outbound": false,
+        "Distance": 21325.999999999996,
+        "RunningTime": 80,
+        "StartStop": "Công viên Đặng Thùy Trâm",
+        "EndStop": "Đại học Tôn Đức Thắng"
+      }
+    ]
+  },
+  {
+    "RouteId": 53,
+    "RouteNo": "32",
+    "RouteName": "Bến xe Miền Tây - Bến xe Ngã tư Ga",
+    "Vars": [
+      {
+        "RouteVarId": 105,
+        "RouteVarName": "Lượt đi: Bến xe Miền Tây - Bến xe Ngã tư Ga",
+        "RouteVarShortName": "Bến xe Ngã tư Ga",
+        "Outbound": true,
+        "Distance": 25492.0,
+        "RunningTime": 90,
+        "StartStop": "Bến xe Miền Tây",
+        "EndStop": "Bến xe Ngã tư Ga"
+      },
+      {
+        "RouteVarId": 106,
+        "RouteVarName": "Lượt về: Bến xe Ngã tư Ga - Bến xe Miền Tây",
+        "RouteVarShortName": "Bến xe Miền Tây",
+        "Outbound": false,
+        "Distance": 26755.000000000004,
+        "RunningTime": 90,
+        "StartStop": "Bến xe Ngã tư Ga",
+        "EndStop": "Bến xe Miền Tây"
+      }
+    ]
+  },
+  {
+    "RouteId": 54,
+    "RouteNo": "33",
+    "RouteName": "Bến xe An Sương - Suối Tiên - Đại học Quốc gia",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe An Sương - Bến xe buýt ĐH Quốc gia TPHCM (mới)",
+        "RouteVarShortName": "Đại học Quốc gia",
+        "Outbound": true,
+        "Distance": 25790.000000000004,
+        "RunningTime": 60,
+        "StartStop": "Bến xe An Sương",
+        "EndStop": "Bến xe buýt Khu A - Đại học Quốc gia TP.HCM"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt ĐH Quốc gia TPHCM (mới) - Bến xe An Sương",
+        "RouteVarShortName": "Bến xe An Sương",
+        "Outbound": false,
+        "Distance": 25252.000000000007,
+        "RunningTime": 60,
+        "StartStop": "Bến xe buýt Khu A - Đại học Quốc gia TP.HCM",
+        "EndStop": "Bến xe An Sương"
+      }
+    ]
+  },
+  {
+    "RouteId": 55,
+    "RouteNo": "34",
+    "RouteName": "Bến xe buýt Sài Gòn - Bến xe buýt Quận 8",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bến xe buýt Quận 8",
+        "RouteVarShortName": "Bến xe buýt Quận 8",
+        "Outbound": true,
+        "Distance": 19809.0,
+        "RunningTime": 60,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe buýt Quận 8"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt Quận 8 - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến xe buýt Sài Gòn",
+        "Outbound": false,
+        "Distance": 21577.0,
+        "RunningTime": 60,
+        "StartStop": "Bến xe buýt Quận 8",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 57,
+    "RouteNo": "36",
+    "RouteName": "Bến Thành - Thới An",
+    "Vars": [
+      {
+        "RouteVarId": 113,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bến xe buýt Thới An",
+        "RouteVarShortName": "Thới An",
+        "Outbound": true,
+        "Distance": 19704.0,
+        "RunningTime": 70,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe buýt Thới An"
+      },
+      {
+        "RouteVarId": 114,
+        "RouteVarName": "Lượt về: Bến xe buýt Thới An - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": false,
+        "Distance": 19082.999999999985,
+        "RunningTime": 70,
+        "StartStop": "Bến xe buýt Thới An",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 59,
+    "RouteNo": "38",
+    "RouteName": "Khu dân cư Tân Quy - Bến Thành - Đầm Sen",
+    "Vars": [
+      {
+        "RouteVarId": 117,
+        "RouteVarName": "Lượt đi: Khu dân cư Tân Quy- Bến xe buýt Đầm Sen",
+        "RouteVarShortName": "Đầm Sen",
+        "Outbound": true,
+        "Distance": 16742.999999999996,
+        "RunningTime": 65,
+        "StartStop": "Đầu bến Tân Quy",
+        "EndStop": "Bến xe buýt Đầm Sen"
+      },
+      {
+        "RouteVarId": 118,
+        "RouteVarName": "Lượt về: Bến xe buýt Đầm Sen - Khu dân cư Tân Quy",
+        "RouteVarShortName": "Khu dân cư Tân Quy",
+        "Outbound": false,
+        "Distance": 17092.0,
+        "RunningTime": 65,
+        "StartStop": "Bến xe buýt Đầm Sen",
+        "EndStop": "Đầu bến Tân Quy"
+      }
+    ]
+  },
+  {
+    "RouteId": 60,
+    "RouteNo": "39",
+    "RouteName": "Bến Thành - Võ Văn Kiệt - Bến xe Miền Tây",
+    "Vars": [
+      {
+        "RouteVarId": 3,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bến xe Miền Tây",
+        "RouteVarShortName": "Bến xe Miền Tây",
+        "Outbound": true,
+        "Distance": 18200.999999999996,
+        "RunningTime": 55,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe Miền Tây"
+      },
+      {
+        "RouteVarId": 4,
+        "RouteVarName": "Lượt về: Bến xe Miền Tây - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": false,
+        "Distance": 18000.0,
+        "RunningTime": 55,
+        "StartStop": "Bến xe Miền Tây",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 62,
+    "RouteNo": "41",
+    "RouteName": "Bến xe Miền Tây - Ngã tư Bốn Xã - Bến xe An Sương",
+    "Vars": [
+      {
+        "RouteVarId": 123,
+        "RouteVarName": "Lượt đi: Bến xe Miền Tây - Bến xe An Sương",
+        "RouteVarShortName": "Bến xe An Sương",
+        "Outbound": true,
+        "Distance": 22860.0,
+        "RunningTime": 60,
+        "StartStop": "Bến xe Miền Tây",
+        "EndStop": "Bến xe An Sương"
+      },
+      {
+        "RouteVarId": 124,
+        "RouteVarName": "Lượt về: Bến xe An Sương - Bến xe Miền Tây",
+        "RouteVarShortName": "Bến xe Miền Tây",
+        "Outbound": false,
+        "Distance": 22223.0,
+        "RunningTime": 60,
+        "StartStop": "Bến xe An Sương",
+        "EndStop": "Bến xe Miền Tây"
+      }
+    ]
+  },
+  {
+    "RouteId": 64,
+    "RouteNo": "43",
+    "RouteName": "Bến xe Miền Đông - Trường Đại học Quản lý và Công nghệ",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Bến xe Miền Đông - Trường Đại học Quản lý và công nghệ",
+        "RouteVarShortName": "Trường Đại học Quản lý và Công nghệ",
+        "Outbound": true,
+        "Distance": 19266.000000000004,
+        "RunningTime": 65,
+        "StartStop": "Bến xe Miền Đông",
+        "EndStop": "Trường Đại học Quản lý và Công nghệ TP. HCM"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Trường Đại học Quản lý và Công nghệ - Bến xe Miền Đông",
+        "RouteVarShortName": "Bến xe Miền Đông",
+        "Outbound": false,
+        "Distance": 20263.0,
+        "RunningTime": 65,
+        "StartStop": "Trường Đại học Quản lý và Công nghệ TP. HCM",
+        "EndStop": "Bến xe Miền Đông"
+      }
+    ]
+  },
+  {
+    "RouteId": 65,
+    "RouteNo": "44",
+    "RouteName": "Cảng Quận 4 - Bình Quới",
+    "Vars": [
+      {
+        "RouteVarId": 129,
+        "RouteVarName": "Lượt đi: Cảng Quận 4 - Bến đò Bình Quới",
+        "RouteVarShortName": "Bình Quới",
+        "Outbound": true,
+        "Distance": 15978.0,
+        "RunningTime": 60,
+        "StartStop": "Bến xe buýt Kho Muối",
+        "EndStop": "Bến đò Bình Quới"
+      },
+      {
+        "RouteVarId": 130,
+        "RouteVarName": "Lượt về: Bến đò Bình Quới - Cảng Quận 4",
+        "RouteVarShortName": "Cảng Quận 4",
+        "Outbound": false,
+        "Distance": 17260.000000000004,
+        "RunningTime": 60,
+        "StartStop": "Bến đò Bình Quới",
+        "EndStop": "Bến xe buýt Kho Muối"
+      }
+    ]
+  },
+  {
+    "RouteId": 66,
+    "RouteNo": "45",
+    "RouteName": "Đại học Kinh tế - Bến Thành - Bến xe Miền Đông",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Đại học Kinh Tế - Bến xe Miền Đông",
+        "RouteVarShortName": "Bến xe Miền Đông",
+        "Outbound": true,
+        "Distance": 22452.0,
+        "RunningTime": 80,
+        "StartStop": "Đại học Kinh Tế TP.HCM (Cơ sở Nguyễn Văn Linh)",
+        "EndStop": "Bến xe Miền Đông"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Miền Đông - Đại học Kinh Tế",
+        "RouteVarShortName": "Đại học Kinh tế",
+        "Outbound": false,
+        "Distance": 23169.000000000007,
+        "RunningTime": 80,
+        "StartStop": "Bến xe Miền Đông",
+        "EndStop": "Đại học Kinh Tế TP.HCM (Cơ sở Nguyễn Văn Linh)"
+      }
+    ]
+  },
+  {
+    "RouteId": 67,
+    "RouteNo": "46",
+    "RouteName": "Công viên Tôn Thất Thuyết - Bến Mễ Cốc",
+    "Vars": [
+      {
+        "RouteVarId": 133,
+        "RouteVarName": "Lượt đi: Bến xe buýt Kho Muối - Mễ Cốc",
+        "RouteVarShortName": "Bến Mễ Cốc",
+        "Outbound": true,
+        "Distance": 17494.000000000007,
+        "RunningTime": 65,
+        "StartStop": "Bến xe buýt Kho Muối",
+        "EndStop": "Bến Mễ Cốc (Rạch Cát)"
+      },
+      {
+        "RouteVarId": 134,
+        "RouteVarName": "Lượt về: Mễ Cốc - Bến xe buýt Kho Muối",
+        "RouteVarShortName": "Công viên Tôn Thất Thuyết",
+        "Outbound": false,
+        "Distance": 22091.0,
+        "RunningTime": 65,
+        "StartStop": "Bến Mễ Cốc (Rạch Cát)",
+        "EndStop": "Bến xe buýt Kho Muối"
+      }
+    ]
+  },
+  {
+    "RouteId": 68,
+    "RouteNo": "47",
+    "RouteName": "Bến xe buýt Chợ Lớn - Quốc lộ 50 - Hưng Long",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn - Hưng Long",
+        "RouteVarShortName": "Hưng Long",
+        "Outbound": true,
+        "Distance": 17462.999999999996,
+        "RunningTime": 50,
+        "StartStop": "Bến xe buýt Chợ Lớn",
+        "EndStop": "Hưng Long"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Hưng Long - Bến xe buýt Chợ Lớn",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 17549.000000000004,
+        "RunningTime": 50,
+        "StartStop": "Hưng Long",
+        "EndStop": "Bến xe buýt Chợ Lớn"
+      }
+    ]
+  },
+  {
+    "RouteId": 69,
+    "RouteNo": "48",
+    "RouteName": "Bến xe buýt Tân Phú - Chợ Hiệp Thành",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Tân Phú - Bến xe buýt Hiệp Thành",
+        "RouteVarShortName": "Chợ Hiệp Thành",
+        "Outbound": true,
+        "Distance": 21502.999999999993,
+        "RunningTime": 55,
+        "StartStop": "Bến xe buýt Tân Phú",
+        "EndStop": "Bến xe buýt Hiệp Thành"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt Hiệp Thành - Bến xe buýt Tân Phú",
+        "RouteVarShortName": "Bến xe buýt Tân Phú",
+        "Outbound": false,
+        "Distance": 21776.000000000004,
+        "RunningTime": 55,
+        "StartStop": "Bến xe buýt Hiệp Thành",
+        "EndStop": "Bến xe buýt Tân Phú"
+      }
+    ]
+  },
+  {
+    "RouteId": 70,
+    "RouteNo": "50",
+    "RouteName": "Đại học Bách khoa - Đại học Quốc gia",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Đại học Bách Khoa - Bến xe buýt ĐH Quốc gia TPHCM (mới)",
+        "RouteVarShortName": "Đại học Quốc gia",
+        "Outbound": true,
+        "Distance": 30728.0,
+        "RunningTime": 65,
+        "StartStop": "Đại học Bách Khoa",
+        "EndStop": "Bến xe buýt Khu A - Đại học Quốc gia TP.HCM"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt ĐH Quốc gia TPHCM (mới) - Đại học Bách Khoa",
+        "RouteVarShortName": "Đại học Bách khoa",
+        "Outbound": false,
+        "Distance": 29667.999999999996,
+        "RunningTime": 65,
+        "StartStop": "Bến xe buýt Khu A - Đại học Quốc gia TP.HCM",
+        "EndStop": "Đại học Bách Khoa"
+      }
+    ]
+  },
+  {
+    "RouteId": 72,
+    "RouteNo": "52",
+    "RouteName": "Bến Thành - Đại học Quốc gia",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bến xe buýt ĐH Quốc gia TPHCM (mới)",
+        "RouteVarShortName": "Đại học Quốc gia",
+        "Outbound": true,
+        "Distance": 24175.0,
+        "RunningTime": 70,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe buýt Khu A - Đại học Quốc gia TP.HCM"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt ĐH Quốc gia TPHCM (mới) - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": false,
+        "Distance": 24776.999999999996,
+        "RunningTime": 70,
+        "StartStop": "Bến xe buýt Khu A - Đại học Quốc gia TP.HCM",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 73,
+    "RouteNo": "53",
+    "RouteName": "Lê Hồng Phong - Đại học Quốc gia",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Lê Hồng Phong -  Bến xe buýt ÐH Quốc Gia",
+        "RouteVarShortName": "Đại học Quốc gia",
+        "Outbound": true,
+        "Distance": 34076.99999999999,
+        "RunningTime": 75,
+        "StartStop": "Lê Hồng Phong",
+        "EndStop": "Bến xe buýt Khu B - Đại học Quốc gia TP.HCM"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến Xe Buýt ÐH Quốc Gia - Lê Hồng Phong",
+        "RouteVarShortName": "Lê Hồng Phong",
+        "Outbound": false,
+        "Distance": 33180.00000000001,
+        "RunningTime": 75,
+        "StartStop": "Bến xe buýt Khu B - Đại học Quốc gia TP.HCM",
+        "EndStop": "Lê Hồng Phong"
+      }
+    ]
+  },
+  {
+    "RouteId": 75,
+    "RouteNo": "55",
+    "RouteName": "Công viên phần mềm Quang Trung - Bến xe buýt Văn Thánh",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Công viên phần mềm Quang Trung - Bến xe Văn Thánh",
+        "RouteVarShortName": "Bến xe buýt Văn Thánh",
+        "Outbound": true,
+        "Distance": 19666.000000000007,
+        "RunningTime": 45,
+        "StartStop": "Bến xe buýt Công viên phần mềm Quang Trung",
+        "EndStop": "Bến xe Văn Thánh"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Văn Thánh - Bến xe buýt Công viên phần mềm Quang Trung",
+        "RouteVarShortName": "Công viên phần mềm Quang Trung",
+        "Outbound": false,
+        "Distance": 16017.000000000004,
+        "RunningTime": 45,
+        "StartStop": "Bến xe Văn Thánh",
+        "EndStop": "Bến xe buýt Công viên phần mềm Quang Trung"
+      }
+    ]
+  },
+  {
+    "RouteId": 76,
+    "RouteNo": "56",
+    "RouteName": "Bến xe buýt Chợ Lớn - Bến xe Miền Đông mới",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn - Bến xe Miền Đông mới",
+        "RouteVarShortName": "Bến xe Miền Đông mới",
+        "Outbound": true,
+        "Distance": 33086.0,
+        "RunningTime": 60,
+        "StartStop": "Bến xe buýt Chợ Lớn",
+        "EndStop": "Bến xe Miền Đông mới"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Miền Đông mới - Bến xe buýt Chợ Lớn",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 33028.00000000001,
+        "RunningTime": 60,
+        "StartStop": "Bến xe Miền Đông mới",
+        "EndStop": "Bến xe buýt Chợ Lớn"
+      }
+    ]
+  },
+  {
+    "RouteId": 77,
+    "RouteNo": "57",
+    "RouteName": "Chợ Phước Bình - Trường Trung học Phổ thông Hiệp Bình",
+    "Vars": [
+      {
+        "RouteVarId": 153,
+        "RouteVarName": "Lượt đi: Chợ Phước Bình - Trường THPT Hiệp Bình",
+        "RouteVarShortName": "Trường Trung học Phổ thông Hiệp Bình",
+        "Outbound": true,
+        "Distance": 13555.0,
+        "RunningTime": 42,
+        "StartStop": "Chợ Phước Bình",
+        "EndStop": "Trường Trung học Phổ thông Hiệp Bình"
+      },
+      {
+        "RouteVarId": 154,
+        "RouteVarName": "Lượt về: Trường THPT Hiệp Bình - Chợ Phước Bình",
+        "RouteVarShortName": "Chợ Phước Bình",
+        "Outbound": false,
+        "Distance": 13461.999999999998,
+        "RunningTime": 42,
+        "StartStop": "Trường Trung học Phổ thông Hiệp Bình",
+        "EndStop": "Chợ Phước Bình"
+      }
+    ]
+  },
+  {
+    "RouteId": 78,
+    "RouteNo": "58",
+    "RouteName": "Bến xe Ngã tư Ga - Khu công nghiệp Đông Nam",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Ngã tư Ga - KCN Đông Nam",
+        "RouteVarShortName": "Khu công nghiệp Đông Nam",
+        "Outbound": true,
+        "Distance": 23239.0,
+        "RunningTime": 60,
+        "StartStop": "Bến xe Ngã tư Ga",
+        "EndStop": "Khu công nghiệp Đông Nam"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: KCN Đông Nam - Bến xe Ngã tư Ga",
+        "RouteVarShortName": "Bến xe Ngã tư Ga",
+        "Outbound": false,
+        "Distance": 21057.999999999996,
+        "RunningTime": 60,
+        "StartStop": "Khu công nghiệp Đông Nam",
+        "EndStop": "Bến xe Ngã tư Ga"
+      }
+    ]
+  },
+  {
+    "RouteId": 79,
+    "RouteNo": "59",
+    "RouteName": "Bến xe buýt Quận 8 - Bến xe Ngã tư Ga",
+    "Vars": [
+      {
+        "RouteVarId": 157,
+        "RouteVarName": "Lượt đi: Bến xe buýt Quận 8 - Bến xe Ngã tư Ga",
+        "RouteVarShortName": "Bến xe Ngã tư Ga",
+        "Outbound": true,
+        "Distance": 23680.0,
+        "RunningTime": 87,
+        "StartStop": "Bến xe buýt Quận 8",
+        "EndStop": "Bến xe Ngã tư Ga"
+      },
+      {
+        "RouteVarId": 158,
+        "RouteVarName": "Lượt về: Bến xe Ngã tư Ga - Bến xe buýt Quận 8",
+        "RouteVarShortName": "Bến xe buýt Quận 8",
+        "Outbound": false,
+        "Distance": 24567.000000000007,
+        "RunningTime": 87,
+        "StartStop": "Bến xe Ngã tư Ga",
+        "EndStop": "Bến xe buýt Quận 8"
+      }
+    ]
+  },
+  {
+    "RouteId": 81,
+    "RouteNo": "60-1",
+    "RouteName": "Bến xe Miền Tây - Bến xe Biên Hòa",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Miền Tây - Bến xe Biên Hòa",
+        "RouteVarShortName": "Bến xe Biên Hòa",
+        "Outbound": true,
+        "Distance": 63499.0,
+        "RunningTime": 130,
+        "StartStop": "Bến xe Miền Tây",
+        "EndStop": "Bến xe Biên Hòa"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Biên Hòa - Bến xe Miền Tây",
+        "RouteVarShortName": "Bến xe Miền Tây",
+        "Outbound": false,
+        "Distance": 61563.0,
+        "RunningTime": 130,
+        "StartStop": "Bến xe Biên Hòa",
+        "EndStop": "Bến xe Miền Tây"
+      }
+    ]
+  },
+  {
+    "RouteId": 422,
+    "RouteNo": "60-15",
+    "RouteName": "Thủ Dầu Một - Đồng Xoài",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Bến xe Bình Dương - KCN Tân Thành",
+        "RouteVarShortName": "Đồng Xoài",
+        "Outbound": true,
+        "Distance": 88253.00000000001,
+        "RunningTime": 150,
+        "StartStop": "Bến xe Bình Dương",
+        "EndStop": "KCN Tân Thành"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "KCN Tân Thành - Bến xe Bình Dương",
+        "RouteVarShortName": "Thủ Dầu Một",
+        "Outbound": false,
+        "Distance": 88138.00000000003,
+        "RunningTime": 150,
+        "StartStop": "KCN Tân Thành",
+        "EndStop": "Bến xe Bình Dương"
+      }
+    ]
+  },
+  {
+    "RouteId": 423,
+    "RouteNo": "60-18",
+    "RouteName": "Khu du lịch Đại Nam - Khu du lịch sinh thái Vườn Xoài",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Khu Du lịch Đại Nam - Khu du lịch sinh thái Vườn Xoài",
+        "RouteVarShortName": "Khu du lịch sinh thái Vườn Xoài",
+        "Outbound": true,
+        "Distance": 55363.00000000001,
+        "RunningTime": 120,
+        "StartStop": "Khu Du lịch Đại Nam",
+        "EndStop": "Khu du lịch sinh thái Vườn Xoài"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Khu du lịch sinh thái Vườn Xoài - Khu Du lịch Đại Nam",
+        "RouteVarShortName": "Khu du lịch Đại Nam",
+        "Outbound": false,
+        "Distance": 54504.0,
+        "RunningTime": 120,
+        "StartStop": "Khu du lịch sinh thái Vườn Xoài",
+        "EndStop": "Khu Du lịch Đại Nam"
+      }
+    ]
+  },
+  {
+    "RouteId": 215,
+    "RouteNo": "60-2",
+    "RouteName": "Đại học Nông Lâm - Bến xe Phú Túc",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Đại học Nông Lâm - Bến xe Phú Túc",
+        "RouteVarShortName": "Bến xe Phú Túc",
+        "Outbound": true,
+        "Distance": 70474.0,
+        "RunningTime": 124,
+        "StartStop": "BẾN XE BUÝT ĐẠI HỌC NÔNG LÂM",
+        "EndStop": "Bến xe Phú Túc"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Phú Túc - Đại học Nông Lâm",
+        "RouteVarShortName": "Đại học Nông Lâm",
+        "Outbound": false,
+        "Distance": 69729.99999999999,
+        "RunningTime": 124,
+        "StartStop": "Bến xe Phú Túc",
+        "EndStop": "BẾN XE BUÝT ĐẠI HỌC NÔNG LÂM"
+      }
+    ]
+  },
+  {
+    "RouteId": 82,
+    "RouteNo": "60-3",
+    "RouteName": "Bến xe Miền Đông (cũ) - Khu Công nghiệp Nhơn Trạch",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Miền Đông - Bến xe KCN Nhơn Trạch",
+        "RouteVarShortName": "Khu Công nghiệp Nhơn Trạch",
+        "Outbound": true,
+        "Distance": 56278.0,
+        "RunningTime": 110,
+        "StartStop": "Bến xe Miền Đông",
+        "EndStop": "Bến xe KCN Nhơn Trạch"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe KCN Nhơn Trạch - Bến xe Miền Đông",
+        "RouteVarShortName": "Bến xe Miền Đông (cũ)",
+        "Outbound": false,
+        "Distance": 55564.0,
+        "RunningTime": 110,
+        "StartStop": "Bến xe KCN Nhơn Trạch",
+        "EndStop": "Bến xe Miền Đông"
+      }
+    ]
+  },
+  {
+    "RouteId": 381,
+    "RouteNo": "60-5",
+    "RouteName": "Bến xe buýt Đại học Quốc Gia – Bến xe Biên Hòa",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến Xe Buýt ÐH Quốc Gia Khu A - Bến xe Biên Hòa",
+        "RouteVarShortName": "Lượt đi: Bến Xe Buýt ÐH Quốc Gia Khu A - Bến xe Biên Hòa",
+        "Outbound": true,
+        "Distance": 16365.0,
+        "RunningTime": 40,
+        "StartStop": "Bến xe buýt Khu B - Đại học Quốc gia TP.HCM",
+        "EndStop": "Bến xe Biên Hòa"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Biên Hòa - Bến Xe Buýt ÐH Quốc Gia",
+        "RouteVarShortName": "Lượt về: Bến xe Biên Hòa - Bến Xe Buýt ÐH Quốc Gia",
+        "Outbound": false,
+        "Distance": 16472.0,
+        "RunningTime": 40,
+        "StartStop": "Bến xe Biên Hòa",
+        "EndStop": "Bến xe buýt Khu B - Đại học Quốc gia TP.HCM"
+      }
+    ]
+  },
+  {
+    "RouteId": 382,
+    "RouteNo": "60-7",
+    "RouteName": "Bến xe Miền Đông mới - Bến xe Biên Hòa",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Miền Đông mới - Bến xe Biên Hòa",
+        "RouteVarShortName": "Bến xe Biên Hòa",
+        "Outbound": true,
+        "Distance": 21838.0,
+        "RunningTime": 50,
+        "StartStop": "Bến xe Miền Đông mới",
+        "EndStop": "Bến xe Biên Hòa"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Biên Hòa - Bến xe Miền Đông mới",
+        "RouteVarShortName": "Bến xe Miền Đông mới",
+        "Outbound": false,
+        "Distance": 26299.0,
+        "RunningTime": 50,
+        "StartStop": "Bến xe Biên Hòa",
+        "EndStop": "Bến xe Miền Đông mới"
+      }
+    ]
+  },
+  {
+    "RouteId": 84,
+    "RouteNo": "61",
+    "RouteName": "Bến xe buýt Chợ Lớn - Bến xe buýt Lê Minh Xuân",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn - B - Bến xe buýt Lê Minh Xuân",
+        "RouteVarShortName": "Bến xe buýt Lê Minh Xuân",
+        "Outbound": true,
+        "Distance": 19800.0,
+        "RunningTime": 55,
+        "StartStop": "Bến xe buýt Chợ Lớn - B",
+        "EndStop": "Bến xe buýt Lê Minh Xuân"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt Lê Minh Xuân - Bến xe buýt Chợ Lớn - B",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 19760.99999999999,
+        "RunningTime": 55,
+        "StartStop": "Bến xe buýt Lê Minh Xuân",
+        "EndStop": "Bến xe buýt Chợ Lớn - B"
+      }
+    ]
+  },
+  {
+    "RouteId": 407,
+    "RouteNo": "61-2",
+    "RouteName": "Thủ Dầu Một - Mỹ Phước",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Bến xe Bình Dương - Ngã ba Công an Bến Cát",
+        "RouteVarShortName": "Mỹ Phước",
+        "Outbound": true,
+        "Distance": 35330.0,
+        "RunningTime": 80,
+        "StartStop": "Bến xe Bình Dương",
+        "EndStop": "Ngã ba Công an Bến Cát"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Ngã ba Công an Bến Cát - Bến xe Bình Dương",
+        "RouteVarShortName": "Thủ Dầu Một",
+        "Outbound": false,
+        "Distance": 35197.99999999999,
+        "RunningTime": 80,
+        "StartStop": "Ngã ba Công an Bến Cát",
+        "EndStop": "Bến xe Bình Dương"
+      }
+    ]
+  },
+  {
+    "RouteId": 86,
+    "RouteNo": "61-3",
+    "RouteName": "Bến xe An Sương - Thủ Dầu Một",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe An Sương - Bến xe Thủ Dầu Một",
+        "RouteVarShortName": "Thủ Dầu Một",
+        "Outbound": true,
+        "Distance": 31380.0,
+        "RunningTime": 75,
+        "StartStop": "Bến xe An Sương",
+        "EndStop": "Bến xe Thủ Dầu Một"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Thủ Dầu Một - Bến xe An Sương",
+        "RouteVarShortName": "Bến xe An Sương",
+        "Outbound": false,
+        "Distance": 31767.999999999996,
+        "RunningTime": 75,
+        "StartStop": "Bến xe Thủ Dầu Một",
+        "EndStop": "Bến xe An Sương"
+      }
+    ]
+  },
+  {
+    "RouteId": 409,
+    "RouteNo": "61-37",
+    "RouteName": "Becamex Tower - Huỳnh Văn Lũy - Văn phòng công ty xe buýt Becamex Tokyu",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Tòa nhà Becamex Tower - Văn phòng Công ty xe buýt Becamex",
+        "RouteVarShortName": "Văn phòng công ty xe buýt Becamex Tokyu",
+        "Outbound": true,
+        "Distance": 18277.999999999996,
+        "RunningTime": 0,
+        "StartStop": "Tòa nhà Becamex Tower",
+        "EndStop": "Văn phòng Công ty xe buýt Becamex"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Văn phòng Công ty xe buýt Becamex - Tòa nhà Becamex Tower",
+        "RouteVarShortName": "Becamex Tower",
+        "Outbound": false,
+        "Distance": 18106.00000000001,
+        "RunningTime": 48,
+        "StartStop": "Văn phòng Công ty xe buýt Becamex",
+        "EndStop": "Tòa nhà Becamex Tower"
+      }
+    ]
+  },
+  {
+    "RouteId": 410,
+    "RouteNo": "61-38",
+    "RouteName": "Becamex Tower - Huỳnh Văn Lũy - Trường Ngô Thời Nhiệm",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Tòa nhà Becamex Tower - Trường Ngô Thời Nhiệm",
+        "RouteVarShortName": "Trường Ngô Thời Nhiệm",
+        "Outbound": true,
+        "Distance": 16590.0,
+        "RunningTime": 46,
+        "StartStop": "Tòa nhà Becamex Tower",
+        "EndStop": "Trường Ngô Thời Nhiệm"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Trường Ngô Thời Nhiệm - Tòa nhà Becamex Tower",
+        "RouteVarShortName": "Becamex Tower",
+        "Outbound": false,
+        "Distance": 16178.0,
+        "RunningTime": 46,
+        "StartStop": "Trường Ngô Thời Nhiệm",
+        "EndStop": "Tòa nhà Becamex Tower"
+      }
+    ]
+  },
+  {
+    "RouteId": 411,
+    "RouteNo": "61-39",
+    "RouteName": "Becamex Tower - Khu công nghiệp VSIP 2 - Nhà ở An sinh xã hội Hòa Lợi",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Tòa nhà Becamex Tower - Nhà ở An Sinh xã hội Hòa Lợi",
+        "RouteVarShortName": "Nhà ở An sinh xã hội Hòa Lợi",
+        "Outbound": true,
+        "Distance": 25227.0,
+        "RunningTime": 70,
+        "StartStop": "Tòa nhà Becamex Tower",
+        "EndStop": "Nhà ở An Sinh xã hội Hòa Lợi"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Nhà ở An Sinh xã hội Hòa Lợi - Tòa nhà Becamex Tower",
+        "RouteVarShortName": "Becamex Tower",
+        "Outbound": false,
+        "Distance": 26144.000000000004,
+        "RunningTime": 70,
+        "StartStop": "Nhà ở An Sinh xã hội Hòa Lợi",
+        "EndStop": "Tòa nhà Becamex Tower"
+      }
+    ]
+  },
+  {
+    "RouteId": 419,
+    "RouteNo": "61-4",
+    "RouteName": "Thủ Dầu Một - Thanh Tuyền - Dầu Tiếng",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Bến xe Bình Dương - Bến xe Dầu Tiếng",
+        "RouteVarShortName": "Dầu Tiếng",
+        "Outbound": true,
+        "Distance": 56534.999999999985,
+        "RunningTime": 100,
+        "StartStop": "Bến xe Bình Dương",
+        "EndStop": "Bến xe Dầu Tiếng"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Bến xe Dầu Tiếng - Bến xe Bình Dương",
+        "RouteVarShortName": "Thủ Dầu Một",
+        "Outbound": false,
+        "Distance": 56751.0,
+        "RunningTime": 100,
+        "StartStop": "Bến xe Dầu Tiếng",
+        "EndStop": "Bến xe Bình Dương"
+      }
+    ]
+  },
+  {
+    "RouteId": 412,
+    "RouteNo": "61-51",
+    "RouteName": "Becamex Tower - Thành phố mới Bình Dương - Nhà ở an sinh xã hội Định Hoà",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Tòa nhà Becamex Tower - NHÀ Ở AN SINH XÃ HỘI ĐỊNH HÒA",
+        "RouteVarShortName": "Nhà ở an sinh xã hội Định Hoà",
+        "Outbound": true,
+        "Distance": 20143.999999999993,
+        "RunningTime": 55,
+        "StartStop": "Tòa nhà Becamex Tower",
+        "EndStop": "NHÀ Ở AN SINH XÃ HỘI ĐỊNH HÒA"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "NHÀ Ở AN SINH XÃ HỘI ĐỊNH HÒA - Tòa nhà Becamex Tower",
+        "RouteVarShortName": "Becamex Tower",
+        "Outbound": false,
+        "Distance": 20793.0,
+        "RunningTime": 50,
+        "StartStop": "NHÀ Ở AN SINH XÃ HỘI ĐỊNH HÒA",
+        "EndStop": "Tòa nhà Becamex Tower"
+      }
+    ]
+  },
+  {
+    "RouteId": 413,
+    "RouteNo": "61-52",
+    "RouteName": "Becamex Tower - Hikari - Văn phòng công ty xe buýt Becamex Tokyu",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Tòa nhà Becamex Tower - Văn phòng Công ty xe buýt Becamex",
+        "RouteVarShortName": "Văn phòng công ty xe buýt Becamex Tokyu",
+        "Outbound": true,
+        "Distance": 19010.99999999999,
+        "RunningTime": 48,
+        "StartStop": "Tòa nhà Becamex Tower",
+        "EndStop": "Văn phòng Công ty xe buýt Becamex"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Văn phòng Công ty xe buýt Becamex - Tòa nhà Becamex Tower",
+        "RouteVarShortName": "Becamex Tower",
+        "Outbound": false,
+        "Distance": 18783.0,
+        "RunningTime": 48,
+        "StartStop": "Văn phòng Công ty xe buýt Becamex",
+        "EndStop": "Tòa nhà Becamex Tower"
+      }
+    ]
+  },
+  {
+    "RouteId": 414,
+    "RouteNo": "61-53",
+    "RouteName": "Becamex Tower - Trường Ngô Thời Nhiệm",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Tòa nhà Becamex Tower - Trường Ngô Thời Nhiệm",
+        "RouteVarShortName": "Trường Ngô Thời Nhiệm",
+        "Outbound": true,
+        "Distance": 16990.0,
+        "RunningTime": 40,
+        "StartStop": "Tòa nhà Becamex Tower",
+        "EndStop": "Trường Ngô Thời Nhiệm"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Trường Ngô Thời Nhiệm - Tòa nhà Becamex Tower",
+        "RouteVarShortName": "Becamex Tower",
+        "Outbound": false,
+        "Distance": 17094.0,
+        "RunningTime": 42,
+        "StartStop": "Trường Ngô Thời Nhiệm",
+        "EndStop": "Tòa nhà Becamex Tower"
+      }
+    ]
+  },
+  {
+    "RouteId": 415,
+    "RouteNo": "61-55",
+    "RouteName": "Becamex Tower - Đại học Quốc Tế Miền Đông",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Tòa nhà Becamex Tower - Đại học Quốc tế Miền Đông (Trạm 2)",
+        "RouteVarShortName": "Đại học Quốc Tế Miền Đông",
+        "Outbound": true,
+        "Distance": 16691.0,
+        "RunningTime": 37,
+        "StartStop": "Tòa nhà Becamex Tower",
+        "EndStop": "Đại học Quốc tế Miền Đông (Trạm 2)"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Đại học Quốc tế Miền Đông (Trạm 2) - Tòa nhà Becamex Tower",
+        "RouteVarShortName": "Becamex Tower",
+        "Outbound": false,
+        "Distance": 18663.0,
+        "RunningTime": 37,
+        "StartStop": "Đại học Quốc tế Miền Đông (Trạm 2)",
+        "EndStop": "Tòa nhà Becamex Tower"
+      }
+    ]
+  },
+  {
+    "RouteId": 416,
+    "RouteNo": "61-67",
+    "RouteName": "Hikari - Sora Gardens - Nhà ở an sinh xã hội Định Hòa",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Trạm trung chuyển Hikari - NHÀ Ở AN SINH XÃ HỘI ĐỊNH HÒA",
+        "RouteVarShortName": "Nhà ở an sinh xã hội Định Hòa",
+        "Outbound": true,
+        "Distance": 7153.0,
+        "RunningTime": 19,
+        "StartStop": "Trạm trung chuyển Hikari",
+        "EndStop": "NHÀ Ở AN SINH XÃ HỘI ĐỊNH HÒA"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "NHÀ Ở AN SINH XÃ HỘI ĐỊNH HÒA - Trạm trung chuyển Hikari",
+        "RouteVarShortName": "Hikari",
+        "Outbound": false,
+        "Distance": 7237.000000000002,
+        "RunningTime": 19,
+        "StartStop": "NHÀ Ở AN SINH XÃ HỘI ĐỊNH HÒA",
+        "EndStop": "Trạm trung chuyển Hikari"
+      }
+    ]
+  },
+  {
+    "RouteId": 417,
+    "RouteNo": "61-68",
+    "RouteName": "Hikari - Chợ Phú Chánh - Nhà ở an sinh xã hội Hòa Lợi",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Trạm trung chuyển Hikari - Nhà ở An Sinh xã hội Hòa Lợi",
+        "RouteVarShortName": "Nhà ở an sinh xã hội Hòa Lợi",
+        "Outbound": true,
+        "Distance": 11455.000000000002,
+        "RunningTime": 29,
+        "StartStop": "Trạm trung chuyển Hikari",
+        "EndStop": "Nhà ở An Sinh xã hội Hòa Lợi"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Nhà ở An Sinh xã hội Hòa Lợi - Trạm trung chuyển Hikari",
+        "RouteVarShortName": "Hikari",
+        "Outbound": false,
+        "Distance": 11496.000000000004,
+        "RunningTime": 29,
+        "StartStop": "Nhà ở An Sinh xã hội Hòa Lợi",
+        "EndStop": "Trạm trung chuyển Hikari"
+      }
+    ]
+  },
+  {
+    "RouteId": 418,
+    "RouteNo": "61-70",
+    "RouteName": "Thành phố mới - Thành phố Bến Cát",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Trạm trung chuyển Hikari - Bưu điện Thành phố Bến Cát",
+        "RouteVarShortName": "Thành phố Bến Cát",
+        "Outbound": true,
+        "Distance": 27004.999999999996,
+        "RunningTime": 65,
+        "StartStop": "Trạm trung chuyển Hikari",
+        "EndStop": "Bưu điện Thành phố Bến Cát"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Bưu điện Thành phố Bến Cát - Trạm trung chuyển Hikari",
+        "RouteVarShortName": "Thành phố mới",
+        "Outbound": false,
+        "Distance": 26688.000000000004,
+        "RunningTime": 65,
+        "StartStop": "Bưu điện Thành phố Bến Cát",
+        "EndStop": "Trạm trung chuyển Hikari"
+      }
+    ]
+  },
+  {
+    "RouteId": 420,
+    "RouteNo": "61-73",
+    "RouteName": "Thành phố mới - Thành phố Tân Uyên",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Thành phố mới - Thành phố Tân Uyên",
+        "RouteVarShortName": "Thành phố Tân Uyên",
+        "Outbound": true,
+        "Distance": 20721.999999999993,
+        "RunningTime": 180,
+        "StartStop": "Thành phố mới",
+        "EndStop": "Thành phố Tân Uyên"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Thành phố Tân Uyên - Thành phố mới",
+        "RouteVarShortName": "Thành phố mới",
+        "Outbound": false,
+        "Distance": 20830.999999999985,
+        "RunningTime": 180,
+        "StartStop": "Thành phố Tân Uyên",
+        "EndStop": "Thành phố mới"
+      }
+    ]
+  },
+  {
+    "RouteId": 348,
+    "RouteNo": "61-77",
+    "RouteName": "Thành phố mới - Thành phố Dĩ An - Bến xe Miền Đông mới",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Trạm trung chuyển Hikari - Bến xe Miền Đông mới",
+        "RouteVarShortName": "Bến xe Miền Đông mới",
+        "Outbound": true,
+        "Distance": 37291.99999999999,
+        "RunningTime": 90,
+        "StartStop": "Trạm trung chuyển Hikari",
+        "EndStop": "Bến xe Miền Đông mới"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Miền Đông mới - Trạm trung chuyển Hikari",
+        "RouteVarShortName": "Thành phố mới",
+        "Outbound": false,
+        "Distance": 37055.0,
+        "RunningTime": 90,
+        "StartStop": "Bến xe Miền Đông mới",
+        "EndStop": "Trạm trung chuyển Hikari"
+      }
+    ]
+  },
+  {
+    "RouteId": 90,
+    "RouteNo": "61-8",
+    "RouteName": "Thủ Dầu Một - Bến xe Miền Đông",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Thủ Dầu Một - Bến xe Miền Đông",
+        "RouteVarShortName": "Bến xe Miền Đông",
+        "Outbound": true,
+        "Distance": 23310.00000000001,
+        "RunningTime": 55,
+        "StartStop": "Bến xe Thủ Dầu Một",
+        "EndStop": "Bến xe Miền Đông"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Miền Đông - Bến xe Thủ Dầu Một",
+        "RouteVarShortName": "Thủ Dầu Một",
+        "Outbound": false,
+        "Distance": 24636.0,
+        "RunningTime": 55,
+        "StartStop": "Bến xe Miền Đông",
+        "EndStop": "Bến xe Thủ Dầu Một"
+      }
+    ]
+  },
+  {
+    "RouteId": 346,
+    "RouteNo": "61-9",
+    "RouteName": "Thủ Dầu Một - Suối Tiên - Bến xe Miền Đông Mới",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Bình Dương - Bến xe Miền Đông mới",
+        "RouteVarShortName": "Bến xe Miền Đông Mới",
+        "Outbound": true,
+        "Distance": 34632.00000000001,
+        "RunningTime": 90,
+        "StartStop": "Bến xe Bình Dương",
+        "EndStop": "Bến xe Miền Đông mới"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Miền Đông mới - Bến xe Bình Dương",
+        "RouteVarShortName": "Thủ Dầu Một",
+        "Outbound": false,
+        "Distance": 35424.00000000001,
+        "RunningTime": 80,
+        "StartStop": "Bến xe Miền Đông mới",
+        "EndStop": "Bến xe Bình Dương"
+      }
+    ]
+  },
+  {
+    "RouteId": 91,
+    "RouteNo": "62",
+    "RouteName": "Bến xe buýt Quận 8 - Thới An",
+    "Vars": [
+      {
+        "RouteVarId": 181,
+        "RouteVarName": "Lượt đi: Bến xe buýt Quận 8 - Bến xe buýt Thới An",
+        "RouteVarShortName": "Thới An",
+        "Outbound": true,
+        "Distance": 23119.99999999999,
+        "RunningTime": 85,
+        "StartStop": "Bến xe buýt Quận 8",
+        "EndStop": "Bến xe buýt Thới An"
+      },
+      {
+        "RouteVarId": 182,
+        "RouteVarName": "Lượt về: Bến xe buýt Thới An - Bến xe buýt Quận 8",
+        "RouteVarShortName": "Bến xe buýt Quận 8",
+        "Outbound": false,
+        "Distance": 25653.00000000002,
+        "RunningTime": 85,
+        "StartStop": "Bến xe buýt Thới An",
+        "EndStop": "Bến xe buýt Quận 8"
+      }
+    ]
+  },
+  {
+    "RouteId": 204,
+    "RouteNo": "62-1",
+    "RouteName": "Bến xe buýt Chợ Lớn  - Bến xe Tân Trụ",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn - Bến xe khách Tân Trụ",
+        "RouteVarShortName": "Bến xe Tân Trụ",
+        "Outbound": true,
+        "Distance": 43467.0,
+        "RunningTime": 75,
+        "StartStop": "Bến xe buýt Chợ Lớn",
+        "EndStop": "Bến xe khách Tân Trụ"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe khách Tân Trụ - Bến xe buýt Chợ Lớn",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 43700.0,
+        "RunningTime": 75,
+        "StartStop": "Bến xe khách Tân Trụ",
+        "EndStop": "Bến xe buýt Chợ Lớn"
+      }
+    ]
+  },
+  {
+    "RouteId": 92,
+    "RouteNo": "62-10",
+    "RouteName": "Bến xe buýt Chợ Lớn - Thanh Vĩnh Đông",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn - Bến xe Thanh Vĩnh Đông",
+        "RouteVarShortName": "Thanh Vĩnh Đông",
+        "Outbound": true,
+        "Distance": 69349.0,
+        "RunningTime": 140,
+        "StartStop": "Bến xe buýt Chợ Lớn",
+        "EndStop": "Bến xe Thanh Vĩnh Đông"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Thanh Vĩnh Đông - Bến xe buýt Chợ Lớn",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 67667.00000000001,
+        "RunningTime": 140,
+        "StartStop": "Bến xe Thanh Vĩnh Đông",
+        "EndStop": "Bến xe buýt Chợ Lớn"
+      }
+    ]
+  },
+  {
+    "RouteId": 93,
+    "RouteNo": "62-11",
+    "RouteName": "Bến xe buýt Quận 8 - Tân Tập",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Quận 8 -  Bến xe Tân Tập ",
+        "RouteVarShortName": "Tân Tập",
+        "Outbound": true,
+        "Distance": 34663.0,
+        "RunningTime": 90,
+        "StartStop": "Bến xe buýt Quận 8",
+        "EndStop": "Bến xe Tân Tập "
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Tân Tập -  Bến xe buýt Quận 8",
+        "RouteVarShortName": "Bến xe buýt Quận 8",
+        "Outbound": false,
+        "Distance": 34516.999999999985,
+        "RunningTime": 90,
+        "StartStop": "Bến xe Tân Tập ",
+        "EndStop": "Bến xe buýt Quận 8"
+      }
+    ]
+  },
+  {
+    "RouteId": 94,
+    "RouteNo": "62-2",
+    "RouteName": "Bến xe buýt Chợ Lớn - Ngã ba Tân Lân",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn (Bến B) - Bến xe Ngã ba Tân Lân",
+        "RouteVarShortName": "Ngã ba Tân Lân",
+        "Outbound": true,
+        "Distance": 32799.0,
+        "RunningTime": 80,
+        "StartStop": "Bến xe buýt Chợ Lớn - B",
+        "EndStop": "Bến xe Ngã 3 Tân Lân"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Ngã ba Tân Lân - Bến xe buýt Chợ Lớn (Bến B)",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 32677.0,
+        "RunningTime": 80,
+        "StartStop": "Bến xe Ngã 3 Tân Lân",
+        "EndStop": "Bến xe buýt Chợ Lớn - B"
+      }
+    ]
+  },
+  {
+    "RouteId": 97,
+    "RouteNo": "62-5",
+    "RouteName": "Bến xe An Sương - Bến xe Hậu Nghĩa",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe An Sương - Bến xe Hậu Nghĩa",
+        "RouteVarShortName": "Bến xe Hậu Nghĩa",
+        "Outbound": true,
+        "Distance": 31888.0,
+        "RunningTime": 70,
+        "StartStop": "Bến xe An Sương",
+        "EndStop": "Bến xe Hậu Nghĩa"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Hậu Nghĩa - Bến xe An Sương",
+        "RouteVarShortName": "Bến xe An Sương",
+        "Outbound": false,
+        "Distance": 31277.0,
+        "RunningTime": 70,
+        "StartStop": "Bến xe Hậu Nghĩa",
+        "EndStop": "Bến xe An Sương"
+      }
+    ]
+  },
+  {
+    "RouteId": 214,
+    "RouteNo": "62-6",
+    "RouteName": "Bến xe buýt Chợ Lớn - Bến xe Hậu Nghĩa",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn - Bến xe Hậu Nghĩa",
+        "RouteVarShortName": "Bến xe Hậu Nghĩa",
+        "Outbound": true,
+        "Distance": 36667.000000000015,
+        "RunningTime": 90,
+        "StartStop": "Bến xe Chợ Lớn",
+        "EndStop": "Bến xe Hậu Nghĩa"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Hậu Nghĩa - Bến xe buýt Chợ Lớn",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 37262.99999999999,
+        "RunningTime": 90,
+        "StartStop": "Bến xe Hậu Nghĩa",
+        "EndStop": "Bến xe Chợ Lớn"
+      }
+    ]
+  },
+  {
+    "RouteId": 98,
+    "RouteNo": "62-7",
+    "RouteName": "Bến xe buýt Chợ Lớn - Bến xe Đức Huệ",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn - Bến xe Đức Huệ",
+        "RouteVarShortName": "Bến xe Đức Huệ",
+        "Outbound": true,
+        "Distance": 50789.99999999999,
+        "RunningTime": 115,
+        "StartStop": "Bến xe buýt Chợ Lớn",
+        "EndStop": "Bến xe Đức Huệ"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Đức Huệ - Bến xe buýt Chợ Lớn",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 51019.0,
+        "RunningTime": 115,
+        "StartStop": "Bến xe Đức Huệ",
+        "EndStop": "Bến xe buýt Chợ Lớn"
+      }
+    ]
+  },
+  {
+    "RouteId": 99,
+    "RouteNo": "62-8",
+    "RouteName": "Bến xe buýt Chợ Lớn - Bến xe Tân An",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn - Bến xe Tân An",
+        "RouteVarShortName": "Bến xe Tân An",
+        "Outbound": true,
+        "Distance": 42823.999999999985,
+        "RunningTime": 80,
+        "StartStop": "Bến xe buýt Chợ Lớn",
+        "EndStop": "Bến xe Long An"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Tân An - Bến xe buýt Chợ Lớn",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 42687.000000000015,
+        "RunningTime": 80,
+        "StartStop": "Bến xe Long An",
+        "EndStop": "Bến xe buýt Chợ Lớn"
+      }
+    ]
+  },
+  {
+    "RouteId": 100,
+    "RouteNo": "62-9",
+    "RouteName": "Bến xe buýt Quận 8 - Thị xã Gò Công",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Quận 8 - Bến xe Gò Công",
+        "RouteVarShortName": "Thị xã Gò Công",
+        "Outbound": true,
+        "Distance": 50696.99999999999,
+        "RunningTime": 100,
+        "StartStop": "Bến xe buýt Quận 8",
+        "EndStop": "Bến xe Gò Công"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Gò Công - Bến xe buýt Quận 8",
+        "RouteVarShortName": "Bến xe buýt Quận 8",
+        "Outbound": false,
+        "Distance": 50589.99999999999,
+        "RunningTime": 100,
+        "StartStop": "Bến xe Gò Công",
+        "EndStop": "Bến xe buýt Quận 8"
+      }
+    ]
+  },
+  {
+    "RouteId": 380,
+    "RouteNo": "63-1",
+    "RouteName": "Bến xe buýt Tân Phú - Bến xe Tiền Giang",
+    "Vars": [
+      {
+        "RouteVarId": 3,
+        "RouteVarName": "Lượt đi: Bến xe buýt Tân Phú - Bến xe Tiền Giang",
+        "RouteVarShortName": "Bến xe Tiền Giang",
+        "Outbound": true,
+        "Distance": 84482.99999999997,
+        "RunningTime": 180,
+        "StartStop": "Bến xe buýt Tân Phú",
+        "EndStop": "Bến xe Tiền Giang"
+      },
+      {
+        "RouteVarId": 4,
+        "RouteVarName": "Lượt về: Bến xe Tiền Giang - Bến xe buýt Tân Phú",
+        "RouteVarShortName": "Bến xe buýt Tân Phú",
+        "Outbound": false,
+        "Distance": 85235.0,
+        "RunningTime": 180,
+        "StartStop": "Bến xe Tiền Giang",
+        "EndStop": "Bến xe buýt Tân Phú"
+      }
+    ]
+  },
+  {
+    "RouteId": 101,
+    "RouteNo": "64",
+    "RouteName": "Bến xe Miền Đông - Đầm Sen",
+    "Vars": [
+      {
+        "RouteVarId": 201,
+        "RouteVarName": "Lượt đi: Bến xe Miền Đông - Bến xe buýt Đầm Sen",
+        "RouteVarShortName": "Đầm Sen",
+        "Outbound": true,
+        "Distance": 17527.000000000004,
+        "RunningTime": 65,
+        "StartStop": "Bến xe Miền Đông",
+        "EndStop": "Bến xe buýt Đầm Sen"
+      },
+      {
+        "RouteVarId": 202,
+        "RouteVarName": "Lượt về: Bến xe buýt Đầm Sen - Bến xe Miền Đông",
+        "RouteVarShortName": "Bến xe Miền Đông",
+        "Outbound": false,
+        "Distance": 19757.000000000015,
+        "RunningTime": 65,
+        "StartStop": "Bến xe buýt Đầm Sen",
+        "EndStop": "Bến xe Miền Đông"
+      }
+    ]
+  },
+  {
+    "RouteId": 102,
+    "RouteNo": "65",
+    "RouteName": "Bến Thành - Cách Mạng Tháng Tám - Bến xe An Sương",
+    "Vars": [
+      {
+        "RouteVarId": 203,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bến xe An Sương",
+        "RouteVarShortName": "Bến xe An Sương",
+        "Outbound": true,
+        "Distance": 17731.000000000007,
+        "RunningTime": 70,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe An Sương"
+      },
+      {
+        "RouteVarId": 204,
+        "RouteVarName": "Lượt về: Bến xe An Sương - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": false,
+        "Distance": 13865.000000000002,
+        "RunningTime": 70,
+        "StartStop": "Bến xe An Sương",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 383,
+    "RouteNo": "67",
+    "RouteName": "Bến xe Miền Đông (cũ) - Bến xe Miền Đông (mới)",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Miền Đông cũ - Bến xe Miền Đông mới",
+        "RouteVarShortName": "Bến xe Miền Đông (mới)",
+        "Outbound": true,
+        "Distance": 19122.000000000007,
+        "RunningTime": 50,
+        "StartStop": "Bến xe Miền Đông",
+        "EndStop": "Bến xe Miền Đông mới"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Miền Đông mới - Bến xe Miền Đông cũ",
+        "RouteVarShortName": "Bến xe Miền Đông (cũ)",
+        "Outbound": false,
+        "Distance": 20621.999999999996,
+        "RunningTime": 50,
+        "StartStop": "Bến xe Miền Đông mới",
+        "EndStop": "Bến xe Miền Đông"
+      }
+    ]
+  },
+  {
+    "RouteId": 104,
+    "RouteNo": "68",
+    "RouteName": "Bến xe buýt Chợ Lớn - Đại học Tài Chính - Marketing",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn (Bến B) - Đại học tài chính Maketing",
+        "RouteVarShortName": "Marketing",
+        "Outbound": true,
+        "Distance": 20567.0,
+        "RunningTime": 65,
+        "StartStop": "Bến xe buýt Chợ Lớn - B",
+        "EndStop": "Đại học tài chính Maketing"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Đại học tài chính Maketing - Bến xe buýt Chợ Lớn (Bến B)",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 19729.0,
+        "RunningTime": 65,
+        "StartStop": "Đại học tài chính Maketing",
+        "EndStop": "Bến xe buýt Chợ Lớn - B"
+      }
+    ]
+  },
+  {
+    "RouteId": 105,
+    "RouteNo": "69",
+    "RouteName": "Bến xe buýt Sài Gòn - Khu dân cư Vĩnh Lộc",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Trường Trí Tuệ Việt",
+        "RouteVarShortName": "Khu dân cư Vĩnh Lộc",
+        "Outbound": true,
+        "Distance": 24520.0,
+        "RunningTime": 85,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Trường Trí Tuệ Việt"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Trường Trí Tuệ Việt - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến xe buýt Sài Gòn",
+        "Outbound": false,
+        "Distance": 24359.999999999996,
+        "RunningTime": 85,
+        "StartStop": "Trường Trí Tuệ Việt",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 106,
+    "RouteNo": "70",
+    "RouteName": "Tân Quy - Bến Súc",
+    "Vars": [
+      {
+        "RouteVarId": 211,
+        "RouteVarName": "Lượt đi: Bến xe buýt Tân Quy - Bến xe buýt Bến Súc",
+        "RouteVarShortName": "Bến Súc",
+        "Outbound": true,
+        "Distance": 25450.0,
+        "RunningTime": 60,
+        "StartStop": "Bến xe buýt Tân Quy",
+        "EndStop": "Bến xe buýt Bến Súc"
+      },
+      {
+        "RouteVarId": 212,
+        "RouteVarName": "Lượt về: Bến xe buýt Bến Súc - Bến xe buýt Tân Quy",
+        "RouteVarShortName": "Tân Quy",
+        "Outbound": false,
+        "Distance": 25508.999999999993,
+        "RunningTime": 60,
+        "StartStop": "Bến xe buýt Bến Súc",
+        "EndStop": "Bến xe buýt Tân Quy"
+      }
+    ]
+  },
+  {
+    "RouteId": 107,
+    "RouteNo": "70-1",
+    "RouteName": " Bến xe Củ Chi - Bến xe Tây Ninh",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Củ Chi - Bến xe Tây Ninh",
+        "RouteVarShortName": "Bến xe Tây Ninh",
+        "Outbound": true,
+        "Distance": 67112.0,
+        "RunningTime": 115,
+        "StartStop": "Bến xe Củ Chi",
+        "EndStop": "Bến xe Tây Ninh"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Tây Ninh - Bến xe Củ Chi",
+        "RouteVarShortName": " Bến xe Củ Chi",
+        "Outbound": false,
+        "Distance": 67851.0,
+        "RunningTime": 115,
+        "StartStop": "Bến xe Tây Ninh",
+        "EndStop": "Bến xe Củ Chi"
+      }
+    ]
+  },
+  {
+    "RouteId": 108,
+    "RouteNo": "70-2",
+    "RouteName": "Bến xe Củ Chi - Tòa Thánh - Khu du lịch Núi Bà Đen",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe Củ Chi - Khu du lịch Núi Bà Đen",
+        "RouteVarShortName": "Khu du lịch Núi Bà Đen",
+        "Outbound": true,
+        "Distance": 69713.0,
+        "RunningTime": 105,
+        "StartStop": "Bến xe Củ Chi",
+        "EndStop": "Khu du lịch Núi Bà Đen"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Khu du lịch Núi Bà Đen - Bến xe Củ Chi",
+        "RouteVarShortName": "Bến xe Củ Chi",
+        "Outbound": false,
+        "Distance": 70526.0,
+        "RunningTime": 105,
+        "StartStop": "Khu du lịch Núi Bà Đen",
+        "EndStop": "Bến xe Củ Chi"
+      }
+    ]
+  },
+  {
+    "RouteId": 111,
+    "RouteNo": "71",
+    "RouteName": "Bến xe An Sương - Phật Cô Đơn",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe An Sương - Phật Cô Đơn",
+        "RouteVarShortName": "Phật Cô Đơn",
+        "Outbound": true,
+        "Distance": 25090.000000000004,
+        "RunningTime": 65,
+        "StartStop": "Bến xe An Sương",
+        "EndStop": "Phật Cô Đơn"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Phật Cô Đơn - Bến xe An Sương",
+        "RouteVarShortName": "Bến xe An Sương",
+        "Outbound": false,
+        "Distance": 24931.0,
+        "RunningTime": 65,
+        "StartStop": "Phật Cô Đơn",
+        "EndStop": "Bến xe An Sương"
+      }
+    ]
+  },
+  {
+    "RouteId": 112,
+    "RouteNo": "72",
+    "RouteName": "Bến xe buýt Sài Gòn - Hiệp Phước",
+    "Vars": [
+      {
+        "RouteVarId": 223,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bến xe buýt Cầu Kênh Lộ",
+        "RouteVarShortName": "Hiệp Phước",
+        "Outbound": true,
+        "Distance": 22214.999999999996,
+        "RunningTime": 55,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Cầu Kênh Lộ"
+      },
+      {
+        "RouteVarId": 224,
+        "RouteVarName": "Lượt về: Bến xe buýt Cầu Kênh Lộ - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến xe buýt Sài Gòn",
+        "Outbound": false,
+        "Distance": 22466.999999999996,
+        "RunningTime": 55,
+        "StartStop": "Cầu Kênh Lộ",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 335,
+    "RouteNo": "72-1",
+    "RouteName": "Sân bay Tân Sơn Nhất – Đường cao tốc – Bến xe Vũng Tàu",
+    "Vars": [
+      {
+        "RouteVarId": 3,
+        "RouteVarName": "Lượt đi: Sân bay Tân Sơn Nhất - Bến xe Vũng Tàu",
+        "RouteVarShortName": "Lượt đi: Sân bay Tân Sơn Nhất - Bến xe Vũng Tàu",
+        "Outbound": true,
+        "Distance": 106965.0,
+        "RunningTime": 150,
+        "StartStop": "Sân bay Tân Sơn Nhất",
+        "EndStop": "BẾN XE VŨNG TÀU"
+      },
+      {
+        "RouteVarId": 4,
+        "RouteVarName": "Lượt về: Bến xe Vũng Tàu - Sân bay Tân Sơn Nhất",
+        "RouteVarShortName": "Lượt về: Bến xe Vũng Tàu - Sân bay Tân Sơn Nhất",
+        "Outbound": false,
+        "Distance": 108390.0,
+        "RunningTime": 150,
+        "StartStop": "BẾN XE VŨNG TÀU",
+        "EndStop": "Sân bay Tân Sơn Nhất"
+      }
+    ]
+  },
+  {
+    "RouteId": 403,
+    "RouteNo": "72-2B",
+    "RouteName": "Thành phố Vũng Tàu - Sân bay Tân Sơn Nhất",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Cảng tàu khách Vũng Tàu - Sân bay Tân Sơn Nhất",
+        "RouteVarShortName": "Sân bay Tân Sơn Nhất",
+        "Outbound": true,
+        "Distance": 110185.0,
+        "RunningTime": 190,
+        "StartStop": "Cảng tàu khách Vũng Tàu",
+        "EndStop": "Sân bay Tân Sơn Nhất"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Sân bay Tân Sơn Nhất - Cảng tàu khách Vũng Tàu",
+        "RouteVarShortName": "Thành phố Vũng Tàu",
+        "Outbound": false,
+        "Distance": 110047.0,
+        "RunningTime": 190,
+        "StartStop": "Sân bay Tân Sơn Nhất",
+        "EndStop": "Cảng tàu khách Vũng Tàu"
+      }
+    ]
+  },
+  {
+    "RouteId": 427,
+    "RouteNo": "72-2C",
+    "RouteName": "Vũng Tàu - Công viên Lê Văn Tám - Sân bay Tân Sơn Nhất ",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Cảng tàu khách Vũng Tàu - Sân bay Tân Sơn Nhất",
+        "RouteVarShortName": "Sân bay Tân Sơn Nhất ",
+        "Outbound": true,
+        "Distance": 137358.0,
+        "RunningTime": 225,
+        "StartStop": "Cảng tàu khách Vũng Tàu",
+        "EndStop": "Sân bay Tân Sơn Nhất"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Sân bay Tân Sơn Nhất - Cảng tàu khách Vũng Tàu",
+        "RouteVarShortName": "Vũng Tàu",
+        "Outbound": false,
+        "Distance": 137017.0,
+        "RunningTime": 225,
+        "StartStop": "Sân bay Tân Sơn Nhất",
+        "EndStop": "Cảng tàu khách Vũng Tàu"
+      }
+    ]
+  },
+  {
+    "RouteId": 113,
+    "RouteNo": "73",
+    "RouteName": "Chợ Bình Chánh - Bến xe buýt Lê Minh Xuân",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Chợ Bình Chánh - Bến xe buýt Lê Minh Xuân",
+        "RouteVarShortName": "Bến xe buýt Lê Minh Xuân",
+        "Outbound": true,
+        "Distance": 26436.0,
+        "RunningTime": 70,
+        "StartStop": "Chợ Bình Chánh",
+        "EndStop": "Bến xe buýt Lê Minh Xuân"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt Lê Minh Xuân - Chợ Bình Chánh",
+        "RouteVarShortName": "Chợ Bình Chánh",
+        "Outbound": false,
+        "Distance": 25444.999999999996,
+        "RunningTime": 70,
+        "StartStop": "Bến xe buýt Lê Minh Xuân",
+        "EndStop": "Chợ Bình Chánh"
+      }
+    ]
+  },
+  {
+    "RouteId": 114,
+    "RouteNo": "74",
+    "RouteName": "Bến xe An Sương - Bến xe Củ Chi",
+    "Vars": [
+      {
+        "RouteVarId": 227,
+        "RouteVarName": "Lượt đi: Bến xe An Sương - Bến xe Củ Chi",
+        "RouteVarShortName": "Bến xe Củ Chi",
+        "Outbound": true,
+        "Distance": 22364.000000000015,
+        "RunningTime": 45,
+        "StartStop": "Bến xe An Sương",
+        "EndStop": "Bến xe Củ Chi"
+      },
+      {
+        "RouteVarId": 228,
+        "RouteVarName": "Lượt về: Bến xe Củ Chi - Bến xe An Sương",
+        "RouteVarShortName": "Bến xe An Sương",
+        "Outbound": false,
+        "Distance": 22356.0,
+        "RunningTime": 45,
+        "StartStop": "Bến xe Củ Chi",
+        "EndStop": "Bến xe An Sương"
+      }
+    ]
+  },
+  {
+    "RouteId": 115,
+    "RouteNo": "75",
+    "RouteName": "Sài Gòn - Cần Giờ",
+    "Vars": [
+      {
+        "RouteVarId": 231,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bến xe buýt Cần Giờ",
+        "RouteVarShortName": "Cần Giờ",
+        "Outbound": true,
+        "Distance": 63186.0,
+        "RunningTime": 140,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe buýt Cần Giờ"
+      },
+      {
+        "RouteVarId": 232,
+        "RouteVarName": "Lượt về: Bến xe buýt Cần Giờ - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Sài Gòn",
+        "Outbound": false,
+        "Distance": 63671.00000000001,
+        "RunningTime": 140,
+        "StartStop": "Bến xe buýt Cần Giờ",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 116,
+    "RouteNo": "76",
+    "RouteName": "Long Phước - Bến xe Miền Đông mới",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Long Phước - Bến xe Miền Đông mới",
+        "RouteVarShortName": "Bến xe Miền Đông mới",
+        "Outbound": true,
+        "Distance": 23336.000000000007,
+        "RunningTime": 60,
+        "StartStop": "Hẻm 813 Long Phước",
+        "EndStop": "Bến xe Miền Đông mới"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Miền Đông mới - Long Phước",
+        "RouteVarShortName": "Long Phước",
+        "Outbound": false,
+        "Distance": 24020.000000000004,
+        "RunningTime": 60,
+        "StartStop": "Bến xe Miền Đông mới",
+        "EndStop": "Hẻm 813 Long Phước"
+      }
+    ]
+  },
+  {
+    "RouteId": 117,
+    "RouteNo": "77",
+    "RouteName": "Đồng Hòa - Cần Thạnh",
+    "Vars": [
+      {
+        "RouteVarId": 235,
+        "RouteVarName": "Lượt đi: Đồng Hòa - Bến xe buýt Cần Giờ",
+        "RouteVarShortName": "Cần Thạnh",
+        "Outbound": true,
+        "Distance": 17352.999999999993,
+        "RunningTime": 35,
+        "StartStop": "Đình Đồng Hòa",
+        "EndStop": "Bến xe buýt Cần Giờ"
+      },
+      {
+        "RouteVarId": 236,
+        "RouteVarName": "Lượt về: Bến xe buýt Cần Giờ - Đồng Hòa",
+        "RouteVarShortName": "Đồng Hòa",
+        "Outbound": false,
+        "Distance": 14893.0,
+        "RunningTime": 35,
+        "StartStop": "Bến xe buýt Cần Giờ",
+        "EndStop": "Đình Đồng Hòa"
+      }
+    ]
+  },
+  {
+    "RouteId": 118,
+    "RouteNo": "78",
+    "RouteName": "Bến xe buýt Thới An - Ngã ba Giồng - Cầu Lớn",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Thới An - Bến xe buýt Cầu Lớn",
+        "RouteVarShortName": "Cầu Lớn",
+        "Outbound": true,
+        "Distance": 19365.999999999993,
+        "RunningTime": 60,
+        "StartStop": "Bến xe buýt Thới An",
+        "EndStop": "Bến xe buýt Cầu Lớn"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt Cầu Lớn - Bến xe buýt Thới An",
+        "RouteVarShortName": "Bến xe buýt Thới An",
+        "Outbound": false,
+        "Distance": 19280.999999999993,
+        "RunningTime": 60,
+        "StartStop": "Bến xe buýt Cầu Lớn",
+        "EndStop": "Bến xe buýt Thới An"
+      }
+    ]
+  },
+  {
+    "RouteId": 119,
+    "RouteNo": "79",
+    "RouteName": "Bến xe Củ Chi - Đền Bến Dược",
+    "Vars": [
+      {
+        "RouteVarId": 237,
+        "RouteVarName": "Lượt đi: Bến xe Củ Chi - Bến Dược",
+        "RouteVarShortName": "Đền Bến Dược",
+        "Outbound": true,
+        "Distance": 25417.0,
+        "RunningTime": 45,
+        "StartStop": "Bến xe Củ Chi",
+        "EndStop": "Bến Dược"
+      },
+      {
+        "RouteVarId": 238,
+        "RouteVarName": "Lượt về: Bến Dược - Bến xe Củ Chi",
+        "RouteVarShortName": "Bến xe Củ Chi",
+        "Outbound": false,
+        "Distance": 25956.0,
+        "RunningTime": 45,
+        "StartStop": "Bến Dược",
+        "EndStop": "Bến xe Củ Chi"
+      }
+    ]
+  },
+  {
+    "RouteId": 121,
+    "RouteNo": "81",
+    "RouteName": "Bến xe buýt Chợ Lớn - Lê Minh Xuân",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn (Bến A) - Lê Minh Xuân",
+        "RouteVarShortName": "Lê Minh Xuân",
+        "Outbound": true,
+        "Distance": 24184.999999999985,
+        "RunningTime": 65,
+        "StartStop": "Bến xe buýt Chợ Lớn",
+        "EndStop": "Lê Minh Xuân - Xã Bình Lợi "
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Lê Minh Xuân - Bến xe buýt Chợ Lớn (Bến A)",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 23742.999999999993,
+        "RunningTime": 65,
+        "StartStop": "Lê Minh Xuân - Xã Bình Lợi ",
+        "EndStop": "Bến xe buýt Chợ Lớn"
+      }
+    ]
+  },
+  {
+    "RouteId": 124,
+    "RouteNo": "84",
+    "RouteName": "Bến xe buýt Chợ Lớn - Tân Túc",
+    "Vars": [
+      {
+        "RouteVarId": 247,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn (Bến B) - Tân Túc",
+        "RouteVarShortName": "Tân Túc",
+        "Outbound": true,
+        "Distance": 17179.999999999996,
+        "RunningTime": 47,
+        "StartStop": "Bến xe buýt Chợ Lớn - B",
+        "EndStop": "Tân Túc"
+      },
+      {
+        "RouteVarId": 248,
+        "RouteVarName": "Lượt về: Tân Túc - Bến xe buýt Chợ Lớn (Bến B)",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 17328.99999999998,
+        "RunningTime": 47,
+        "StartStop": "Tân Túc",
+        "EndStop": "Bến xe buýt Chợ Lớn - B"
+      }
+    ]
+  },
+  {
+    "RouteId": 125,
+    "RouteNo": "85",
+    "RouteName": "Bến xe An Sương - Khu công nghiệp Nhị Xuân",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe An Sương - Khu Công nghiệp Nhị Xuân",
+        "RouteVarShortName": "Khu công nghiệp Nhị Xuân",
+        "Outbound": true,
+        "Distance": 14160.0,
+        "RunningTime": 35,
+        "StartStop": "Bến xe An Sương",
+        "EndStop": "Bến xe buýt Cầu Lớn"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Khu Công nghiệp Nhị Xuân - Bến xe An Sương",
+        "RouteVarShortName": "Bến xe An Sương",
+        "Outbound": false,
+        "Distance": 13585.0,
+        "RunningTime": 35,
+        "StartStop": "Bến xe buýt Cầu Lớn",
+        "EndStop": "Bến xe An Sương"
+      }
+    ]
+  },
+  {
+    "RouteId": 126,
+    "RouteNo": "86",
+    "RouteName": "Bến Thành - Đại học Tôn Đức Thắng - Nhơn Đức",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Đại học Tài Nguyên Môi trường",
+        "RouteVarShortName": "Nhơn Đức",
+        "Outbound": true,
+        "Distance": 15895.0,
+        "RunningTime": 62,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Đại học Tài Nguyên Môi trường"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Đại học Tài Nguyên Môi trường - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": false,
+        "Distance": 16401.0,
+        "RunningTime": 62,
+        "StartStop": "Đại học Tài Nguyên Môi trường",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 127,
+    "RouteNo": "87",
+    "RouteName": "Bến xe Củ Chi - An Nhơn Tây",
+    "Vars": [
+      {
+        "RouteVarId": 253,
+        "RouteVarName": "Lượt đi: Bến xe Củ Chi - Bến xe buýt An Nhơn Tây",
+        "RouteVarShortName": "An Nhơn Tây",
+        "Outbound": true,
+        "Distance": 20218.0,
+        "RunningTime": 40,
+        "StartStop": "Bến xe Củ Chi",
+        "EndStop": "Bến xe buýt An Nhơn Tây"
+      },
+      {
+        "RouteVarId": 254,
+        "RouteVarName": "Lượt về: Bến xe buýt An Nhơn Tây - Bến xe Củ Chi",
+        "RouteVarShortName": "Bến xe Củ Chi",
+        "Outbound": false,
+        "Distance": 21400.0,
+        "RunningTime": 40,
+        "StartStop": "Bến xe buýt An Nhơn Tây",
+        "EndStop": "Bến xe Củ Chi"
+      }
+    ]
+  },
+  {
+    "RouteId": 128,
+    "RouteNo": "88",
+    "RouteName": "Bến Thành - Chợ Long Phước",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Trường Đại học luật TP.HCM - Cơ sở Long Phước",
+        "RouteVarShortName": "Chợ Long Phước",
+        "Outbound": true,
+        "Distance": 27079.999999999985,
+        "RunningTime": 75,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Trường Đại học luật TP.HCM - Cơ sở Long Phước"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Trường Đại học luật TP.HCM - Cơ sở Long Phước - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": false,
+        "Distance": 29781.999999999985,
+        "RunningTime": 75,
+        "StartStop": "Trường Đại học luật TP.HCM - Cơ sở Long Phước",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 129,
+    "RouteNo": "89",
+    "RouteName": "Đại học Nông Lâm - Bến tàu Hiệp Bình Chánh",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Đại học Nông Lâm - Bến tàu thủy Hiệp Bình Chánh",
+        "RouteVarShortName": "Bến tàu Hiệp Bình Chánh",
+        "Outbound": true,
+        "Distance": 16784.0,
+        "RunningTime": 55,
+        "StartStop": "BẾN XE BUÝT ĐẠI HỌC NÔNG LÂM",
+        "EndStop": "Bến tàu thủy Hiệp Bình Chánh"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến tàu thủy Hiệp Bình Chánh - Đại học Nông Lâm",
+        "RouteVarShortName": "Đại học Nông Lâm",
+        "Outbound": false,
+        "Distance": 17154.0,
+        "RunningTime": 55,
+        "StartStop": "Bến tàu thủy Hiệp Bình Chánh",
+        "EndStop": "BẾN XE BUÝT ĐẠI HỌC NÔNG LÂM"
+      }
+    ]
+  },
+  {
+    "RouteId": 130,
+    "RouteNo": "90",
+    "RouteName": "Phà Bình Khánh - Cần Thạnh",
+    "Vars": [
+      {
+        "RouteVarId": 261,
+        "RouteVarName": "Lượt đi: Phà Bình Khánh - Bến xe buýt Cần Giờ",
+        "RouteVarShortName": "Cần Thạnh",
+        "Outbound": true,
+        "Distance": 44404.0,
+        "RunningTime": 75,
+        "StartStop": "Bình Khánh",
+        "EndStop": "Bến xe buýt Cần Giờ"
+      },
+      {
+        "RouteVarId": 262,
+        "RouteVarName": "Lượt về: Bến xe buýt Cần Giờ - Phà Bình Khánh",
+        "RouteVarShortName": "Phà Bình Khánh",
+        "Outbound": false,
+        "Distance": 44285.0,
+        "RunningTime": 75,
+        "StartStop": "Bến xe buýt Cần Giờ",
+        "EndStop": "Bình Khánh"
+      }
+    ]
+  },
+  {
+    "RouteId": 131,
+    "RouteNo": "91",
+    "RouteName": "Bến xe Miền Tây - Chợ nông sản Thủ Đức",
+    "Vars": [
+      {
+        "RouteVarId": 261,
+        "RouteVarName": "Lượt đi: Bến xe Miền Tây - Chợ nông sản Thủ Đức",
+        "RouteVarShortName": "Chợ nông sản Thủ Đức",
+        "Outbound": true,
+        "Distance": 26572.0,
+        "RunningTime": 80,
+        "StartStop": "Bến xe Miền Tây",
+        "EndStop": "Chợ nông sản Thủ Đức"
+      },
+      {
+        "RouteVarId": 262,
+        "RouteVarName": "Lượt về: Chợ nông sản Thủ Đức - Bến xe Miền Tây",
+        "RouteVarShortName": "Bến xe Miền Tây",
+        "Outbound": false,
+        "Distance": 24956.000000000004,
+        "RunningTime": 80,
+        "StartStop": "Chợ nông sản Thủ Đức",
+        "EndStop": "Bến xe Miền Tây"
+      }
+    ]
+  },
+  {
+    "RouteId": 133,
+    "RouteNo": "93",
+    "RouteName": "Bến Thành - Bến xe Miền Đông mới",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến xe buýt Sài Gòn - Bến xe Miền Đông mới",
+        "RouteVarShortName": "Bến xe Miền Đông mới",
+        "Outbound": true,
+        "Distance": 25999.0,
+        "RunningTime": 80,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe Miền Đông mới"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Miền Đông mới - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": false,
+        "Distance": 26236.000000000004,
+        "RunningTime": 80,
+        "StartStop": "Bến xe Miền Đông mới",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 134,
+    "RouteNo": "94",
+    "RouteName": "Bến xe buýt Chợ Lớn - Bến xe Củ Chi",
+    "Vars": [
+      {
+        "RouteVarId": 267,
+        "RouteVarName": "Lượt đi: Bến xe buýt Chợ Lớn (Bến A) - Bến xe Củ Chi",
+        "RouteVarShortName": "Bến xe Củ Chi",
+        "Outbound": true,
+        "Distance": 36676.0,
+        "RunningTime": 75,
+        "StartStop": "Bến xe buýt Chợ Lớn",
+        "EndStop": "Bến xe Củ Chi"
+      },
+      {
+        "RouteVarId": 268,
+        "RouteVarName": "Lượt về: Bến xe Củ Chi - Bến xe buýt Chợ Lớn (Bến A)",
+        "RouteVarShortName": "Bến xe buýt Chợ Lớn",
+        "Outbound": false,
+        "Distance": 35842.99999999997,
+        "RunningTime": 75,
+        "StartStop": "Bến xe Củ Chi",
+        "EndStop": "Bến xe buýt Chợ Lớn"
+      }
+    ]
+  },
+  {
+    "RouteId": 137,
+    "RouteNo": "99",
+    "RouteName": "Chợ Thạnh Mỹ Lợi - Đại học Quốc gia",
+    "Vars": [
+      {
+        "RouteVarId": 273,
+        "RouteVarName": "Lượt đi: Chợ Thạnh Mỹ Lợi - Bến Xe Buýt ÐH Quốc Gia",
+        "RouteVarShortName": "Đại học Quốc gia",
+        "Outbound": true,
+        "Distance": 26659.0,
+        "RunningTime": 75,
+        "StartStop": "Khu dân cư Thạnh Mỹ Lợi",
+        "EndStop": "Bến xe buýt Khu B - Đại học Quốc gia TP.HCM"
+      },
+      {
+        "RouteVarId": 274,
+        "RouteVarName": "Lượt về: Bến xe buýt ÐH Quốc Gia - Chợ Thạnh Mỹ Lợi",
+        "RouteVarShortName": "Chợ Thạnh Mỹ Lợi",
+        "Outbound": false,
+        "Distance": 31854.0,
+        "RunningTime": 75,
+        "StartStop": "Bến xe buýt Khu B - Đại học Quốc gia TP.HCM",
+        "EndStop": "Khu dân cư Thạnh Mỹ Lợi"
+      }
+    ]
+  },
+  {
+    "RouteId": 340,
+    "RouteNo": "D4",
+    "RouteName": "Vinhomes Grand Park - Bến xe buýt Sài Gòn",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: KDC Vinhome Grandpark  - Bến xe buýt Sài Gòn",
+        "RouteVarShortName": "Bến xe buýt Sài Gòn",
+        "Outbound": true,
+        "Distance": 31362.0,
+        "RunningTime": 80,
+        "StartStop": "Vinhomes Grandpark",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe buýt Sài Gòn - KDC Vinhome Grandpark ",
+        "RouteVarShortName": "Vinhomes Grand Park",
+        "Outbound": false,
+        "Distance": 30087.0,
+        "RunningTime": 80,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Vinhomes Grandpark"
+      }
+    ]
+  },
+  {
+    "RouteId": 336,
+    "RouteNo": "DL01",
+    "RouteName": "Tuyến xe  du lịch vòng khu vực trung tâm thành phố",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lộ trình chính (đi Nguyễn Huệ)",
+        "RouteVarShortName": "Lộ trình chính (đi Nguyễn Huệ)",
+        "Outbound": true,
+        "Distance": 10854.000000000004,
+        "RunningTime": 60,
+        "StartStop": "Công xã Paris",
+        "EndStop": "Công xã Paris"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lộ trình chính (Nguyễn Huệ bị chặn)",
+        "RouteVarShortName": "Lộ trình chính (Nguyễn Huệ bị chặn)",
+        "Outbound": true,
+        "Distance": 10352.0,
+        "RunningTime": 0,
+        "StartStop": "Công xã Paris",
+        "EndStop": "Công xã Paris"
+      }
+    ]
+  },
+  {
+    "RouteId": 371,
+    "RouteNo": "DL02",
+    "RouteName": "City Tour Sài Gòn - Gia Định",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lộ trình (Không cấm Nguyễn Huệ)",
+        "RouteVarShortName": "Gia Định",
+        "Outbound": true,
+        "Distance": 14544.000000000002,
+        "RunningTime": 30,
+        "StartStop": "Nhà hát Thành phố",
+        "EndStop": "Nhà hát Thành phố"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lộ trình (Cấm Nguyễn Huệ)",
+        "RouteVarShortName": "Gia Định",
+        "Outbound": true,
+        "Distance": 13412.999999999998,
+        "RunningTime": 0,
+        "StartStop": "Nhà hát Thành phố",
+        "EndStop": "Nhà hát Thành phố"
+      }
+    ]
+  },
+  {
+    "RouteId": 385,
+    "RouteNo": "DL03",
+    "RouteName": "Vận chuyển hành khách bằng xe 2 tầng, thoáng nóc Sài Gòn – Chợ Lớn",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lộ trình chính (đi Nguyễn Huệ)",
+        "RouteVarShortName": "Lộ trình chính (đi Nguyễn Huệ)",
+        "Outbound": true,
+        "Distance": 20973.0,
+        "RunningTime": 180,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lộ trình chính (Nguyễn Huệ bị chặn)",
+        "RouteVarShortName": "Lộ trình chính (Nguyễn Huệ bị chặn)",
+        "Outbound": true,
+        "Distance": 19803.0,
+        "RunningTime": 0,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 386,
+    "RouteNo": "DL04",
+    "RouteName": "City tour Sài Gòn - Chợ Lớn",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lộ trình (Không cấm Nguyễn Huệ)",
+        "RouteVarShortName": "Chợ Lớn",
+        "Outbound": true,
+        "Distance": 19630.0,
+        "RunningTime": 80,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 406,
+    "RouteNo": "DL05",
+    "RouteName": "Bến xe buýt Sài Gòn - Tân Định",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lộ trình (Không cấm Nguyễn Huệ trước 17 giờ)",
+        "RouteVarShortName": "Tân Định",
+        "Outbound": true,
+        "Distance": 23929.000000000004,
+        "RunningTime": 95,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lộ trình (Không cấm Nguyễn Huệ sau 17 giờ)",
+        "RouteVarShortName": "Tân Định",
+        "Outbound": true,
+        "Distance": 23857.000000000004,
+        "RunningTime": 0,
+        "StartStop": "Bến xe buýt Sài Gòn",
+        "EndStop": "Bến xe buýt Sài Gòn"
+      }
+    ]
+  },
+  {
+    "RouteId": 303,
+    "RouteNo": "HS-01",
+    "RouteName": "Hà Quang Vóc - Trường THCS Bình Khánh",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Hà Quang Vóc - Trưởng THCS Bình Khánh",
+        "RouteVarShortName": "Trường THCS Bình Khánh",
+        "Outbound": true,
+        "Distance": 4141.0,
+        "RunningTime": 7,
+        "StartStop": "Hà Quang Vóc",
+        "EndStop": "Trường THCS Bình Khánh"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Trường THCS Bình Khánh - Hà Quang Vóc",
+        "RouteVarShortName": "Hà Quang Vóc",
+        "Outbound": false,
+        "Distance": 4089.0,
+        "RunningTime": 8,
+        "StartStop": "Trường THCS Bình Khánh",
+        "EndStop": "Hà Quang Vóc"
+      }
+    ]
+  },
+  {
+    "RouteId": 304,
+    "RouteNo": "HS-02",
+    "RouteName": "Bà Xán - Trường THCS Bình Khánh",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bà Xán - Trường THCS Bình Khánh",
+        "RouteVarShortName": "Trường THCS Bình Khánh",
+        "Outbound": true,
+        "Distance": 7391.0,
+        "RunningTime": 9,
+        "StartStop": "Bà Xán",
+        "EndStop": "Trường THCS Bình Khánh"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Trường THCS Bình Khánh - Bà Xán",
+        "RouteVarShortName": "Bà Xán",
+        "Outbound": false,
+        "Distance": 7400.0,
+        "RunningTime": 12,
+        "StartStop": "Trường THCS Bình Khánh",
+        "EndStop": "Bà Xán"
+      }
+    ]
+  },
+  {
+    "RouteId": 387,
+    "RouteNo": "HS-03",
+    "RouteName": "Đường Trần Quang Quờn (Khu dân cư kho lúa) - Trường THCS Bình Khánh",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Trần Quang Quờn (Khu dân cư kho lúa) - Trường THCS Bình Khánh",
+        "RouteVarShortName": "Trường THCS Bình Khánh",
+        "Outbound": true,
+        "Distance": 1483.0,
+        "RunningTime": 5,
+        "StartStop": "Trần Quang Quờn (Khu dân cư kho lúa)",
+        "EndStop": "Trường THCS Bình Khánh"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Trường THCS Bình Khánh - Đường Trần Quang Quờn (Khu dân cư kho lúa)",
+        "RouteVarShortName": "Đường Trần Quang Quờn (Khu dân cư kho lúa)",
+        "Outbound": false,
+        "Distance": 1748.0,
+        "RunningTime": 5,
+        "StartStop": "Trường THCS Bình Khánh",
+        "EndStop": "Trần Quang Quờn (Khu dân cư kho lúa)"
+      }
+    ]
+  },
+  {
+    "RouteId": 302,
+    "RouteNo": "HS-04",
+    "RouteName": "Rừng Sác (Bình Khánh) - Trường THCS Bình Khánh",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Rừng Sác (Bình Khánh) - Trường THCS Bình Khánh",
+        "RouteVarShortName": "Trường THCS Bình Khánh",
+        "Outbound": true,
+        "Distance": 2714.0,
+        "RunningTime": 5,
+        "StartStop": "Rừng Sác (Bình Khánh)",
+        "EndStop": "Trường THCS Bình Khánh"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Trường THCS Bình Khánh - Rừng Sác (Bình Khánh)",
+        "RouteVarShortName": "Rừng Sác (Bình Khánh)",
+        "Outbound": false,
+        "Distance": 2948.0,
+        "RunningTime": 5,
+        "StartStop": "Trường THCS Bình Khánh",
+        "EndStop": "Rừng Sác (Bình Khánh)"
+      }
+    ]
+  },
+  {
+    "RouteId": 388,
+    "RouteNo": "HS-05",
+    "RouteName": "Hà Quang Vóc - Trường THPT Bình Khánh",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Hà Quang Vóc - Trường THPT Bình Khánh",
+        "RouteVarShortName": "Trường THPT Bình Khánh",
+        "Outbound": true,
+        "Distance": 3976.0,
+        "RunningTime": 8,
+        "StartStop": "Hà Quang Vóc",
+        "EndStop": "Trường THPT Bình Khánh"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Trường THPT Bình Khánh - Hà Quang Vóc",
+        "RouteVarShortName": "Hà Quang Vóc",
+        "Outbound": false,
+        "Distance": 3939.0,
+        "RunningTime": 8,
+        "StartStop": "Trường THPT Bình Khánh",
+        "EndStop": "Hà Quang Vóc"
+      }
+    ]
+  },
+  {
+    "RouteId": 389,
+    "RouteNo": "HS-06",
+    "RouteName": "Bà Xán - Trường THPT Bình Khánh",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bà Xán - Trường THPT Bình Khánh",
+        "RouteVarShortName": "Trường THPT Bình Khánh",
+        "Outbound": true,
+        "Distance": 7234.0,
+        "RunningTime": 11,
+        "StartStop": "Bà Xán",
+        "EndStop": "Trường THPT Bình Khánh"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Trường THPT Bình Khánh - Bà Xán",
+        "RouteVarShortName": "Bà Xán",
+        "Outbound": false,
+        "Distance": 7234.0,
+        "RunningTime": 13,
+        "StartStop": "Trường THPT Bình Khánh",
+        "EndStop": "Bà Xán"
+      }
+    ]
+  },
+  {
+    "RouteId": 390,
+    "RouteNo": "HS-07",
+    "RouteName": "Đường Rừng Sác (Bình Khánh) - Trường THPT Bình Khánh",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Rừng Sác (Bình Khánh) - Trường THPT Bình Khánh",
+        "RouteVarShortName": "Trường THPT Bình Khánh",
+        "Outbound": true,
+        "Distance": 2785.0,
+        "RunningTime": 5,
+        "StartStop": "Rừng Sác (Bình Khánh)",
+        "EndStop": "Trường THPT Bình Khánh"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Trường THPT Bình Khánh - Rừng Sác (Bình Khánh)",
+        "RouteVarShortName": "Đường Rừng Sác (Bình Khánh)",
+        "Outbound": false,
+        "Distance": 2804.0,
+        "RunningTime": 5,
+        "StartStop": "Trường THPT Bình Khánh",
+        "EndStop": "Rừng Sác (Bình Khánh)"
+      }
+    ]
+  },
+  {
+    "RouteId": 384,
+    "RouteNo": "MRT1",
+    "RouteName": "Bến Thành - Suối Tiên",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Bến Thành - Bến xe Suối Tiên",
+        "RouteVarShortName": "Suối Tiên",
+        "Outbound": true,
+        "Distance": 18894.0,
+        "RunningTime": 29,
+        "StartStop": "Ga Bến Thành",
+        "EndStop": "Ga Bến xe Suối Tiên"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Bến xe Suối Tiên - Bến Thành",
+        "RouteVarShortName": "Bến Thành",
+        "Outbound": false,
+        "Distance": 18890.0,
+        "RunningTime": 29,
+        "StartStop": "Ga Bến xe Suối Tiên",
+        "EndStop": "Ga Bến Thành"
+      }
+    ]
+  },
+  {
+    "RouteId": 337,
+    "RouteNo": "SWB1",
+    "RouteName": "Bạch Đằng - Linh Đông",
+    "Vars": [
+      {
+        "RouteVarId": 1,
+        "RouteVarName": "Lượt đi: Ga tàu thuỷ Bạch Đằng - Ga tàu thuỷ Linh Đông",
+        "RouteVarShortName": "Linh Đông",
+        "Outbound": true,
+        "Distance": 11680.000000000002,
+        "RunningTime": 52,
+        "StartStop": "Ga tàu thuỷ Bạch Đằng",
+        "EndStop": "Ga tàu thuỷ Linh Đông"
+      },
+      {
+        "RouteVarId": 2,
+        "RouteVarName": "Lượt về: Ga tàu thuỷ Linh Đông - Ga tàu thuỷ Bạch Đằng",
+        "RouteVarShortName": "Bạch Đằng",
+        "Outbound": false,
+        "Distance": 11785.0,
+        "RunningTime": 52,
+        "StartStop": "Ga tàu thuỷ Linh Đông",
+        "EndStop": "Ga tàu thuỷ Bạch Đằng"
+      }
+    ]
+  }
+]

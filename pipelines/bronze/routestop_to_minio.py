@@ -29,7 +29,8 @@ def main():
         "Street",
         "Lng",
         "Lat",
-        "Routes"
+        "Routes",
+        "Outbound"
     )
 
     spark.sql("""
@@ -50,13 +51,19 @@ def main():
         Street STRING,
         Lng DOUBLE,
         Lat DOUBLE,
-        Routes STRING
+        Routes STRING,
+        Outbound BOOLEAN
     )
     USING iceberg
     PARTITIONED BY (RouteId)
     TBLPROPERTIES (
         'format-version'='2'
     )
+    """)
+
+    spark.sql("""
+    ALTER TABLE catalog_iceberg.bus_bronze.route_stop
+    ADD COLUMN IF NOT EXISTS Outbound BOOLEAN
     """)
 
     df_clean.writeTo("catalog_iceberg.bus_bronze.route_stop").append()
