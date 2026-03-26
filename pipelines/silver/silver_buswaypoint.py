@@ -5,13 +5,21 @@ def main():
     spark = SparkSession.builder.appName("SilverWayPointClean").getOrCreate()
     spark.sparkContext.setLogLevel("ERROR")
 
-    df = spark.read.table("catalog_iceberg.bus_bronze.bus_way_point")
+    # Read bronze tables
+    df_bus = spark.read.table("catalog_iceberg.bus_bronze.bus_way_point")
+    df_map = spark.read.table("catalog_iceberg.bus_bronze.vehicle_bus_mapping")
 
+    # Join vehicle -> route
+    df_join = df_bus.join(df_map, on="vehicle", how="left")
+
+    # Clean + add time columns
     df_clean = (
-        df.withColumn("date", to_date(col("timestamp")))
+        df_join.withColumn("date", to_date(col("timestamp")))
         .withColumn("hour", hour(col("timestamp")))
         .select(
             "vehicle",
+            "route_id",
+            "route_no",
             "driver",
             "timestamp",
             "date",
@@ -26,16 +34,22 @@ def main():
             "door_up",
             "door_down",
             "sos",
-            "working", 
+            "working",
             "analog1",
             "analog2"
         )
     )
 
-    # Create table with partition
+    # Create Silver table
     spark.sql("""
-        CREATE TABLE IF NOT EXISTS catalog_iceberg.bus_silver.bus_way_point (
+        CREATE NAMESPACE IF NOT EXISTS catalog_iceberg.bus_silver
+    """)
+
+    spark.sql("""
+        CREATE TABLE IF NOT EXISTS catalog_iceberg.bus_silver.bus_way_point_clean (
             vehicle STRING,
+            route_id INT,
+            route_no STRING,
             driver STRING,
             timestamp TIMESTAMP,
             date DATE,
@@ -50,7 +64,7 @@ def main():
             door_up BOOLEAN,
             door_down BOOLEAN,
             sos BOOLEAN,
-            working BOOLEAN, 
+            working BOOLEAN,
             analog1 FLOAT,
             analog2 FLOAT
         )
@@ -58,9 +72,11 @@ def main():
         PARTITIONED BY (date)
     """)
 
-    df_clean.writeTo("catalog_iceberg.bus_silver.bus_way_point").append()
+    # Write to Silver
+    df_clean.writeTo("catalog_iceberg.bus_silver.bus_way_point_clean").append()
 
-    print("WRITE bus_way_point SUCCESS")
+    print("WRITE bus_silver.bus_way_point_clean SUCCESS")
+
 
 if __name__ == "__main__":
     main()
