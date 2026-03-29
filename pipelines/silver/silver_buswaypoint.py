@@ -46,7 +46,7 @@ def main():
     """)
 
     spark.sql("""
-        CREATE TABLE IF NOT EXISTS catalog_iceberg.bus_silver.bus_way_point_clean (
+        CREATE TABLE IF NOT EXISTS catalog_iceberg.bus_silver.bus_way_point (
             vehicle STRING,
             route_id INT,
             route_no STRING,
@@ -73,9 +73,9 @@ def main():
     """)
 
     # Write to Silver
-    df_clean.writeTo("catalog_iceberg.bus_silver.bus_way_point_clean").append()
+    df_clean.writeTo("catalog_iceberg.bus_silver.bus_way_point").append()
 
-    print("WRITE bus_silver.bus_way_point_clean SUCCESS")
+    print("WRITE bus_silver.bus_way_point SUCCESS")
 
 
 if __name__ == "__main__":
