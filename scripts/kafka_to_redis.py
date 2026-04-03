@@ -116,7 +116,10 @@ class KafkaToRedisConsumer:
         """Flatten nested data for Redis compatibility and parse datetime."""
         msg_type = data.get("msgType", "Unknown")
         payload = data.get("msgBusWayPoint", {})
-        stream_data = {"msgType": str(msg_type)}
+        stream_data = {
+            "msgType": str(msg_type),
+            "ingest_time": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        }
         for key, value in payload.items():
             if key == "datetime":
                 try:

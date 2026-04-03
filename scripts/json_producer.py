@@ -159,7 +159,7 @@ def main():
         bootstrap_servers="127.0.0.1:9092",
         topic_name="buswaypoint_json",
         file_pattern="data/HPCLAB/part2/part2/sub_raw_*.json",
-        max_rate=500  # Limited to 500 msg/s
+        max_rate=100  # Limited to 100 msg/s
     )
     producer.run()
 
