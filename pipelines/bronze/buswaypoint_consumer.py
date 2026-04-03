@@ -101,3 +101,4 @@ if __name__ == "__main__":
     table_name = "catalog_iceberg.bus_bronze.bus_way_point"
     
     stream_kafka_to_iceberg(spark, table_name)
+# data/HPCLAB/part2\sub_raw_477.json
