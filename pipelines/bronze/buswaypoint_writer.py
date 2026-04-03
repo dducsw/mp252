@@ -61,10 +61,8 @@ if __name__ == "__main__":
     spark = SparkSession.builder.appName("ReadJsonToMinIO").getOrCreate()
     spark.sparkContext.setLogLevel("ERROR")
     
-    # Get the project root based on current script location
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(script_dir)
-    json_path = os.path.join(project_root, "data", "HPCLAB", "sample.json")
+    # Use /opt/spark/apps/data (mounted directory) or fallback to relative path
+    json_path = "/opt/spark/apps/data/HPCLAB/sample.json"
     
     table_name = "catalog_iceberg.bus_bronze.bus_way_point"
     

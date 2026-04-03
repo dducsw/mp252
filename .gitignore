@@ -3,7 +3,7 @@ infrastructure/postgres/volumes
 infrastructure/gravitino/volumes
 infrastructure/spark/logs
 .venv
-
+venv
 data/HPCLAB/part1
 data/HPCLAB/part2
 data/ufms
