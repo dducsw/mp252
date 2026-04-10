@@ -20,16 +20,7 @@ def main():
         col("RouteVarId").cast("int"),
         col("RouteVarName").cast("string"),
         col("Outbound").cast("boolean"),
-
-        expr("""
-            transform(
-                sequence(0, size(lat)-1),
-                i -> array(
-                    cast(lng[i] as double),
-                    cast(lat[i] as double)
-                )
-            )
-        """).alias("path")
+        col("Path")
     )
 
     spark.sql("""

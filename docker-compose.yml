@@ -48,6 +48,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: catalog_metastore_db
+      POSTGRES_MULTIPLE_DATABASES: superset  # ← nếu image hỗ trợ
+
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -385,11 +387,15 @@ services:
       - "8089:8088"
     environment:
       - SUPERSET_SECRET_KEY=yoursecretkey_changeme
-      - PYTHONPATH=/usr/local/lib/python3.10/site-packages
+      - SUPERSET_HOME=/app/superset_home
+      - PYTHONPATH=/app/pythonpath
     volumes:
       - superset_data:/app/superset_home
       - ./infrastructure/superset/init.sh:/app/init.sh
     command: ["/bin/bash", "/app/init.sh"]
+    depends_on:                          # ← thêm
+      postgres:
+        condition: service_healthy
     networks:
       - local-data-lakehouse
 

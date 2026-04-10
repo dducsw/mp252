@@ -61,11 +61,6 @@ def main():
     )
     """)
 
-    spark.sql("""
-    ALTER TABLE catalog_iceberg.bus_bronze.route_stop
-    ADD COLUMN IF NOT EXISTS Outbound BOOLEAN
-    """)
-
     df_clean.writeTo("catalog_iceberg.bus_bronze.route_stop").append()
 
     print("===== ROUTE_STOP WRITE SUCCESS =====")
