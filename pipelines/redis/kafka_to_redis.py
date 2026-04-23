@@ -4,6 +4,7 @@ import signal
 import sys
 import logging
 import csv
+from datetime import datetime, timezone
 import redis
 from kafka import KafkaConsumer
 from tqdm import tqdm
@@ -102,6 +103,7 @@ class KafkaToRedisConsumer:
         """Flatten nested data for Redis compatibility."""
         msg_type = data.get("msgType", "Unknown")
         payload = data.get("msgBusWayPoint", {})
+        ingested_at = datetime.now(timezone.utc).isoformat()
         
         stream_data = {"msgType": str(msg_type)}
         for key, value in payload.items():
@@ -109,7 +111,119 @@ class KafkaToRedisConsumer:
                 stream_data[key] = json.dumps(value)
             else:
                 stream_data[key] = str(value)
+
+        event_epoch = payload.get("datetime")
+        if event_epoch is not None:
+            try:
+                stream_data["event_time"] = datetime.fromtimestamp(
+                    int(event_epoch), tz=timezone.utc
+                ).isoformat()
+            except (TypeError, ValueError):
+                pass
+
+        # Ingestion timestamp helps debug consumer lag and event freshness in Redis.
+        stream_data["ingested_at"] = ingested_at
         return stream_data
+
+    @staticmethod
+    def _is_true(value: str) -> bool:
+        return str(value).lower() == "true"
+
+    @staticmethod
+    def _to_float(value: str) -> float:
+        try:
+            return float(value)
+        except (TypeError, ValueError):
+            return 0.0
+
+    def _refresh_global_metrics(self):
+        """
+        Build cheap snapshot KPIs from latest-per-vehicle hashes.
+        These metrics are better served from Redis hashes than by scanning the event stream.
+        """
+        vehicle_ids = self.redis_client.smembers("vehicles_seen")
+        if not vehicle_ids:
+            return
+
+        pipe = self.redis_client.pipeline(transaction=False)
+        for vehicle_id in vehicle_ids:
+            pipe.hgetall(f"buswaypoint_latest:{vehicle_id}")
+        vehicle_states = pipe.execute()
+
+        stale_vehicle_ids = []
+        route_metrics = {}
+
+        def ensure_bucket(route_no: str):
+            if route_no not in route_metrics:
+                route_metrics[route_no] = {
+                    "active_vehicle_count": 0,
+                    "idle_vehicle_count": 0,
+                    "sos_vehicle_count": 0,
+                    "aircon_on_count": 0,
+                    "speed_sum": 0.0,
+                    "speed_count": 0,
+                }
+            return route_metrics[route_no]
+
+        for vehicle_id, state in zip(vehicle_ids, vehicle_states):
+            if not state:
+                stale_vehicle_ids.append(vehicle_id)
+                continue
+
+            route_no = state.get("route_no") or "UNKNOWN"
+            ignition_on = self._is_true(state.get("ignition"))
+            aircon_on = self._is_true(state.get("aircon"))
+            sos_on = self._is_true(state.get("sos"))
+            speed = self._to_float(state.get("speed"))
+
+            all_bucket = ensure_bucket("ALL")
+            route_bucket = ensure_bucket(route_no)
+
+            if ignition_on:
+                all_bucket["active_vehicle_count"] += 1
+                route_bucket["active_vehicle_count"] += 1
+
+                all_bucket["speed_sum"] += speed
+                route_bucket["speed_sum"] += speed
+
+                all_bucket["speed_count"] += 1
+                route_bucket["speed_count"] += 1
+
+                if speed == 0:
+                    all_bucket["idle_vehicle_count"] += 1
+                    route_bucket["idle_vehicle_count"] += 1
+                if aircon_on:
+                    all_bucket["aircon_on_count"] += 1
+                    route_bucket["aircon_on_count"] += 1
+
+            if sos_on:
+                all_bucket["sos_vehicle_count"] += 1
+                route_bucket["sos_vehicle_count"] += 1
+
+        pipe = self.redis_client.pipeline(transaction=False)
+
+        updated_at = datetime.now(timezone.utc).isoformat()
+        for route_no, bucket in route_metrics.items():
+            avg_speed = (
+                round(bucket["speed_sum"] / bucket["speed_count"], 2)
+                if bucket["speed_count"] > 0
+                else 0.0
+            )
+            metric_hash = {
+                "active_vehicle_count": str(bucket["active_vehicle_count"]),
+                "idle_vehicle_count": str(bucket["idle_vehicle_count"]),
+                "sos_vehicle_count": str(bucket["sos_vehicle_count"]),
+                "aircon_on_count": str(bucket["aircon_on_count"]),
+                "avg_speed": f"{avg_speed:.2f}",
+                "updated_at": updated_at,
+                "route_no": route_no,
+            }
+            pipe.hset(f"bus_metrics:route:{route_no}", mapping=metric_hash)
+            pipe.expire(f"bus_metrics:route:{route_no}", 7200)
+
+        if stale_vehicle_ids:
+            pipe.srem("vehicles_seen", *stale_vehicle_ids)
+        pipe.execute()
 
     def _process_batch(self, messages: list):
         """Processes a batch of Kafka messages using Redis pipeline."""
@@ -128,6 +242,8 @@ class KafkaToRedisConsumer:
                     # Track active routes for dashboard variables
                     pipe.sadd("routes_active", route_no)
                     pipe.expire("routes_active", 1800)
+                pipe.sadd("vehicles_seen", vehicle_id)
+                pipe.expire("vehicles_seen", 7200)
 
             # 2. Update standard Redis Stream (Event Tracking)
             # Maxlen set to 3.6M to hold ~1 hour of data at 1000 msg/s
@@ -145,6 +261,7 @@ class KafkaToRedisConsumer:
                 pipe.expire(hash_key, 7200)  # TTL 2 hours
 
         pipe.execute()
+        self._refresh_global_metrics()
         self.message_count += len(messages)
 
     def run(self):

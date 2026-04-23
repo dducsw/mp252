@@ -75,19 +75,89 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "command": "xrevrange",
-          "count": 10000,
+          "command": "hget",
           "datasource": {
             "type": "redis-datasource",
             "uid": "bfjx4g6zg9eyob"
           },
-          "keyName": "buswaypoint_stream",
+          "field": "active_vehicle_count",
+          "keyName": "bus_metrics:route:${route_no}",
           "query": "",
           "refId": "A",
           "type": "command"
         }
       ],
-      "title": "Active Vehicles",
+      "title": "Fleet Active Vehicles",
+      "transformations": [],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "redis-datasource",
+        "uid": "bfjx4g6zg9eyob"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "blue",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 0
+      },
+      "id": 21,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Count$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "command": "xrevrange",
+          "count": 5000,
+          "datasource": {
+            "type": "redis-datasource",
+            "uid": "bfjx4g6zg9eyob"
+          },
+          "keyName": "bus_operation_metrics",
+          "query": "",
+          "refId": "A",
+          "type": "command"
+        }
+      ],
+      "title": "Routes Active (5m KPI)",
       "transformations": [
         {
           "id": "filterByValue",
@@ -97,10 +167,10 @@
                 "config": {
                   "id": "equal",
                   "options": {
-                    "value": "True"
+                    "value": "route_window_5m"
                   }
                 },
-                "fieldName": "ignition"
+                "fieldName": "metric_type"
               },
               {
                 "config": {
@@ -120,7 +190,7 @@
           "id": "groupBy",
           "options": {
             "fields": {
-              "vehicle": {
+              "route_no": {
                 "aggregations": [],
                 "operation": "groupby"
               }
@@ -193,77 +263,20 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "command": "xrevrange",
-          "count": 10000,
+          "command": "hget",
           "datasource": {
             "type": "redis-datasource",
             "uid": "bfjx4g6zg9eyob"
           },
-          "keyName": "buswaypoint_stream",
+          "field": "idle_vehicle_count",
+          "keyName": "bus_metrics:route:${route_no}",
           "query": "",
           "refId": "A",
           "type": "command"
         }
       ],
-      "title": "Idle Vehicles (speed=0)",
-      "transformations": [
-        {
-          "id": "filterByValue",
-          "options": {
-            "filters": [
-              {
-                "config": {
-                  "id": "equal",
-                  "options": {
-                    "value": "True"
-                  }
-                },
-                "fieldName": "ignition"
-              },
-              {
-                "config": {
-                  "id": "equal",
-                  "options": {
-                    "value": "0.0"
-                  }
-                },
-                "fieldName": "speed"
-              },
-              {
-                "config": {
-                  "id": "regex",
-                  "options": {
-                    "value": "${route_no:regex}"
-                  }
-                },
-                "fieldName": "route_no"
-              }
-            ],
-            "match": "all",
-            "type": "include"
-          }
-        },
-        {
-          "id": "groupBy",
-          "options": {
-            "fields": {
-              "vehicle": {
-                "aggregations": [],
-                "operation": "groupby"
-              }
-            }
-          }
-        },
-        {
-          "id": "reduce",
-          "options": {
-            "labelsToFields": false,
-            "reducers": [
-              "count"
-            ]
-          }
-        }
-      ],
+      "title": "Fleet Idle Vehicles",
+      "transformations": [],
       "type": "stat"
     },
     {
@@ -320,59 +333,20 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "command": "xrevrange",
-          "count": 10000,
+          "command": "hget",
           "datasource": {
             "type": "redis-datasource",
             "uid": "bfjx4g6zg9eyob"
           },
-          "keyName": "buswaypoint_stream",
+          "field": "sos_vehicle_count",
+          "keyName": "bus_metrics:route:${route_no}",
           "query": "",
           "refId": "A",
           "type": "command"
         }
       ],
-      "title": "SOS Alerts",
-      "transformations": [
-        {
-          "id": "filterByValue",
-          "options": {
-            "filters": [
-              {
-                "config": {
-                  "id": "equal",
-                  "options": {
-                    "value": "True"
-                  }
-                },
-                "fieldName": "sos"
-              }
-            ],
-            "match": "all",
-            "type": "include"
-          }
-        },
-        {
-          "id": "groupBy",
-          "options": {
-            "fields": {
-              "vehicle": {
-                "aggregations": [],
-                "operation": "groupby"
-              }
-            }
-          }
-        },
-        {
-          "id": "reduce",
-          "options": {
-            "labelsToFields": false,
-            "reducers": [
-              "count"
-            ]
-          }
-        }
-      ],
+      "title": "Fleet SOS Alerts",
+      "transformations": [],
       "type": "stat"
     },
     {
@@ -430,60 +404,20 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "command": "xrevrange",
-          "count": 10000,
+          "command": "hget",
           "datasource": {
             "type": "redis-datasource",
             "uid": "bfjx4g6zg9eyob"
           },
-          "keyName": "buswaypoint_stream",
+          "field": "avg_speed",
+          "keyName": "bus_metrics:route:${route_no}",
           "query": "",
           "refId": "A",
           "type": "command"
         }
       ],
-      "title": "Avg Fleet Speed",
-      "transformations": [
-        {
-          "id": "filterByValue",
-          "options": {
-            "filters": [
-              {
-                "config": {
-                  "id": "equal",
-                  "options": {
-                    "value": "True"
-                  }
-                },
-                "fieldName": "ignition"
-              },
-              {
-                "config": {
-                  "id": "regex",
-                  "options": {
-                    "value": "${route_no:regex}"
-                  }
-                },
-                "fieldName": "route_no"
-              }
-            ],
-            "match": "all",
-            "type": "include"
-          }
-        },
-        {
-          "id": "convertFieldType",
-          "options": {
-            "conversions": [
-              {
-                "destinationType": "number",
-                "targetField": "speed"
-              }
-            ],
-            "fields": {}
-          }
-        }
-      ],
+      "title": "Fleet Avg Speed",
+      "transformations": [],
       "type": "stat"
     },
     {
@@ -540,77 +474,20 @@
       "pluginVersion": "12.1.0",
       "targets": [
         {
-          "command": "xrevrange",
-          "count": 10000,
+          "command": "hget",
           "datasource": {
             "type": "redis-datasource",
             "uid": "bfjx4g6zg9eyob"
           },
-          "keyName": "buswaypoint_stream",
+          "field": "aircon_on_count",
+          "keyName": "bus_metrics:route:${route_no}",
           "query": "",
           "refId": "A",
           "type": "command"
         }
       ],
-      "title": "Aircon On",
-      "transformations": [
-        {
-          "id": "filterByValue",
-          "options": {
-            "filters": [
-              {
-                "config": {
-                  "id": "equal",
-                  "options": {
-                    "value": "True"
-                  }
-                },
-                "fieldName": "ignition"
-              },
-              {
-                "config": {
-                  "id": "equal",
-                  "options": {
-                    "value": "True"
-                  }
-                },
-                "fieldName": "aircon"
-              },
-              {
-                "config": {
-                  "id": "regex",
-                  "options": {
-                    "value": "${route_no:regex}"
-                  }
-                },
-                "fieldName": "route_no"
-              }
-            ],
-            "match": "all",
-            "type": "include"
-          }
-        },
-        {
-          "id": "groupBy",
-          "options": {
-            "fields": {
-              "vehicle": {
-                "aggregations": [],
-                "operation": "groupby"
-              }
-            }
-          }
-        },
-        {
-          "id": "reduce",
-          "options": {
-            "labelsToFields": false,
-            "reducers": [
-              "count"
-            ]
-          }
-        }
-      ],
+      "title": "Fleet Aircon On",
+      "transformations": [],
       "type": "stat"
     },
     {
@@ -739,7 +616,7 @@
       "targets": [
         {
           "command": "xrevrange",
-          "count": 10000,
+          "count": 3000,
           "datasource": {
             "type": "redis-datasource",
             "uid": "bfjx4g6zg9eyob"
@@ -864,6 +741,226 @@
         }
       ],
       "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "redis-datasource",
+        "uid": "bfjx4g6zg9eyob"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "orange",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg_speed (last)"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "velocitykmh"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 4
+      },
+      "id": 22,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "active_vehicle_count (last)"
+          }
+        ]
+      },
+      "pluginVersion": "12.1.0",
+      "targets": [
+        {
+          "command": "xrevrange",
+          "count": 5000,
+          "datasource": {
+            "type": "redis-datasource",
+            "uid": "bfjx4g6zg9eyob"
+          },
+          "keyName": "bus_operation_metrics",
+          "query": "",
+          "refId": "A",
+          "type": "command"
+        }
+      ],
+      "title": "Route KPI Snapshot (Rolling 5m)",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "equal",
+                  "options": {
+                    "value": "route_window_5m"
+                  }
+                },
+                "fieldName": "metric_type"
+              },
+              {
+                "config": {
+                  "id": "regex",
+                  "options": {
+                    "value": "${route_no:regex}"
+                  }
+                },
+                "fieldName": "route_no"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "active_vehicle_count": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              },
+              "avg_speed": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              },
+              "msg_count": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              },
+              "moving_msg_count": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              },
+              "route_no": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "sos_msg_count": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              },
+              "stopped_msg_count": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              },
+              "window_end": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "avg_speed (last)"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "msg_count (last)"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "active_vehicle_count (last)"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "moving_msg_count (last)"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "stopped_msg_count (last)"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "sos_msg_count (last)"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "renameByName": {
+              "active_vehicle_count (last)": "Active Vehicles",
+              "avg_speed (last)": "Avg Speed",
+              "msg_count (last)": "Messages (5m)",
+              "moving_msg_count (last)": "Moving Msg",
+              "route_no": "Route",
+              "sos_msg_count (last)": "SOS Msg",
+              "stopped_msg_count (last)": "Stopped Msg",
+              "window_end (last)": "Window End"
+            }
+          }
+        }
+      ],
+      "type": "table"
     },
     {
       "datasource": {
@@ -1050,7 +1147,7 @@
       "targets": [
         {
           "command": "xrevrange",
-          "count": 10000,
+          "count": 3000,
           "datasource": {
             "type": "redis-datasource",
             "uid": "bfjx4g6zg9eyob"
@@ -1199,6 +1296,7 @@
         },
         "definition": "SMEMBERS routes_active",
         "description": "",
+        "allValue": "ALL",
         "includeAll": true,
         "label": "Route Number",
         "name": "route_no",

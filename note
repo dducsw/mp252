@@ -1,592 +1,205 @@
-{
-  "annotations": {
-    "list": [
-      {
-        "builtIn": 1,
-        "datasource": {
-          "type": "datasource",
-          "uid": "grafana"
-        },
-        "enable": true,
-        "hide": true,
-        "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
-        "type": "dashboard"
-      }
-    ]
-  },
-  "description": "Kafka resource usage and throughput",
-  "editable": true,
-  "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
-  "id": 8,
-  "links": [],
-  "panels": [
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "dcfjx3sj1pgveoa"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 10,
-        "x": 0,
-        "y": 0
-      },
-      "id": 14,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "width": 480
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "dcfjx3sj1pgveoa"
-          },
-          "expr": "sum(rate(kafka_topic_partition_current_offset{instance=\"$instance\", topic=~\"$topic\"}[1m])) by (topic)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "{{topic}}",
-          "refId": "B"
-        }
-      ],
-      "title": "Message in per second",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "dcfjx3sj1pgveoa"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 10,
-        "x": 10,
-        "y": 0
-      },
-      "id": 12,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "width": 480
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "multi",
-          "sort": "desc"
-        }
-      },
-      "pluginVersion": "12.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "dcfjx3sj1pgveoa"
-          },
-          "expr": "sum(kafka_consumergroup_lag{instance=\"$instance\",topic=~\"$topic\"}) by (consumergroup, topic) ",
-          "format": "time_series",
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{consumergroup}} (topic: {{topic}})",
-          "refId": "A"
-        }
-      ],
-      "title": "Lag by  Consumer Group",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "dcfjx3sj1pgveoa"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 10,
-        "x": 0,
-        "y": 10
-      },
-      "id": 16,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "width": 480
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "dcfjx3sj1pgveoa"
-          },
-          "expr": "sum(delta(kafka_topic_partition_current_offset{instance=~'$instance', topic=~\"$topic\"}[5m])/5) by (topic)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "{{topic}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Message in per minute",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "dcfjx3sj1pgveoa"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 10,
-        "x": 10,
-        "y": 10
-      },
-      "id": 18,
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true,
-          "width": 480
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "dcfjx3sj1pgveoa"
-          },
-          "expr": "sum(delta(kafka_consumergroup_current_offset{instance=~'$instance',topic=~\"$topic\"}[5m])/5) by (consumergroup, topic)",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "{{consumergroup}} (topic: {{topic}})",
-          "refId": "A"
-        }
-      ],
-      "title": "Message consume per minute",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "dcfjx3sj1pgveoa"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": 0
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 20,
-        "x": 0,
-        "y": 20
-      },
-      "id": 8,
-      "options": {
-        "displayMode": "gradient",
-        "legend": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "right",
-          "showLegend": true,
-          "width": 420
-        },
-        "maxVizHeight": 300,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "auto",
-        "valueMode": "color"
-      },
-      "pluginVersion": "12.1.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "dcfjx3sj1pgveoa"
-          },
-          "expr": "sum by(topic) (kafka_topic_partitions{instance=\"$instance\",topic=~\"$topic\"})",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "{{topic}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Partitions per Topic",
-      "type": "bargauge"
-    }
-  ],
-  "preload": false,
-  "refresh": "",
-  "schemaVersion": 41,
-  "tags": [
-    "Kafka"
-  ],
-  "templating": {
-    "list": [
-      {
-        "current": {
-          "text": "kafka-exporter",
-          "value": "kafka-exporter"
-        },
-        "datasource": "dcfjx3sj1pgveoa",
-        "definition": "label_values(kafka_brokers,job)",
-        "includeAll": false,
-        "label": "Job",
-        "name": "job",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(kafka_brokers,job)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "kafka-exporter:9308",
-          "value": "kafka-exporter:9308"
-        },
-        "datasource": "dcfjx3sj1pgveoa",
-        "definition": "label_values(kafka_brokers{job=~\"$job\"},instance)",
-        "includeAll": false,
-        "label": "Instance",
-        "name": "instance",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(kafka_brokers{job=~\"$job\"},instance)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": "dcfjx3sj1pgveoa",
-        "includeAll": true,
-        "label": "Topic",
-        "multi": true,
-        "name": "topic",
-        "options": [],
-        "query": "label_values(kafka_topic_partition_current_offset{instance='$instance',topic!='__consumer_offsets',topic!='--kafka'}, topic)",
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      }
-    ]
-  },
-  "time": {
-    "from": "now-24h",
-    "to": "now"
-  },
-  "timepicker": {},
-  "timezone": "browser",
-  "title": "Kafka Exporter Overview",
-  "uid": "jwPKIsniz",
-  "version": 3
+import os
+import redis
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import (
+    approx_count_distinct,
+    avg,
+    broadcast,
+    col,
+    count,
+    current_timestamp,
+    from_json,
+    from_unixtime,
+    sum as spark_sum,
+    to_timestamp,
+    window,
+    when,
+)
+from pyspark.sql.types import (
+    BooleanType,
+    DoubleType,
+    FloatType,
+    IntegerType,
+    StringType,
+    StructField,
+    StructType,
+)
+
+
+KAFKA_BOOTSTRAP_SERVERS = os.getenv("KAFKA_BOOTSTRAP_SERVERS",
+"localhost:9092")
+KAFKA_TOPIC = os.getenv("KAFKA_TOPIC",
+"buswaypoint_json")
+REDIS_HOST = os.getenv("REDIS_HOST",
+"localhost")
+REDIS_PORT = int(os.getenv("REDIS_PORT",
+6379))
+REDIS_METRICS_STREAM = os.getenv("REDIS_METRICS_STREAM",
+"bus_operation_metrics")
+MAPPING_CSV = os.getenv("MAPPING_CSV",
+"data/vehicle_route_mapping.csv")
+CHECKPOINT_LOCATION = os.getenv(
+    "WINDOW_CHECKPOINT_LOCATION",
+"/tmp/spark_checkpoints/bus_route_window",
+)
+
+
+bus_way_point_schema = StructType(
+    [
+        StructField("vehicle", StringType(), True),
+        StructField("driver", StringType(), True),
+        StructField("speed", FloatType(), True),
+        StructField("datetime", IntegerType(), True),
+        StructField("x", DoubleType(), True),
+        StructField("y", DoubleType(), True),
+        StructField("z", FloatType(), True),
+        StructField("heading", FloatType(), True),
+        StructField("ignition", BooleanType(), True),
+        StructField("aircon", BooleanType(), True),
+        StructField("door_up", BooleanType(), True),
+        StructField("door_down", BooleanType(), True),
+        StructField("sos", BooleanType(), True),
+        StructField("working", BooleanType(), True),
+        StructField("analog1", FloatType(), True),
+        StructField("analog2", FloatType(), True),
+]
+)
+
+root_schema = StructType(
+    [
+        StructField("msgType", StringType(), True),
+        StructField("msgBusWayPoint", bus_way_point_schema, True),
+]
+)
+
+
+def write_metrics_to_redis(batch_df, batch_id):
+    def send_partition(partition):
+        redis_client = redis.Redis(
+            host=REDIS_HOST,
+            port=REDIS_PORT,
+            decode_responses=True,
+            socket_keepalive=True,
+            socket_timeout=5.0,
+        )
+        pipeline = redis_client.pipeline(transaction=False)
+
+        for row in partition:
+            metric = {
+  "metric_type": "route_window_5m",
+  "route_no": row.route_no,
+  "window_start": row.window_start.isoformat(),
+  "window_end": row.window_end.isoformat(),
+  "avg_speed": f"{row.avg_speed:.2f}" if row.avg_speed is not None else "0.00",
+  "msg_count": str(row.msg_count),
+  "active_vehicle_count": str(row.active_vehicle_count),
+  "moving_msg_count": str(row.moving_msg_count),
+  "stopped_msg_count": str(row.stopped_msg_count),
+  "sos_msg_count": str(row.sos_msg_count),
+  "ignition_on_msg_count": str(row.ignition_on_msg_count),
+  "updated_at": row.updated_at.isoformat(),
 }
+            pipeline.xadd(
+                REDIS_METRICS_STREAM,
+                metric,
+                maxlen=50000,
+                approximate=True,
+            )
+
+        pipeline.execute()
+        redis_client.close()
+
+    batch_df.foreachPartition(send_partition)
+
+
+def main():
+    spark = (
+        SparkSession.builder.appName("BusRouteWindowMetrics")
+        .config("spark.sql.shuffle.partitions",
+"4")
+        .getOrCreate()
+    )
+    spark.sparkContext.setLogLevel("ERROR")
+
+    mapping_df = (
+        spark.read.option("header", True)
+        .csv(MAPPING_CSV)
+        .select("vehicle",
+"route_no")
+        .dropna(subset=[
+  "vehicle",
+  "route_no"
+])
+        .dropDuplicates([
+  "vehicle"
+])
+    )
+
+    raw_stream = (
+        spark.readStream.format("kafka")
+        .option("kafka.bootstrap.servers", KAFKA_BOOTSTRAP_SERVERS)
+        .option("subscribe", KAFKA_TOPIC)
+        .option("startingOffsets",
+"latest")
+        .load()
+    )
+
+    parsed_stream = (
+        raw_stream.selectExpr("CAST(value AS STRING)")
+        .select(from_json(col("value"), root_schema).alias("data"))
+        .select("data.msgBusWayPoint.*")
+        .withColumn("timestamp", to_timestamp(from_unixtime("datetime")))
+        .join(broadcast(mapping_df), on="vehicle", how="left")
+        .filter(col("route_no").isNotNull())
+        .withWatermark("timestamp",
+"10 minutes")
+    )
+
+    route_metrics = (
+        parsed_stream.groupBy(window("timestamp",
+"5 minutes",
+"1 minute"),
+"route_no")
+        .agg(
+            avg("speed").alias("avg_speed"),
+            count("*").alias("msg_count"),
+            approx_count_distinct("vehicle").alias("active_vehicle_count"),
+            spark_sum(when(col("speed") > 0,
+1).otherwise(0)).alias("moving_msg_count"),
+            spark_sum(when(col("speed") == 0,
+1).otherwise(0)).alias("stopped_msg_count"),
+            spark_sum(when(col("sos") == True,
+1).otherwise(0)).alias("sos_msg_count"),
+            spark_sum(when(col("ignition") == True,
+1).otherwise(0)).alias(
+                "ignition_on_msg_count"
+            ),
+        )
+        .select(
+            "route_no",
+            col("window.start").alias("window_start"),
+            col("window.end").alias("window_end"),
+"avg_speed",
+"msg_count",
+"active_vehicle_count",
+"moving_msg_count",
+"stopped_msg_count",
+"sos_msg_count",
+"ignition_on_msg_count",
+        )
+        .withColumn("updated_at", current_timestamp())
+    )
+
+    query = (
+        route_metrics.writeStream.outputMode("update")
+        .foreachBatch(write_metrics_to_redis)
+        .option("checkpointLocation", CHECKPOINT_LOCATION)
+        .start()
+    )
+
+    query.awaitTermination()
+
+
+if __name__ == "__main__":
+    main()
