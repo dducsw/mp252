@@ -221,6 +221,11 @@ class KafkaToRedisConsumer:
             pipe.hset(f"bus_metrics:route:{route_no}", mapping=metric_hash)
             pipe.expire(f"bus_metrics:route:{route_no}", 7200)
 
+            # Also save to ".*" key to support Grafana's "All" variable (.*)
+            if route_no == "ALL":
+                pipe.hset("bus_metrics:route:.*", mapping=metric_hash)
+                pipe.expire("bus_metrics:route:.*", 7200)
+
         if stale_vehicle_ids:
             pipe.srem("vehicles_seen", *stale_vehicle_ids)
         pipe.execute()
@@ -263,6 +268,26 @@ class KafkaToRedisConsumer:
         pipe.execute()
         self._refresh_global_metrics()
         self.message_count += len(messages)
+
+    def clear_redis(self):
+        """Clears all related Redis data."""
+        logger.info("Clearing Redis data...")
+        
+        # 1. Clear Stream and Sets
+        keys_to_delete = [self.redis_stream_key, "vehicles_seen", "routes_active"]
+        self.redis_client.delete(*keys_to_delete)
+        
+        # 2. Clear Hashes (Batched for performance)
+        count = 0
+        pipe = self.redis_client.pipeline(transaction=False)
+        for pattern in ["buswaypoint_latest:*", "bus_metrics:route:*"]:
+            for key in self.redis_client.scan_iter(pattern):
+                pipe.delete(key)
+                count += 1
+                if count % 1000 == 0:
+                    pipe.execute()
+        pipe.execute()
+        logger.info(f"Redis cleanup complete. (Deleted stream, sets, and {count} hash keys)")
 
     def run(self):
         """Main execution loop to consume from Kafka and stream to Redis."""
@@ -310,6 +335,7 @@ def main():
     redis_port = int(os.getenv("REDIS_PORT", 6379))
     redis_stream = os.getenv("REDIS_STREAM", "buswaypoint_stream")
     mapping_csv = os.getenv("MAPPING_CSV", "data/vehicle_route_mapping.csv")
+    reset_redis = os.getenv("RESET_REDIS", "false").lower() == "true"
     
     consumer = KafkaToRedisConsumer(
         kafka_bootstrap_servers=kafka_servers,
@@ -320,6 +346,9 @@ def main():
         batch_size=500,
         mapping_file=mapping_csv
     )
+
+    if reset_redis:
+        consumer.clear_redis()
     
     consumer.run()
 

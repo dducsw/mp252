@@ -65,7 +65,7 @@
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "/^Count$/",
+          "fields": "",
           "values": false
         },
         "showPercentChange": false,
@@ -135,7 +135,7 @@
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "/^Count$/",
+          "fields": "",
           "values": false
         },
         "showPercentChange": false,
@@ -253,7 +253,7 @@
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "/^Count$/",
+          "fields": "",
           "values": false
         },
         "showPercentChange": false,
@@ -323,7 +323,7 @@
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "/^Count$/",
+          "fields": "",
           "values": false
         },
         "showPercentChange": false,
@@ -464,7 +464,7 @@
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "/^Count$/",
+          "fields": "",
           "values": false
         },
         "showPercentChange": false,
@@ -1288,7 +1288,7 @@
       {
         "current": {
           "text": "All",
-          "value": "$__all"
+          "value": ".*"
         },
         "datasource": {
           "type": "redis-datasource",
@@ -1296,7 +1296,7 @@
         },
         "definition": "SMEMBERS routes_active",
         "description": "",
-        "allValue": "ALL",
+        "allValue": ".*",
         "includeAll": true,
         "label": "Route Number",
         "name": "route_no",

@@ -15,6 +15,7 @@ help:
 	@echo "  make list-consumer-groups        - List all consumer groups"
 	@echo "  make read-kafka-topic TOPIC=name - Read messages from a specific Kafka topic"
 	@echo "  make run-spark FILE=path         - Run Spark application (e.g., pipelines/example/create_example_table.py)"
+	@echo "  make run-spark-window            - Run Window Metrics pipeline with 4GB RAM"
 
 install-deps:
 	@echo "Installing Python dependencies..."
@@ -92,3 +93,10 @@ run-spark:
 		exit 1; \
 	fi
 	@docker exec -it spark-master spark-submit /opt/spark/apps/$(FILE)
+
+run-spark-window:
+	@echo "Running Bus Route Window Metrics with 4GB RAM..."
+	@docker exec -it spark-master spark-submit \
+		--driver-memory 4G \
+		--executor-memory 4G \
+		/opt/spark/apps/pipelines/streaming/buswaypoint_window.py

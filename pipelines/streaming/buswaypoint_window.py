@@ -1,5 +1,7 @@
 import os
 import redis
+import sys
+from datetime import datetime
 
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
@@ -32,7 +34,7 @@ KAFKA_TOPIC = os.getenv("KAFKA_TOPIC", "buswaypoint_json")
 REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
 REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
 REDIS_METRICS_STREAM = os.getenv("REDIS_METRICS_STREAM", "bus_operation_metrics")
-MAPPING_CSV = os.getenv("MAPPING_CSV", "data/vehicle_route_mapping.csv")
+MAPPING_CSV = os.getenv("MAPPING_CSV", "/opt/spark/apps/data/vehicle_route_mapping.csv")
 CHECKPOINT_LOCATION = os.getenv(
     "WINDOW_CHECKPOINT_LOCATION",
     "/tmp/spark_checkpoints/bus_route_window",
@@ -69,51 +71,68 @@ root_schema = StructType(
 
 
 def write_metrics_to_redis(batch_df, batch_id):
-    def send_partition(partition):
-        redis_client = redis.Redis(
-            host=REDIS_HOST,
-            port=REDIS_PORT,
-            decode_responses=True,
-            socket_keepalive=True,
-            socket_timeout=5.0,
-        )
-        pipeline = redis_client.pipeline(transaction=False)
-
-        for row in partition:
-            metric = {
-                "metric_type": "route_window_5m",
-                "route_no": row.route_no,
-                "window_start": row.window_start.isoformat(),
-                "window_end": row.window_end.isoformat(),
-                "avg_speed": f"{row.avg_speed:.2f}" if row.avg_speed is not None else "0.00",
-                "msg_count": str(row.msg_count),
-                "active_vehicle_count": str(row.active_vehicle_count),
-                "moving_msg_count": str(row.moving_msg_count),
-                "stopped_msg_count": str(row.stopped_msg_count),
-                "sos_msg_count": str(row.sos_msg_count),
-                "ignition_on_msg_count": str(row.ignition_on_msg_count),
-                "updated_at": row.updated_at.isoformat(),
-            }
-            pipeline.xadd(
-                REDIS_METRICS_STREAM,
-                metric,
-                maxlen=50000,
-                approximate=True,
+    row_count = batch_df.count()
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    print(f"[{now}] Batch {batch_id}: Triggered. Row count: {row_count}")
+    sys.stdout.flush()
+    
+    if row_count > 0:
+        print(f"[{now}] Batch {batch_id}: Writing to Redis...")
+        sys.stdout.flush()
+        
+        def send_partition(partition):
+            redis_client = redis.Redis(
+                host=REDIS_HOST,
+                port=REDIS_PORT,
+                decode_responses=True,
+                socket_keepalive=True,
+                socket_timeout=5.0,
             )
+            pipeline = redis_client.pipeline(transaction=False)
 
-        pipeline.execute()
-        redis_client.close()
+            for row in partition:
+                metric = {
+                    "metric_type": "route_window_5m",
+                    "route_no": row.route_no,
+                    "window_start": row.window_start.isoformat(),
+                    "window_end": row.window_end.isoformat(),
+                    "avg_speed": f"{row.avg_speed:.2f}" if row.avg_speed is not None else "0.00",
+                    "msg_count": str(row.msg_count),
+                    "active_vehicle_count": str(row.active_vehicle_count),
+                    "moving_msg_count": str(row.moving_msg_count),
+                    "stopped_msg_count": str(row.stopped_msg_count),
+                    "sos_msg_count": str(row.sos_msg_count),
+                    "ignition_on_msg_count": str(row.ignition_on_msg_count),
+                    "updated_at": row.updated_at.isoformat(),
+                }
+                pipeline.xadd(
+                    REDIS_METRICS_STREAM,
+                    metric,
+                    maxlen=50000,
+                    approximate=True,
+                )
 
-    batch_df.foreachPartition(send_partition)
+            pipeline.execute()
+            redis_client.close()
+
+        batch_df.foreachPartition(send_partition)
+        print(f"[{now}] Batch {batch_id}: Successfully committed.")
+        sys.stdout.flush()
 
 
 def main():
     spark = (
         SparkSession.builder.appName("BusRouteWindowMetrics")
         .config("spark.sql.shuffle.partitions", "4")
+        .config("spark.executor.cores", "2")
+        .config("spark.cores.max", "2")
         .getOrCreate()
     )
     spark.sparkContext.setLogLevel("ERROR")
+
+    print(f"Starting BusRouteWindowMetrics with MAPPING_CSV={MAPPING_CSV}")
+    sys.stdout.flush()
 
     mapping_df = (
         spark.read.option("header", True)
@@ -127,7 +146,7 @@ def main():
         spark.readStream.format("kafka")
         .option("kafka.bootstrap.servers", KAFKA_BOOTSTRAP_SERVERS)
         .option("subscribe", KAFKA_TOPIC)
-        .option("startingOffsets", "latest")
+        .option("startingOffsets", "earliest")
         .load()
     )
 
