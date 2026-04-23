@@ -3,6 +3,7 @@ import os
 import signal
 import sys
 import logging
+import csv
 import redis
 from kafka import KafkaConsumer
 from tqdm import tqdm
@@ -26,13 +27,18 @@ class KafkaToRedisConsumer:
         redis_port: int,
         redis_stream_key: str,
         group_id: str = "kafka-redis-streaming-group",
-        batch_size: int = 100
+        batch_size: int = 100,
+        mapping_file: str = "data/vehicle_route_mapping.csv"
     ):
         self.kafka_topic = kafka_topic
         self.redis_stream_key = redis_stream_key
         self.batch_size = batch_size
         self.message_count = 0
         self.running = True
+        
+        # Load vehicle to route mapping
+        self.mapping_file = mapping_file
+        self.vehicle_to_route = self._load_mapping()
 
         # Handle termination signals gracefully
         signal.signal(signal.SIGINT, self._handle_exit)
@@ -71,6 +77,22 @@ class KafkaToRedisConsumer:
             logger.error(f"Failed to connect to Redis: {e}")
             sys.exit(1)
 
+    def _load_mapping(self) -> dict:
+        """Load vehicle-to-route mapping from CSV."""
+        mapping = {}
+        if os.path.exists(self.mapping_file):
+            try:
+                with open(self.mapping_file, mode='r', encoding='utf-8') as f:
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        mapping[row['vehicle']] = row['route_no']
+                logger.info(f"Loaded {len(mapping)} vehicle-to-route mappings from {self.mapping_file}")
+            except Exception as e:
+                logger.warning(f"Error loading mapping file: {e}")
+        else:
+            logger.warning(f"Mapping file not found: {self.mapping_file}")
+        return mapping
+
     def _handle_exit(self, signum, frame):
         """Signal handler to trigger graceful shutdown."""
         logger.info("\nTermination signal received. Shutting down gracefully...")
@@ -98,7 +120,16 @@ class KafkaToRedisConsumer:
             vehicle_id = payload.get("vehicle", "Unknown")
             stream_data = self._flatten(data)
 
-            # 1. Update standard Redis Stream (Event Tracking)
+            # 1. Lookup route mapping and enrich stream_data
+            if vehicle_id != "Unknown":
+                route_no = self.vehicle_to_route.get(vehicle_id)
+                if route_no:
+                    stream_data["route_no"] = route_no
+                    # Track active routes for dashboard variables
+                    pipe.sadd("routes_active", route_no)
+                    pipe.expire("routes_active", 1800)
+
+            # 2. Update standard Redis Stream (Event Tracking)
             # Maxlen set to 3.6M to hold ~1 hour of data at 1000 msg/s
             pipe.xadd(
                 self.redis_stream_key, 
@@ -107,7 +138,7 @@ class KafkaToRedisConsumer:
                 approximate=True
             )
 
-            # 2. Update Redis Hash for O(1) Quick Latest Lookup
+            # 3. Update Redis Hash for O(1) Quick Latest Lookup
             if vehicle_id != "Unknown":
                 hash_key = f"buswaypoint_latest:{vehicle_id}"
                 pipe.hset(hash_key, mapping=stream_data)
@@ -161,6 +192,7 @@ def main():
     redis_host = os.getenv("REDIS_HOST", "localhost")
     redis_port = int(os.getenv("REDIS_PORT", 6379))
     redis_stream = os.getenv("REDIS_STREAM", "buswaypoint_stream")
+    mapping_csv = os.getenv("MAPPING_CSV", "data/vehicle_route_mapping.csv")
     
     consumer = KafkaToRedisConsumer(
         kafka_bootstrap_servers=kafka_servers,
@@ -168,7 +200,8 @@ def main():
         redis_host=redis_host,
         redis_port=redis_port,
         redis_stream_key=redis_stream,
-        batch_size=500
+        batch_size=500,
+        mapping_file=mapping_csv
     )
     
     consumer.run()
