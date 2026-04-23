@@ -1,6 +1,7 @@
 ﻿import json
 import os
 import glob
+import time
 import pandas as pd
 from kafka import KafkaProducer
 from tqdm import tqdm
@@ -11,9 +12,11 @@ class JsonProducer:
     
     CHECKPOINT_FILE = "producer_checkpoint.json"
 
-    def __init__(self, bootstrap_servers: str, topic_name: str, file_pattern: str):
+    def __init__(self, bootstrap_servers: str, topic_name: str, file_pattern: str, records_per_second: int = 100):
         self.topic_name = topic_name
         self.file_pattern = file_pattern
+        self.records_per_second = records_per_second
+        self.delay_per_record = 1.0 / records_per_second  # Calculate delay for each record
         self.producer = KafkaProducer(
             bootstrap_servers=bootstrap_servers,
             value_serializer=lambda v: json.dumps(v).encode("utf-8"),
@@ -85,6 +88,9 @@ class JsonProducer:
                 row = records[current_idx]
                 self.producer.send(self.topic_name, row)
                 
+                # Rate limiting: sleep to achieve target records/second
+                time.sleep(self.delay_per_record)
+                
                 # Periodic checkpoint for safety
                 if (current_idx - start_row_idx + 1) % 1000 == 0:
                     self.producer.flush()
@@ -133,7 +139,8 @@ def main():
     producer = JsonProducer(
         bootstrap_servers="127.0.0.1:9092",
         topic_name="buswaypoint_json",
-        file_pattern="data/HPCLAB/part1/part1/sub_raw_*.json"
+        file_pattern="data/HPCLAB/part1/part1/sub_raw_*.json",
+        records_per_second=100  # Change this value as needed
     )
     producer.run()
 
