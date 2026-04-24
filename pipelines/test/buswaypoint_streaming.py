@@ -103,7 +103,7 @@ def stream_kafka_to_iceberg(spark: SparkSession, table_name: str) -> None:
         .withColumn("timestamp", to_timestamp(from_unixtime("datetime")))
         .withColumn("date", to_date(from_unixtime("datetime")))
         .withColumn("load_at", current_timestamp())
-        .repartition(10) # Forces at least 10 files per micro-batch
+        .repartition(20) # Forces at least 10 files per micro-batch
     )
     
     def write_batch_to_iceberg(batch_df, batch_id):
@@ -128,8 +128,6 @@ if __name__ == "__main__":
         SparkSession.builder
         .appName("FastIngestSmallFiles")
         .config("spark.sql.iceberg.handle-timestamp-without-timezone", "true")
-        .config("spark.sql.catalog.catalog_iceberg.type", "rest")
-        .config("spark.sql.catalog.catalog_iceberg.uri", "http://gravitino:8090/api/metalakes/metalake/catalogs/catalog_iceberg")
         .getOrCreate()
     )
 

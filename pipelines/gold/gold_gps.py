@@ -1,7 +1,7 @@
 from pyspark.sql import SparkSession, Window
 from pyspark.sql.functions import (
     col, trim, split, explode, when, broadcast,
-    round, abs, hour, dayofweek, last
+    round, abs, hour, dayofweek, last, current_timestamp
 )
 
 def main():
@@ -101,12 +101,13 @@ def main():
     df = df.withColumn("is_moving", when(col("speed") > 0, 1).otherwise(0))
     df = df.withColumn("is_stopped", when(col("speed") == 0, 1).otherwise(0))
 
-    df.select(
+    df.withColumn("updated_at", current_timestamp()).select(
         "vehicle", "route_no", "date", "hour",
         "day_of_week", "day_type", "is_peak_hour",
         "speed", "speed_level", "is_moving", "is_stopped",
         col("b.x").alias("x"),
-        col("b.y").alias("y")
+        col("b.y").alias("y"),
+        "updated_at"
     ).writeTo("catalog_iceberg.bus_gold.gold_bus_dashboard").replace()
 
     print("WRITE GOLD SUCCESS")

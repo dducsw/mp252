@@ -39,15 +39,46 @@ RESET_REDIS=true python pipelines/redis/kafka_to_redis.py
 ```
 
 ### 3. Manual Redis Cleanup (Optional)
-If you only want to clear the data without starting the pipeline, you can use `redis-cli`:
+If you need to clear data manually inside the Docker container:
 ```bash
-# Clear the stream
-redis-cli DEL buswaypoint_stream
+docker exec -it redis redis-cli FLUSHALL
+```
 
-# Clear vehicle sets
-redis-cli DEL vehicles_seen routes_active
+## 4. Inspecting Data in Redis
 
-# Clear hashes (using xargs for patterns)
-redis-cli --scan --pattern "buswaypoint_latest:*" | xargs redis-cli DEL
-redis-cli --scan --pattern "bus_metrics:route:*" | xargs redis-cli DEL
+You can use `docker exec` to interact with the data directly from the command line.
+
+### Access Redis CLI
+```bash
+docker exec -it redis redis-cli
+```
+
+### Check Latest Status of a Vehicle
+```bash
+# Example: Check vehicle 51B-063.15
+docker exec -it redis redis-cli HGETALL buswaypoint_latest:51B-063.15
+```
+
+### View Route Metrics (KPIs)
+```bash
+# Example: Check metrics for route 1
+docker exec -it redis redis-cli HGETALL bus_metrics:route:1
+
+# Check "ALL" routes aggregate
+docker exec -it redis redis-cli HGETALL bus_metrics:route:ALL
+```
+
+### Read from the Stream
+```bash
+# Read the last 5 messages from the stream
+docker exec -it redis redis-cli XREAD COUNT 5 STREAMS buswaypoint_stream 0
+```
+
+### Check Active Vehicles or Routes
+```bash
+# List all active vehicle IDs
+docker exec -it redis redis-cli SMEMBERS vehicles_seen
+
+# List all active route numbers
+docker exec -it redis redis-cli SMEMBERS routes_active
 ```

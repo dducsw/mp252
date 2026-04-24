@@ -1,4 +1,4 @@
-﻿import json
+import json
 import os
 import glob
 import time
@@ -16,12 +16,14 @@ class JsonProducer:
         self.topic_name = topic_name
         self.file_pattern = file_pattern
         self.records_per_second = records_per_second
-        self.delay_per_record = 1.0 / records_per_second  # Calculate delay for each record
+        self.delay_per_record = 1.0 / records_per_second if records_per_second > 0 else 0
         self.producer = KafkaProducer(
             bootstrap_servers=bootstrap_servers,
             value_serializer=lambda v: json.dumps(v).encode("utf-8"),
-            linger_ms=10,
-            batch_size=16384,
+            linger_ms=50,
+            batch_size=131072,
+            compression_type='gzip',
+            buffer_memory=67108864,
             api_version=(3, 6, 0)
         )
         self.last_file = None
@@ -31,10 +33,16 @@ class JsonProducer:
     def _load_checkpoint(self):
         """Loads the last processed file and index from the checkpoint file."""
         if os.path.exists(self.CHECKPOINT_FILE):
-            with open(self.CHECKPOINT_FILE, "r") as f:
-                checkpoint = json.load(f)
-                self.last_file = checkpoint.get("last_file")
-                self.last_index = checkpoint.get("last_index", -1)
+            try:
+                with open(self.CHECKPOINT_FILE, "r") as f:
+                    content = f.read().strip()
+                    if not content:
+                        return
+                    checkpoint = json.loads(content)
+                    self.last_file = checkpoint.get("last_file")
+                    self.last_index = checkpoint.get("last_index", -1)
+            except (json.JSONDecodeError, ValueError) as e:
+                print(f"Warning: Could not load checkpoint file: {e}. Starting from scratch.")
 
     def _save_checkpoint(self, current_file: str, current_index: int):
         """Saves current progress to the checkpoint file."""
@@ -88,12 +96,12 @@ class JsonProducer:
                 row = records[current_idx]
                 self.producer.send(self.topic_name, row)
                 
-                # Rate limiting: sleep to achieve target records/second
-                time.sleep(self.delay_per_record)
+                # Rate limiting: only sleep if records_per_second is set to a reasonable positive value
+                if self.records_per_second > 0 and self.delay_per_record > 0:
+                    time.sleep(self.delay_per_record)
                 
-                # Periodic checkpoint for safety
-                if (current_idx - start_row_idx + 1) % 1000 == 0:
-                    self.producer.flush()
+                # Checkpoint every 10000 records WITHOUT flushing (much faster)
+                if (current_idx - start_row_idx + 1) % 10000 == 0:
                     self._save_checkpoint(file_path, current_idx)
             
             # Flush after fully processing a file
@@ -140,7 +148,7 @@ def main():
         bootstrap_servers="127.0.0.1:9092",
         topic_name="buswaypoint_json",
         file_pattern="data/HPCLAB/part1/part1/sub_raw_*.json",
-        records_per_second=100  # Change this value as needed
+        records_per_second=0  # Set to 0 for maximum speed
     )
     producer.run()
 

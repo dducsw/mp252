@@ -1,48 +1,53 @@
-# Redis over Real-time Bus GPS Dashboard Serving Layer
+# Redis Serving Layer - Real-time Data Access
 
-## Introduction
-This document outlines the architecture and implementation details of using Redis as the primary serving layer for the Real-time Bus GPS Dashboard. The objective of this serving layer is to ingest high-throughput, low-latency streaming data from Kafka and serve it efficiently to client applications (e.g., a live map dashboard).
+This document details the implementation and application of Redis within the Data Platform architecture, serving as the **Serving Layer** for real-time applications.
 
-## Architecture Overview
-The data flow follows a standard real-time streaming pipeline:
+## 1. Role of Redis in Architecture
+While Iceberg (Data Lakehouse) serves deep analytical queries (Batch/Analytical), Redis is utilized for:
+- **Low Latency**: Providing data with < 10ms latency.
+- **Real-time Monitoring**: Instant tracking of bus positions and status.
+- **KPI Aggregation**: Displaying aggregated metrics (active vehicles, average speed) per route.
 
-1.  **Data Source:** Bus GPS coordinates and telemetry data (speed, ignition, aircon, etc.) are generated and ingested.
-2.  **Message Broker (Kafka):** Raw events are published to a Kafka topic (`buswaypoint_json`), acting as a durable buffer and streaming platform.
-3.  **Stream Processor / Consumer:** A Python consumer script (`kafka_to_redis.py`) constantly listens to the Kafka topic.
-4.  **Serving Layer (Redis):** The consumer processes the events and pushes them into Redis using specific data structures optimized for different querying patterns.
-5.  **Client Dashboard:** The front-end application queries Redis to render the live positions of all active buses and historical trails if needed.
+## 2. Data Structures and Implementation
 
-## Redis Data Structures
-To fully leverage Redis's capabilities for this specific use case, we utilize two distinct data structures:
+The system flexibly uses Redis data structures to optimize performance:
 
-### 1. Redis Streams (`XADD`)
--   **Key:** `buswaypoint_stream`
--   **Purpose:** To store the continuous time-series flow of bus waypoint events.
--   **Usage:** 
-    -   Ideal for event sourcing and pub/sub patterns.
-    -   Clients can subscribe to this stream using `XREAD` or `XREADGROUP` to receive real-time updates as they happen, effectively creating a live feed.
-    -   The stream is capped (e.g., `maxlen=100000`) to prevent infinite memory growth, ensuring only the most recent events are kept in the hot memory layer.
+### 2.1 Redis Stream (`buswaypoint_stream`)
+- **Purpose**: Stores the raw event stream from Kafka.
+- **Details**: 
+    - Uses the `maxlen` feature to limit memory usage (approx. 3.6 million records, equivalent to 1 hour of data at 1000 msg/s).
+    - Serves applications that need to re-consume real-time data or display short-term history on maps.
 
-### 2. Redis Hashes (`HSET`)
--   **Key Pattern:** `buswaypoint_latest:<vehicle_id>`
--   **Purpose:** To store the absolute latest known state (location, speed, etc.) of each individual vehicle.
--   **Usage:**
-    -   When a dashboard first loads, it doesn't necessarily need the entire history; it just needs to know *where every bus is right now*.
-    -   Hashes provide $\mathcal{O}(1)$ time complexity for lookups. A client can quickly fetch the latest state of a specific bus using `HGETALL buswaypoint_latest:<vehicle_id>`, or fetch all active buses using pattern matching (e.g., `SCAN` with `MATCH buswaypoint_latest:*`).
-    -   This structure is highly optimized for the "current state" view.
+### 2.2 Redis Hashes (`buswaypoint_latest:{vehicle_id}`)
+- **Purpose**: Stores the latest state of each vehicle (Latest Known State).
+- **Details**:
+    - Extremely fast access with $O(1)$ complexity via `vehicle_id`.
+    - Contains fields: `speed`, `latitude`, `longitude`, `ignition`, `aircon`, `route_no`, `updated_at`.
+    - **TTL**: Automatically expires after 2 hours of inactivity to save memory.
 
-## Why Redis?
--   **In-Memory Speed:** Redis operates entirely in memory, offering sub-millisecond read and write latencies, which is crucial for a smooth real-time dashboard experience.
--   **Tailored Data Structures:** Features like Streams and Hashes explicitly solve the dual problem of tracking history (Streams) and tracking the current state (Hashes) without complex relational joins.
--   **Scalability:** Redis can handle tens of thousands of operations per second, easily matching the high throughput of IoT GPS data.
+### 2.3 Redis Hashes (`bus_metrics:route:{route_no}`)
+- **Purpose**: Stores pre-calculated KPI metrics for each route.
+- **Metrics include**:
+    - `active_vehicle_count`: Number of running vehicles (ignition=True).
+    - `idle_vehicle_count`: Number of stopped vehicles (speed=0).
+    - `avg_speed`: Average speed across the entire route.
+    - `sos_vehicle_count`: Number of vehicles in emergency status.
 
-## Implementation Details
-The synchronization from Kafka to Redis is handled by the `KafkaToRedisConsumer` Python application.
+### 2.4 Redis Sets (`vehicles_seen`, `routes_active`)
+- **Purpose**: Tracks the list of active vehicles and routes in the system.
+- **Application**: Provides input data for Grafana variables (Dropdown menus for vehicle/route selection).
 
-Key features of the implementation include:
--   **Graceful Shutdown:** Ensures no data is left hanging during intentional restarts.
--   **Checkpointing:** Periodically saves the consumer's offset to disk (e.g., every 500 messages). If the pipeline crashes, it resumes from the exact last saved offset, preventing data duplication or loss.
--   **Batch Processing:** The consumer fetches data in batches from Kafka to optimize network I/O, but pushes to Redis individually for absolute real-time availability.
+## 3. Processing Pipeline: Kafka to Redis
 
-## Conclusion
-By utilizing Redis as the serving layer bridging Kafka and the front-end dashboard, the architecture achieves a highly performant, scalable, and resilient solution for tracking thousands of moving buses in real-time.
+This pipeline is implemented by the `kafka_to_redis.py` Python script using optimized techniques:
+
+1.  **Atomic Batching (Pipelines)**: Uses Redis Pipelines to send a group of commands (batch) to the server in a single network round-trip, significantly increasing throughput.
+2.  **Data Enrichment**: At the consumption stage from Kafka, the system joins vehicle IDs with a mapping file (`vehicle_route_mapping.csv`) to add route information before storing in Redis.
+3.  **Graceful Commits**: Kafka offsets are only committed after the data has been successfully written to Redis, ensuring integrity (At-least-once delivery).
+4.  **Automatic Cleanup**: Supports the `RESET_REDIS` flag to clear old data before starting a new session.
+
+## 4. Real-world Applications
+
+- **Dashboard**: Overall city-wide monitoring panel.
+- **Real-time Map**: Smooth display of bus movements on a map.
+- **Alert System**: Instant notification if `sos_vehicle_count > 0` or if a vehicle exceeds safety speed limits.
