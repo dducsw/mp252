@@ -48,6 +48,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: catalog_metastore_db
+      POSTGRES_MULTIPLE_DATABASES: superset  # ← nếu image hỗ trợ
+
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -280,6 +282,10 @@ services:
       - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
       - KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER
       - KAFKA_CLUSTER_ID=abcdefghijklmnopqrstuv
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1
+      - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1
+      - KAFKA_LOG_DIRS=/var/lib/kafka/data
     volumes:
       - kafka_data:/var/lib/kafka/data
     networks:
@@ -374,6 +380,25 @@ services:
       redis:
         condition: service_healthy
 
+  # Monitoring: Node Exporter
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    restart: unless-stopped
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    ports:
+      - "9100:9100"
+    networks:
+      - local-data-lakehouse
+
 
   # Data Visualization and Exploration: Apache Superset
   superset:
@@ -385,11 +410,15 @@ services:
       - "8089:8088"
     environment:
       - SUPERSET_SECRET_KEY=yoursecretkey_changeme
-      - PYTHONPATH=/usr/local/lib/python3.10/site-packages
+      - SUPERSET_HOME=/app/superset_home
+      - PYTHONPATH=/app/pythonpath
     volumes:
       - superset_data:/app/superset_home
       - ./infrastructure/superset/init.sh:/app/init.sh
     command: ["/bin/bash", "/app/init.sh"]
+    depends_on:                          # ← thêm
+      postgres:
+        condition: service_healthy
     networks:
       - local-data-lakehouse
 

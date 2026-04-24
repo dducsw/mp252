@@ -82,7 +82,7 @@ def stream_kafka_to_iceberg(spark: SparkSession, table_name: str) -> None:
         df_with_ts
         .writeStream
         .foreachBatch(write_batch_to_iceberg)
-        .option("checkpointLocation", "s3a://lakehouse/checkpoints/bronze/bus_way_point")
+        .option("checkpointLocation", "s3a://iceberg/lakehouse/checkpoints/bronze/bus_way_point")
         .trigger(processingTime="5 seconds")
         .start()
     )

@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, to_date, hour
+from pyspark.sql.functions import col, to_date, hour, row_number
+from pyspark.sql.window import Window
 
 def main():
     spark = SparkSession.builder.appName("SilverWayPointClean").getOrCreate()
@@ -12,10 +13,26 @@ def main():
     # Join vehicle -> route
     df_join = df_bus.join(df_map, on="vehicle", how="left")
 
-    # Clean + add time columns
+    # Step 1 & 2: Filter and Deduplicate (Using Window to get the latest record)
+    window_spec = Window.partitionBy("vehicle", "timestamp").orderBy(col("load_at").desc())
+
+    df_filtered = (
+        df_join.filter(
+            col("vehicle").isNotNull() & 
+            col("timestamp").isNotNull() & 
+            col("x").isNotNull() & (col("x") != 0) & 
+            col("y").isNotNull() & (col("y") != 0)
+        )
+        .withColumn("rn", row_number().over(window_spec))
+        .filter(col("rn") == 1)
+        .drop("rn")
+    )
+
+    # Clean + add time columns + Step 5: Sorting
     df_clean = (
-        df_join.withColumn("date", to_date(col("timestamp")))
+        df_filtered.withColumn("date", to_date(col("timestamp")))
         .withColumn("hour", hour(col("timestamp")))
+        .withColumn("updated_at", current_timestamp())
         .select(
             "vehicle",
             "route_id",
@@ -36,7 +53,13 @@ def main():
             "sos",
             "working",
             "analog1",
-            "analog2"
+            "analog2",
+            "updated_at"
+        )
+        .sortWithinPartitions(
+            col("route_id").asc_nulls_first(),
+            col("vehicle").asc_nulls_first(),
+            col("timestamp").asc_nulls_first()
         )
     )
 
@@ -66,16 +89,17 @@ def main():
             sos BOOLEAN,
             working BOOLEAN,
             analog1 FLOAT,
-            analog2 FLOAT
+            analog2 FLOAT,
+            updated_at TIMESTAMP
         )
         USING iceberg
         PARTITIONED BY (date)
     """)
 
-    # Write to Silver
-    df_clean.writeTo("catalog_iceberg.bus_silver.bus_way_point").append()
+    # Step 4: Write to Silver with overwritePartitions
+    df_clean.writeTo("catalog_iceberg.bus_silver.bus_way_point").overwritePartitions()
 
-    print("WRITE bus_silver.bus_way_point SUCCESS")
+    print("WRITE bus_silver.bus_way_point SUCCESS (Idempotent, Cleaned, Sorted)")
 
 
 if __name__ == "__main__":

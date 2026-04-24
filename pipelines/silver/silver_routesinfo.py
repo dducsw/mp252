@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, when
+from pyspark.sql.functions import col, when, current_timestamp
 
 def create_spark_session():
     return (
@@ -32,6 +32,8 @@ def main():
             when(col("outbound") == True, "Outbound")
             .otherwise("Inbound")
         )
+        .withColumn("updated_at", current_timestamp())
+        .dropDuplicates(["route_id", "route_var_id"])
     )
 
     spark.sql("""
@@ -45,10 +47,10 @@ def main():
             distance_km DOUBLE,
             running_time INT,
             start_stop STRING,
-            end_stop STRING
+            end_stop STRING,
+            updated_at TIMESTAMP
         )
         USING iceberg
-        PARTITIONED BY (route_id)
     """)
 
     df_clean.writeTo("catalog_iceberg.bus_silver.route_info").append()

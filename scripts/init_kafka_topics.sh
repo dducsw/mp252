@@ -27,7 +27,7 @@ for topic in "${TOPICS[@]}"; do
         --topic "$topic" \
         --bootstrap-server "$BOOTSTRAP_SERVER" \
         --partitions 2 \
-        --replication-factor 2
+        --replication-factor 1
 done
 
 echo ""

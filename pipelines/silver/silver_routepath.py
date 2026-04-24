@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, expr
+from pyspark.sql.functions import col, expr, current_timestamp
 
 def create_spark_session():
     return (
@@ -14,22 +14,17 @@ def main():
 
     df = spark.read.table("catalog_iceberg.bus_bronze.route_path")
 
-    df_clean = df.select(
-        col("RouteId").cast("int"),
-        col("RouteNo").cast("string"),
-        col("RouteVarId").cast("int"),
-        col("RouteVarName").cast("string"),
-        col("Outbound").cast("boolean"),
-
-        expr("""
-            transform(
-                sequence(0, size(lat)-1),
-                i -> array(
-                    cast(lng[i] as double),
-                    cast(lat[i] as double)
-                )
-            )
-        """).alias("path")
+    df_clean = (
+        df.select(
+            col("RouteId").cast("int"),
+            col("RouteNo").cast("string"),
+            col("RouteVarId").cast("int"),
+            col("RouteVarName").cast("string"),
+            col("Outbound").cast("boolean"),
+            col("Path").alias("path")
+        )
+        .dropDuplicates(["RouteId", "RouteVarId", "Outbound"])
+        .withColumn("updated_at", current_timestamp())
     )
 
     spark.sql("""
@@ -39,10 +34,10 @@ def main():
             RouteVarId INT,
             RouteVarName STRING,
             Outbound BOOLEAN,
-            path ARRAY<ARRAY<DOUBLE>>
+            path ARRAY<ARRAY<DOUBLE>>,
+            updated_at TIMESTAMP
         )
         USING iceberg
-        PARTITIONED BY (RouteId)
     """)
 
     df_clean.writeTo("catalog_iceberg.bus_silver.route_path").append()

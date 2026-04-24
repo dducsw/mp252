@@ -36,13 +36,12 @@ def main():
             )
         """).alias("path")
     )
-
     # ===== WRITE TO MINIO =====
     df_clean.write \
         .format("iceberg") \
         .mode("overwrite") \
-        .save("catalog_iceberg.bus_bronze.route_path")
-
+        .saveAsTable("catalog_iceberg.bus_bronze.route_path")
+    
     print("===== WRITE TO MINIO SUCCESS =====")
 
 if __name__ == "__main__":

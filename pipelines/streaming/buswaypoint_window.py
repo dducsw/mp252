@@ -1,207 +1,202 @@
 import os
-import math
-import json
 import redis
+import sys
+from datetime import datetime
+
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
-    col, from_json, window, session_window, avg, count, 
-    min, max, to_timestamp, from_unixtime, udf, struct,
-    sum as spark_sum
+    approx_count_distinct,
+    avg,
+    broadcast,
+    col,
+    count,
+    current_timestamp,
+    from_json,
+    from_unixtime,
+    sum as spark_sum,
+    to_timestamp,
+    window,
+    when,
 )
 from pyspark.sql.types import (
-    StructType, StructField, StringType, IntegerType, 
-    FloatType, DoubleType, BooleanType, TimestampType
+    BooleanType,
+    DoubleType,
+    FloatType,
+    IntegerType,
+    StringType,
+    StructField,
+    StructType,
 )
-from pyspark.sql.streaming import GroupStateTimeout, GroupState
 
-# --- Configuration ---
+
 KAFKA_BOOTSTRAP_SERVERS = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")
 KAFKA_TOPIC = os.getenv("KAFKA_TOPIC", "buswaypoint_json")
 REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
 REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
+REDIS_METRICS_STREAM = os.getenv("REDIS_METRICS_STREAM", "bus_operation_metrics")
+MAPPING_CSV = os.getenv("MAPPING_CSV", "/opt/spark/apps/data/vehicle_route_mapping.csv")
+CHECKPOINT_LOCATION = os.getenv(
+    "WINDOW_CHECKPOINT_LOCATION",
+    "/tmp/spark_checkpoints/bus_route_window",
+)
 
-# --- Schema Definition ---
-bus_way_point_schema = StructType([
-    StructField("vehicle", StringType(), True),
-    StructField("driver", StringType(), True),
-    StructField("speed", FloatType(), True),
-    StructField("datetime", IntegerType(), True),
-    StructField("x", DoubleType(), True),
-    StructField("y", DoubleType(), True),
-    StructField("z", FloatType(), True),
-    StructField("heading", FloatType(), True),
-    StructField("ignition", BooleanType(), True),
-    StructField("aircon", BooleanType(), True),
-    StructField("door_up", BooleanType(), True),
-    StructField("door_down", BooleanType(), True),
-    StructField("sos", BooleanType(), True),
-    StructField("working", BooleanType(), True),
-    StructField("analog1", FloatType(), True),
-    StructField("analog2", FloatType(), True)
-])
 
-root_schema = StructType([
-    StructField("msgType", StringType(), True),
-    StructField("msgBusWayPoint", bus_way_point_schema, True)
-])
+bus_way_point_schema = StructType(
+    [
+        StructField("vehicle", StringType(), True),
+        StructField("driver", StringType(), True),
+        StructField("speed", FloatType(), True),
+        StructField("datetime", IntegerType(), True),
+        StructField("x", DoubleType(), True),
+        StructField("y", DoubleType(), True),
+        StructField("z", FloatType(), True),
+        StructField("heading", FloatType(), True),
+        StructField("ignition", BooleanType(), True),
+        StructField("aircon", BooleanType(), True),
+        StructField("door_up", BooleanType(), True),
+        StructField("door_down", BooleanType(), True),
+        StructField("sos", BooleanType(), True),
+        StructField("working", BooleanType(), True),
+        StructField("analog1", FloatType(), True),
+        StructField("analog2", FloatType(), True),
+    ]
+)
 
-# --- Helper Functions ---
-def haversine(lon1, lat1, lon2, lat2):
-    """Calculate the great circle distance between two points on the earth."""
-    if lon1 is None or lat1 is None or lon2 is None or lat2 is None:
-        return 0.0
-    # Convert decimal degrees to radians 
-    lon1, lat1, lon2, lat2 = map(math.radians, [lon1, lat1, lon2, lat2])
-    # Haversine formula 
-    dlon = lon2 - lon1 
-    dlat = lat2 - lat1 
-    a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
-    c = 2 * math.asin(math.sqrt(a)) 
-    r = 6371 # Radius of earth in kilometers. Use 3956 for miles
-    return c * r
+root_schema = StructType(
+    [
+        StructField("msgType", StringType(), True),
+        StructField("msgBusWayPoint", bus_way_point_schema, True),
+    ]
+)
 
-# --- Stateful Processing for Delta Distance ---
-def update_vehicle_state(vehicle_id, inputs, state: GroupState):
-    """
-    Inputs: Iterator of rows (x, y, timestamp)
-    State: Stores (last_x, last_y)
-    Returns: Iterator of (vehicle_id, timestamp, delta_distance)
-    """
-    if state.hasTimedOut:
-        state.remove()
-        return []
 
-    last_pos = state.get if state.exists else None
-    results = []
-
-    for row in inputs:
-        curr_x = row.x
-        curr_y = row.y
-        curr_ts = row.timestamp
-        
-        delta = 0.0
-        if last_pos:
-            delta = haversine(last_pos[0], last_pos[1], curr_x, curr_y)
-        
-        last_pos = (curr_x, curr_y)
-        results.append((vehicle_id, curr_ts, delta))
+def write_metrics_to_redis(batch_df, batch_id):
+    row_count = batch_df.count()
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
-    state.update(last_pos)
-    return results
+    print(f"[{now}] Batch {batch_id}: Triggered. Row count: {row_count}")
+    sys.stdout.flush()
+    
+    if row_count > 0:
+        print(f"[{now}] Batch {batch_id}: Writing to Redis...")
+        sys.stdout.flush()
+        
+        def send_partition(partition):
+            redis_client = redis.Redis(
+                host=REDIS_HOST,
+                port=REDIS_PORT,
+                decode_responses=True,
+                socket_keepalive=True,
+                socket_timeout=5.0,
+            )
+            pipeline = redis_client.pipeline(transaction=False)
 
-# --- Redis Sink function ---
-def write_to_redis(batch_df, batch_id):
-    """Writes a micro-batch dataframe to Redis using pipelines."""
-    def send_to_redis(partition):
-        r = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
-        pipe = r.pipeline(transaction=False)
-        for row in partition:
-            # Determine metric type and set key
-            if "avg_speed" in row:
-                key = f"metric:avg_speed:{row.vehicle}"
-                pipe.hset(key, mapping={
-                    "window_start": str(row.window.start),
-                    "window_end": str(row.window.end),
-                    "avg_speed": str(row.avg_speed)
-                })
-                pipe.expire(key, 3600)
-            elif "msg_count" in row:
-                key = f"metric:msg_density:{row.vehicle}:{row.window.start.isoformat()}"
-                pipe.hset(key, mapping={"count": str(row.msg_count)})
-                pipe.expire(key, 7200)
-            elif "trip_points" in row:
-                key = f"metric:active_trip:{row.vehicle}"
-                pipe.hset(key, mapping={
-                    "start": str(row.session_window.start),
-                    "end": str(row.session_window.end),
-                    "points": str(row.trip_points)
-                })
-            elif "hour_distance" in row:
-                key = f"metric:distance_1h:{row.vehicle}"
-                pipe.hset(key, mapping={"distance_km": str(row.hour_distance)})
-                pipe.expire(key, 3600)
-        pipe.execute()
-        r.close()
+            for row in partition:
+                metric = {
+                    "metric_type": "route_window_5m",
+                    "route_no": row.route_no,
+                    "window_start": row.window_start.isoformat(),
+                    "window_end": row.window_end.isoformat(),
+                    "avg_speed": f"{row.avg_speed:.2f}" if row.avg_speed is not None else "0.00",
+                    "msg_count": str(row.msg_count),
+                    "active_vehicle_count": str(row.active_vehicle_count),
+                    "moving_msg_count": str(row.moving_msg_count),
+                    "stopped_msg_count": str(row.stopped_msg_count),
+                    "sos_msg_count": str(row.sos_msg_count),
+                    "ignition_on_msg_count": str(row.ignition_on_msg_count),
+                    "updated_at": row.updated_at.isoformat(),
+                }
+                pipeline.xadd(
+                    REDIS_METRICS_STREAM,
+                    metric,
+                    maxlen=50000,
+                    approximate=True,
+                )
 
-    batch_df.foreachPartition(send_to_redis)
+            pipeline.execute()
+            redis_client.close()
 
-# --- Main Application ---
+        batch_df.foreachPartition(send_partition)
+        print(f"[{now}] Batch {batch_id}: Successfully committed.")
+        sys.stdout.flush()
+
+
 def main():
-    spark = SparkSession.builder \
-        .appName("BusWayPointWindowPipeline") \
-        .config("spark.sql.shuffle.partitions", "2") \
+    spark = (
+        SparkSession.builder.appName("BusRouteWindowMetrics")
+        .config("spark.sql.shuffle.partitions", "4")
+        .config("spark.executor.cores", "2")
+        .config("spark.cores.max", "2")
         .getOrCreate()
-    
+    )
     spark.sparkContext.setLogLevel("ERROR")
 
-    # 1. Read from Kafka
-    raw_stream = spark.readStream \
-        .format("kafka") \
-        .option("kafka.bootstrap.servers", KAFKA_BOOTSTRAP_SERVERS) \
-        .option("subscribe", KAFKA_TOPIC) \
-        .option("startingOffsets", "latest") \
+    print(f"Starting BusRouteWindowMetrics with MAPPING_CSV={MAPPING_CSV}")
+    sys.stdout.flush()
+
+    mapping_df = (
+        spark.read.option("header", True)
+        .csv(MAPPING_CSV)
+        .select("vehicle", "route_no")
+        .dropna(subset=["vehicle", "route_no"])
+        .dropDuplicates(["vehicle"])
+    )
+
+    raw_stream = (
+        spark.readStream.format("kafka")
+        .option("kafka.bootstrap.servers", KAFKA_BOOTSTRAP_SERVERS)
+        .option("subscribe", KAFKA_TOPIC)
+        .option("startingOffsets", "earliest")
         .load()
+    )
 
-    # 2. Parse JSON and add Watermark
-    parsed_stream = raw_stream \
-        .selectExpr("CAST(value AS STRING)") \
-        .select(from_json(col("value"), root_schema).alias("data")) \
-        .select("data.msgBusWayPoint.*") \
-        .withColumn("timestamp", to_timestamp(from_unixtime("datetime"))) \
+    parsed_stream = (
+        raw_stream.selectExpr("CAST(value AS STRING)")
+        .select(from_json(col("value"), root_schema).alias("data"))
+        .select("data.msgBusWayPoint.*")
+        .withColumn("timestamp", to_timestamp(from_unixtime("datetime")))
+        .join(broadcast(mapping_df), on="vehicle", how="left")
+        .filter(col("route_no").isNotNull())
         .withWatermark("timestamp", "10 minutes")
+    )
 
-    # --- Metric 1: Sliding Window (Avg Speed) ---
-    speed_df = parsed_stream \
-        .groupBy(window("timestamp", "5 minutes", "1 minute"), "vehicle") \
-        .agg(avg("speed").alias("avg_speed"))
-
-    # --- Metric 2: Tumbling Window (Msg Density) ---
-    density_df = parsed_stream \
-        .groupBy(window("timestamp", "10 minutes"), "vehicle") \
-        .agg(count("*").alias("msg_count"))
-
-    # --- Metric 3: Session Window (Trip Detection) ---
-    session_df = parsed_stream \
-        .groupBy(session_window("timestamp", "15 minutes"), "vehicle") \
-        .agg(count("*").alias("trip_points"))
-
-    # --- Metric 4: Stateful Distance ---
-    # We use flatMapGroupsWithState for the delta distance
-    # Output schema for stateful op
-    state_schema = "vehicle string, timestamp timestamp, delta_distance double"
-    
-    delta_stream = parsed_stream \
-        .select("vehicle", "x", "y", "timestamp") \
-        .groupByKey(lambda r: r.vehicle) \
-        .flatMapGroupsWithState(
-            update_vehicle_state,
-            outputMode="append",
-            timeoutConf=GroupStateTimeout.ProcessingTimeTimeout,
-            stateSchema="last_x double, last_y double", # Simulating pos state
-            resultSchema=state_schema
+    route_metrics = (
+        parsed_stream.groupBy(window("timestamp", "5 minutes", "1 minute"), "route_no")
+        .agg(
+            avg("speed").alias("avg_speed"),
+            count("*").alias("msg_count"),
+            approx_count_distinct("vehicle").alias("active_vehicle_count"),
+            spark_sum(when(col("speed") > 0, 1).otherwise(0)).alias("moving_msg_count"),
+            spark_sum(when(col("speed") == 0, 1).otherwise(0)).alias("stopped_msg_count"),
+            spark_sum(when(col("sos") == True, 1).otherwise(0)).alias("sos_msg_count"),
+            spark_sum(when(col("ignition") == True, 1).otherwise(0)).alias(
+                "ignition_on_msg_count"
+            ),
         )
+        .select(
+            "route_no",
+            col("window.start").alias("window_start"),
+            col("window.end").alias("window_end"),
+            "avg_speed",
+            "msg_count",
+            "active_vehicle_count",
+            "moving_msg_count",
+            "stopped_msg_count",
+            "sos_msg_count",
+            "ignition_on_msg_count",
+        )
+        .withColumn("updated_at", current_timestamp())
+    )
 
-    # Now aggregate delta_distance over a sliding window
-    distance_1h_df = delta_stream \
-        .withWatermark("timestamp", "10 minutes") \
-        .groupBy(window("timestamp", "1 hour", "10 minutes"), "vehicle") \
-        .agg(spark_sum("delta_distance").alias("hour_distance")) 
-
-    # 3. Write all streams to Redis using foreachBatch
-    # Note: In a real app, you might want separate queries or a union for a single sink
-    # For demonstration, we union the columns to a common format
-    
-    combined_df = speed_df.select("vehicle", "window", col("avg_speed")).withColumnRenamed("window", "window") \
-        .unionByName(density_df.select("vehicle", "window", col("msg_count")), allowMissingColumns=True) \
-        .unionByName(session_df.select("vehicle", col("session_window").alias("window"), col("trip_points")), allowMissingColumns=True) \
-        .unionByName(distance_1h_df.select("vehicle", "window", col("hour_distance")), allowMissingColumns=True)
-
-    query = combined_df.writeStream \
-        .foreachBatch(write_to_redis) \
-        .option("checkpointLocation", "/tmp/spark_checkpoints/bus_window") \
+    query = (
+        route_metrics.writeStream.outputMode("update")
+        .foreachBatch(write_metrics_to_redis)
+        .option("checkpointLocation", CHECKPOINT_LOCATION)
         .start()
+    )
 
     query.awaitTermination()
+
 
 if __name__ == "__main__":
     main()
