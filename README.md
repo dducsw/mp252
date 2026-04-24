@@ -1,4 +1,4 @@
-# Modern Data Lakehouse with Apache Iceberg
+# Streaming Lakehouse for Bus GPS Analytics
 
 ## 🎓 Project Information
 This is a **Multidisciplinary Project (Đồ án đa ngành)** for **Semester 252 (2025-2026)**, developed by **CSE Students** from **Ho Chi Minh City University of Technology (HCMUT)**.
